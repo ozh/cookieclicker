@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cookie Clicker</title>
+<!--
+Code and graphics copyright Orteil, 2013
+Feel free to alter this code to your liking, but please do not re-host it, do not profit from it and do not present it as your own.
+
+-TODO :
+	-milk toys
+	-temple building
+	-gambling
+	-better tooltips
+	-better prestige
+	-more dungeons
+	-add canvas support /!\ being added
+	-timer bars for golden cookie effects
+	-set event listeners instead of onclick /!\ being added
+	-more zebras
+-->
+
+<script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok7v=02fcfa4f56/"},atok:"cd8a1d333a61e0acb09e330b8081ce01",petok:"45b52215a5393add175e8a2de4f4de5e2d78e750-1392222559-1800",zone:"dashnet.org",rocket:"0",apps:{"ga_key":{"ua":"UA-29324474-2","ga_bs":"2"},"abetterbrowser":{"ie":"8"}}}];var a=document.createElement("script"),b=document.getElementsByTagName("script")[0];a.async=!0;a.src="//ajax.cloudflare.com/cdn-cgi/nexp/dok7v=221574e73d/cloudflare.min.js";b.parentNode.insertBefore(a,b);}}catch(e){};
+//]]>
+</script>
+<link rel="shortcut icon" href="favicon.ico" />
+<link href="http://fonts.googleapis.com/css?family=Kavoon&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="style.css?v=1.5070" rel="stylesheet" type="text/css">
+
+<!--[if lt IE9]><script src="excanvas.compiled.js"></script><![endif]-->
+<script src="phonegap.js"></script><!-- only present in the mobile version -->
+<script src="base64.js"></script>
+<script src="ajax.js"></script>
+<script src="DungeonGen.js"></script>
+<script src="dungeons.js?v=1.5044"></script>
+<script src="mobile.js"></script>
+<script src="main.js?v=1.5070"></script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-29324474-2']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+(function(b){(function(a){"__CF"in b&&"DJS"in b.__CF?b.__CF.DJS.push(a):"addEventListener"in b?b.addEventListener("load",a,!1):b.attachEvent("onload",a)})(function(){"FB"in b&&"Event"in FB&&"subscribe"in FB.Event&&(FB.Event.subscribe("edge.create",function(a){_gaq.push(["_trackSocial","facebook","like",a])}),FB.Event.subscribe("edge.remove",function(a){_gaq.push(["_trackSocial","facebook","unlike",a])}),FB.Event.subscribe("message.send",function(a){_gaq.push(["_trackSocial","facebook","send",a])}));"twttr"in b&&"events"in twttr&&"bind"in twttr.events&&twttr.events.bind("tweet",function(a){if(a){var b;if(a.target&&a.target.nodeName=="IFRAME")a:{if(a=a.target.src){a=a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);b=0;for(var c;c=a[b];++b)if(c.indexOf("url")===0){b=unescape(c.split("=")[1]);break a}}b=void 0}_gaq.push(["_trackSocial","twitter","tweet",b])}})})})(window);
+/* ]]> */
+</script>
+</head>
+<body>
+
+<div id="wrapper">
+
+	<div id="topBar">
+		<div>
+			<b>Cookie Clicker</b> &copy; <a href="http://orteil.dashnet.org" target="_blank">Orteil</a>, 2013 - hosted by <a href="http://dashnet.org" target="_blank">DashNet</a> | <a href="http://twitter.com/orteil42" target="_blank">twitter</a> | <a href="http://orteil42.tumblr.com" target="_blank">tumblr</a> | Help? Bugs? Ideas? Check out the <a href="http://forum.dashnet.org" target="_blank">forum</a>! | Chat with us on <a href="http://forum.dashnet.org/discussion/277/irc-chat-channel/p1" target="_blank">IRC</a> | Get your <a href="http://www.redbubble.com/people/dashnet" target="_blank" style="color:#6cf;">Cookie Clicker shirts, stickers and hoodies</a>!
+			<div id="links" style="display:block;position:absolute;right:8px;top:4px;"></div>
+		</div>
+	</div>
+
+	<div id="game">
+		<div id="javascriptError">
+			<div style="padding:64px 128px;">
+				<div class="title">Oops, looks like the game isn't loading right!</div>
+				<div>Please make sure your javascript is enabled, then refresh.<br>
+				This could also be caused by a problem on our side, in which case - wait a moment, then refresh!</div>
+			</div>
+		</div>
+
+		<canvas id="backgroundCanvas"></canvas>
+		
+		<div id="goldenCookie" class="goldenCookie"></div>
+		<div id="seasonPopup" class="seasonPopup"></div>
+		<div id="alert"></div>
+		<div id="particles"></div>
+		<div id="versionNumber" class="title"></div>
+		
+		<div id="sectionLeft" class="inset">
+			<canvas id="backgroundLeftCanvas" style="z-index:5;"></canvas>
+			<div class="blackFiller"></div>
+			<div class="blackGradient"></div>
+			<div id="sectionLeftInfo"></div>
+			<div id="cookies" class="title"></div>
+			<div id="cookieAnchor">
+				<div id="bigCookie"></div>
+				<div id="cookieNumbers"></div>
+			</div>
+		</div>
+
+		<div class="separatorLeft"></div>
+		<div class="separatorRight"></div>
+			
+		<div id="sectionMiddle" class="inset">
+			<div id="comments" class="inset title">
+				<div id="prefsButton" class="button">Menu</div>
+				<div id="statsButton" class="button">Stats</div>
+				<div id="logButton" class="button" style="font-size:80%;">Updates</div>
+				<div id="commentsText" class="commentsText"></div>
+				<div class="separatorBottom"></div>
+			</div>
+			<div id="buildingsTitle" class="inset title zoneTitle">Buildings</div>
+			<div id="rows"></div>
+			<div id="menu"></div>
+		</div>
+
+		<div id="sectionRight" class="inset">
+			<div id="store">
+				<div id="storeTitle" class="inset title zoneTitle">Store</div>
+				<div id="upgrades">
+				</div>
+				<div id="products">
+				</div>
+			</div>
+			
+			
+			<div id="support" style="margin-top:130px;">
+			<div id="supportComment">Sponsored links</div>
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Cookie Clicker Rectangle -->
+				<ins class="adsbygoogle"
+					 style="display:inline-block;width:300px;height:250px"
+					 data-ad-client="ca-pub-8491708950677704"
+					 data-ad-slot="9349826096"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+				<!-- AdventureQuest Worlds banner -->
+				<a class="ad" id="aqad" href="http://www.aq.com/landing/cookie/?utm_campaign=AQW_CookieClicker&utm_source=CookieClicker" target="_blank" title="AdventureQuest Worlds" style="background:url(img/aqworldsbanner.jpg) no-repeat;width:300px;height:64px;display:block;position:relative;left:-10px;margin:16px 0px;">
+				</a>
+				<form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" id="donate" style="margin:0px 16px;">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="BBN2WL3TC6QH4">
+				<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+				<img alt="" border="0" src="https://www.paypalobjects.com/nl_NL/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>
+		</div>
+		
+		<div id="focusButtons">
+			<div id="focusLeft" class="title">Cookie</div>
+			<div id="focusMiddle" class="title" style="font-size:80%;padding-top:18px;padding-bottom:14px;">Buildings</div>
+			<div id="focusRight" class="title">Store</div>
+			<div id="focusMenu" class="title">Menu</div>
+		</div>
+		<div id="compactOverlay" class="title">
+			<div id="compactCommentsText" class="commentsText"></div>
+			<div id="compactCookies"></div>
+			<div class="separatorBottom"></div>
+		</div>
+		
+		<div id="tooltipAnchor"><div id="tooltip" onMouseOut="Game.tooltip.hide();"></div></div>
+
+	</div>
+
+</div>
+
+</body>
+</html>
