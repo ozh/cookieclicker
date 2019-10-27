@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="/cdn-cgi/apps/head/0qgk9sTk1hPaj4RmmbOPMlTGE6w.js"></script><script type="text/javascript">
+<script type="text/javascript">
     window.cookieconsent_options = {"message":"Unsurprisingly, this website uses cookies for ads and traffic analysis.","dismiss":"Got it!","learnMore":"Learn more","link":"http://orteil.dashnet.org/cookieconsentpolicy.html","target":"_blank","theme":"http://orteil.dashnet.org/cookieconsent.css","domain":"dashnet.org"};
 </script>
 
@@ -9,35 +9,32 @@
 
 <title>Cookie Clicker</title>
 <!--
-Code and graphics copyright Orteil, 2013-2017
+Code and graphics copyright Orteil, 2013-2019
 Feel free to alter this code to your liking, but please do not re-host it, do not profit from it and do not present it as your own.
 -->
 
+<meta name="viewport" content="width=900, initial-scale=1">
 <link rel="shortcut icon" href="img/favicon.ico" />
 <!--<link href="https://fonts.googleapis.com/css?family=Kavoon&subset=latin,latin-ext" rel="stylesheet" type="text/css">-->
 <link href='https://fonts.googleapis.com/css?family=Merriweather:900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-<link href="style.css?v=2.0042" rel="stylesheet" type="text/css">
+<script src="showads.js"></script><!-- this just detects adblockers so we can adjust the layout and play nice -->
+<script src="base64.js"></script>
+<script src="main.js?v=2.061"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8491708950677704",
+          enable_page_level_ads: true
+     });
+</script>
+<link href="style.css?v=2.050" rel="stylesheet" type="text/css">
 <!--[if IE]>
 <style type="text/css">
 	#ifIE9{display:block;}
 </style>
 <![endif]-->
-<!--->
-<meta name="viewport"
-content="initial-scale=2.0,
-maximum-scale=2.0,
-minimum-scale=2.0,
-height=device-height,
-width=device-width,
-target-densityDpi=device-dpi"/>
-<!---->
-<!--<meta name="viewport" content="width=250"/>-->
-<!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=250, height=device-height, target-densitydpi=device-dpi"/>-->
 
 <!--[if lt IE9]><script src="excanvas.compiled.js"></script><![endif]-->
-<script src="base64.js"></script>
-<script src="ajax.js"></script>
-<script src="main.js?v=2.0042"></script>
 
 </head>
 <body>
@@ -45,12 +42,17 @@ target-densityDpi=device-dpi"/>
 <div id="wrapper">
 
 	<div id="topBar">
-		<div><b>Cookie Clicker</b>&trade; &copy; <a href="http://orteil.dashnet.org" target="_blank">Orteil</a>, 2017 - <a href="http://dashnet.org" target="_blank">DashNet</a></div>
-		<div><a href="http://twitter.com/orteil42" target="_blank">twitter</a></div>
-		<div><a href="http://orteil42.tumblr.com" target="_blank">tumblr</a></div>
-		<div>Help? Bugs? Ideas? Check out the <a href="http://forum.dashnet.org" target="_blank">forum</a>!</div>
-		<div style="position:relative;"><div style="width:25px;height:32px;background:url(img/weeHoodie.png);position:absolute;left:-2px;top:0px;pointer-events:none;"></div><a class="blueLink" href="http://www.redbubble.com/people/dashnet" target="_blank" style="padding-left:12px;">Cookie Clicker merch & stickers!</a></div>
-		<div><a href="http://orteil.dashnet.org/randomgen/" target="_blank">RandomGen</a></div>
+		<div><b>Cookie Clicker</b>&trade; &copy; <a href="http://orteil.dashnet.org" target="_blank" id="topbarOrteil">Orteil</a>, 2019 - <a href="http://dashnet.org" target="_blank" id="topbarDashnet">DashNet</a></div>
+		<div><a href="http://twitter.com/orteil42" target="_blank" id="topbarTwitter">twitter</a></div>
+		<div><a href="http://orteil42.tumblr.com" target="_blank" id="topbarTumblr">tumblr</a></div>
+		<!--<div><a href="http://forum.dashnet.org" target="_blank">Official forum</a></div>-->
+		<div style="position:relative;"><div style="width:22px;height:32px;background:url(img/discord.png);position:absolute;left:0px;top:0px;pointer-events:none;"></div><a href="https://discordapp.com/invite/cookie" target="_blank" style="padding-left:16px;" id="topbarDiscord">Discord</a></div>
+		<div style="position:relative;"><div style="width:25px;height:32px;background:url(img/weeHoodie.png);position:absolute;left:-2px;top:0px;pointer-events:none;"></div><a class="blueLink" href="http://www.redbubble.com/people/dashnet" target="_blank" style="padding-left:12px;" id="topbarMerch">Merch!</a></div>
+		<div style="position:relative;"><div style="width:22px;height:32px;background:url(img/patreon.png);position:absolute;left:0px;top:0px;pointer-events:none;"></div><a class="orangeLink" href="https://www.patreon.com/dashnet" target="_blank" style="padding-left:16px;" id="topbarPatreon">Patreon</a></div>
+		<div style="position:relative;display:none;font-weight:bold;" id="heralds"><div style="position:absolute;top:-4px;width:31px;height:39px;background:url(img/heraldFlag.png);left:50%;margin-left:-15px;pointer-events:none;"></div><div id="heraldsAmount" style="position:relative;z-index:10;text-shadow:0px 1px 0px #000,0px 0px 6px #ff00e4;color:#fff;">-</div></div>
+		<div><a class="lightblueLink" style="font-weight:bold;" href="https://play.google.com/store/apps/details?id=org.dashnet.cookieclicker" target="_blank" id="topbarMobileCC">Cookie Clicker for Android</a></div>
+		<div><a href="http://orteil.dashnet.org/randomgen/" target="_blank" id="topbarRandomgen">RandomGen</a></div>
+		<div><a href="http://orteil.dashnet.org/igm/" target="_blank" id="topbarIGM">Idle Game Maker</a></div>
 		<div id="links" class="hoverer">
 			Other versions
 			<div class="hoverable">
@@ -87,7 +89,7 @@ target-densityDpi=device-dpi"/>
 		<div id="sparkles" class="sparkles"></div>
 		<div id="notes"></div>
 		<div id="darken"></div>
-		<div id="toggleBox" class="framed prompt"></div><!-- tabindex="-1" -->
+		<div id="toggleBox" class="framed prompt"></div>
 		<div id="promptAnchor"><div id="prompt" class="framed"><div id="promptContent"></div><div class="close" onclick="PlaySound('snd/tick.mp3');Game.ClosePrompt();">x</div></div></div>
 		<div id="versionNumber" class="title"></div>
 		<div id="ascend">
@@ -121,7 +123,7 @@ target-densityDpi=device-dpi"/>
 			<div id="comments" class="inset title">
 				<div id="prefsButton" class="button">Options</div>
 				<div id="statsButton" class="button">Stats</div>
-				<div id="logButton" class="button">Info</div>
+				<div id="logButton" class="button"><div id="checkForUpdate">New update!</div>Info</div>
 				<div id="legacyButton" class="button">Legacy<div id="ascendMeterContainer" class="smallFramed meterContainer"><div id="ascendMeter" class="meter filling"></div></div><div class="roundedPanel" id="ascendNumber"></div><div id="ascendTooltip" class="framed"></div></div>
 				<div id="commentsTextBelow" class="commentsText"></div>
 				<div id="commentsText" class="commentsText"></div>
@@ -129,8 +131,10 @@ target-densityDpi=device-dpi"/>
 			</div>
 			<div id="centerArea">
 				<div id="buildingsTitle" class="inset title zoneTitle">Buildings</div>
+				<div id="buildingsMaster"></div>
 				<div id="rows"></div>
 				<div id="menu"></div>
+				<!--
 				<div id="donateBox">
 					<form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" id="donate" style="margin:0px 16px;">
 					<input type="hidden" name="cmd" value="_s-xclick">
@@ -138,47 +142,56 @@ target-densityDpi=device-dpi"/>
 					<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
 					<img alt="" border="0" src="https://www.paypalobjects.com/nl_NL/i/scr/pixel.gif" width="1" height="1">
 					</form>
-					Help us keep developing the game!
+					<small>Help us keep developing the game!</small>
 				</div>
+				-->
 			</div>
 		</div>
 
 		<div id="sectionRight" class="inset">
+			<div class="ifNoAds" style="width:300px;text-align:center;padding:8px 0px;background:rgba(0,0,0,0.95);font-size:10px;opacity:0.5;text-shadow:0px 0px 2px #000,0px 1px 0px #000;text-align:center;">
+				Cookie Clicker is mainly supported by ads.<br>Consider unblocking our site or checking out our <a href="https://www.patreon.com/dashnet" target="_blank">Patreon</a>!
+			</div>
+			<div id="smallSupport" style="width:300px;text-align:center;padding-bottom:40px;background:rgba(0,0,0,0.5);position:relative;z-index:100;">
+				
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Cookie Clicker Header Responsive -->
+				<ins class="adsbygoogle"
+					 style="display:block;margin:auto;width:300px;max-height:300px;overflow:hidden;"
+					 data-ad-client="ca-pub-8491708950677704"
+					 data-ad-slot="7077525342"
+					 data-ad-format="rectangle"
+					 data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+				
+				<div class="supportComment">^ Sponsored link ^</div>
+			</div>
 			<div id="store">
 				<div id="storeTitle" class="inset title zoneTitle">Store</div>
 				<div id="toggleUpgrades" class="storeSection upgradeBox"></div>
 				<div id="techUpgrades" class="storeSection upgradeBox"></div>
+				<div id="vaultUpgrades" class="storeSection upgradeBox"></div>
 				<div id="upgrades" class="storeSection upgradeBox"></div>
 				<div id="products" class="storeSection"></div>
 			</div>
 			
-			
+			<div id="detectAds" class="adBanner" style="background:transparent;width:1px;height:1px;"></div>
 			<div id="support" style="margin-top:130px;">
-				<div class="supportComment">Sponsored links</div>
+				<div class="supportComment">v Sponsored links v</div>
 				<div style="position:relative;">
 				
 					<div style="position:relative;z-index:100;min-height:250px;">
 					
-						<!-- Google ad -->
 						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-						<!-- Cookie Clicker Rectangle -->
+						<!-- Cookie Clicker Responsive -->
 						<ins class="adsbygoogle"
-							 style="display:inline-block;width:300px;height:250px"
+							 style="display:block;margin:auto;"
 							 data-ad-client="ca-pub-8491708950677704"
-							 data-ad-slot="9349826096"></ins>
-						<script>
-						(adsbygoogle = window.adsbygoogle || []).push({});
-						</script>
-						
-						<div style="height:16px;"></div>
-						
-						<!-- Google ad -->
-						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-						<!-- Cookie Clicker Rectangle -->
-						<ins class="adsbygoogle"
-							 style="display:inline-block;width:300px;height:250px"
-							 data-ad-client="ca-pub-8491708950677704"
-							 data-ad-slot="9349826096"></ins>
+							 data-ad-slot="9780186019"
+							 data-ad-format="auto"
+							 data-full-width-responsive="true"></ins>
 						<script>
 						(adsbygoogle = window.adsbygoogle || []).push({});
 						</script>
@@ -194,28 +207,6 @@ target-densityDpi=device-dpi"/>
 				</div>
 			</div>
 		</div>
-		<!--
-		<div id="sectionAd" class="inset">
-		
-			<div class="supportComment">Sponsored links</div>
-			<div style="position:relative;">
-				<div class="supportPlaceholder">
-					<div>(Normally, there would be an ad here. It's fine if you want to block it, but remember - Cookie Clicker only happens because of ad revenue!)</div>
-				</div>
-				<div style="position:relative;z-index:100;">
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<ins class="adsbygoogle"
-						 style="display:inline-block;width:160px;height:600px"
-						 data-ad-client="ca-pub-8491708950677704"
-						 data-ad-slot="8643839697"></ins>
-					<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
-				</div>
-			</div>
-		
-		</div>
-		-->
 		
 		<div id="focusButtons">
 			<div id="focusLeft" class="title">Cookie</div>

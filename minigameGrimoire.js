@@ -51,7 +51,7 @@ M.launch=function()
 					var choices=[];
 					choices.push('frenzy','multiply cookies');
 					if (!Game.hasBuff('Dragonflight')) choices.push('click frenzy');
-					if (Math.random()<0.1) choices.push('chain cookie','cookie storm','blab');
+					if (Math.random()<0.1) choices.push('cookie storm','cookie storm','blab');
 					if (Game.BuildingsOwned>=10 && Math.random()<0.25) choices.push('building special');
 					//if (Math.random()<0.2) choices.push('clot','cursed finger','ruin cookies');
 					if (Math.random()<0.15) choices=['cookie storm drop'];
@@ -201,7 +201,8 @@ M.launch=function()
 					if (spells.length==0){Game.Popup('<div style="font-size:80%;">No eligible spells!</div>',Game.mouseX,Game.mouseY);return -1;}
 					var spell=choose(spells);
 					var cost=M.getSpellCost(spell)*0.5;
-					setTimeout(function(){
+					setTimeout(function(spell,cost,seed){return function(){
+						if (Game.seed!=seed) return false;
 						var out=M.castSpell(spell,{cost:cost,failChanceMax:0.5,passthrough:true});
 						if (!out)
 						{
@@ -210,7 +211,7 @@ M.launch=function()
 								Game.Popup('<div style="font-size:80%;">That\'s too bad!<br>Magic refunded.</div>',Game.mouseX,Game.mouseY);
 							},1500);
 						}
-					},1000);
+					}}(spell,cost,Game.seed),1000);
 					Game.Popup('<div style="font-size:80%;">Casting '+spell.name+'<br>for '+Beautify(cost)+' magic...</div>',Game.mouseX,Game.mouseY);
 				},
 			},
@@ -362,14 +363,14 @@ M.launch=function()
 				'<div class="name">'+me.name+'</div>'+
 				'<div>Magic cost : <b style="color:#'+(cost<=M.magic?'6f6':'f66')+';">'+cost+'</b>'+costBreakdown+'</div>'+
 				(me.fail?('<div><small>Chance to backfire : <b style="color:#f66">'+Math.ceil(100*backfire)+'%</b></small></div>'):'')+
-				'<div class="line"></div><div class="description"><b>Effect :</b> '+me.desc+(me.failDesc?('<div style="height:8px;"></div><b>Backfire :</b> '+me.failDesc):'')+'</div></div>';
+				'<div class="line"></div><div class="description"><b>Effect :</b> <span class="green">'+(me.descFunc?me.descFunc():me.desc)+'</span>'+(me.failDesc?('<div style="height:8px;"></div><b>Backfire :</b> <span class="red">'+me.failDesc+'</span>'):'')+'</div></div>';
 				return str;
 			};
 		}
 		
 		var str='';
 		str+='<style>'+
-		'#grimoireBG{background:url(img/shadedBorders.png),url(img/grimoireBG.png);background-size:100% 100%,auto;position:absolute;left:0px;right:0px;top:0px;bottom:16px;}'+
+		'#grimoireBG{background:url(img/shadedBorders.png),url(img/BGgrimoire.jpg);background-size:100% 100%,auto;position:absolute;left:0px;right:0px;top:0px;bottom:16px;}'+
 		'#grimoireContent{position:relative;box-sizing:border-box;padding:4px 24px;}'+
 		'#grimoireBar{max-width:95%;margin:4px auto;height:16px;}'+
 		'#grimoireBarFull{transform:scale(1,2);transform-origin:50% 0;height:50%;}'+
@@ -390,10 +391,7 @@ M.launch=function()
 		
 		'.grimoireSpell:hover .grimoireIcon{top:-1px;}'+
 		'.grimoireSpell.ready:hover .grimoireIcon{animation-name:bounce;animation-iteration-count:infinite;animation-duration:0.8s;}'+
-		
-		'#grimoireLumpRefill{cursor:pointer;width:48px;height:48px;position:absolute;left:-40px;top:-17px;transform:scale(0.5);z-index:1000;transition:transform 0.05s;}'+
-		'#grimoireLumpRefill:hover{transform:scale(1);}'+
-		'#grimoireLumpRefill:active{transform:scale(0.4);}'+
+		'.noFancy .grimoireSpell.ready:hover .grimoireIcon{animation:none;}'+
 		
 		'#grimoireInfo{text-align:center;font-size:11px;margin-top:12px;color:rgba(255,255,255,0.75);text-shadow:-1px 1px 0px #000;}'+
 		'</style>';
@@ -408,7 +406,7 @@ M.launch=function()
 			}
 			str+='</div>';
 			var icon=[29,14];
-			str+='<div id="grimoireBar" class="smallFramed meterContainer"><div '+Game.getTooltip('<div style="padding:8px;width:300px;font-size:11px;text-align:center;">Click to refill <b>100 units</b> of your magic meter<br>for <span class="price lump">1 sugar lump</span>.</div>')+' id="grimoireLumpRefill" class="usesIcon shadowFilter" style="background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div><div id="grimoireBarFull" class="meter filling"></div><div id="grimoireBarText" class="titleFont"></div><div '+Game.getTooltip('<div style="padding:8px;width:300px;font-size:11px;text-align:center;">This is your magic meter. Each spell costs magic to use.<div class="line"></div>Your maximum amount of magic varies depending on your amount of <b>Wizard towers</b>, and their level.<div class="line"></div>Magic refills over time. The lower your magic meter, the slower it refills.</div>')+' style="position:absolute;left:0px;top:0px;right:0px;bottom:0px;"></div></div>';
+			str+='<div id="grimoireBar" class="smallFramed meterContainer"><div '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.refillTooltip','this')+' id="grimoireLumpRefill" class="usesIcon shadowFilter lumpRefill" style="left:-40px;top:-17px;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div><div id="grimoireBarFull" class="meter filling"></div><div id="grimoireBarText" class="titleFont"></div><div '+Game.getTooltip('<div style="padding:8px;width:300px;font-size:11px;text-align:center;">This is your magic meter. Each spell costs magic to use.<div class="line"></div>Your maximum amount of magic varies depending on your amount of <b>Wizard towers</b>, and their level.<div class="line"></div>Magic refills over time. The lower your magic meter, the slower it refills.</div>')+' style="position:absolute;left:0px;top:0px;right:0px;bottom:0px;"></div></div>';
 			str+='<div id="grimoireInfo"></div>';
 		str+='</div>';
 		div.innerHTML=str;
@@ -423,14 +421,18 @@ M.launch=function()
 			AddEvent(l('grimoireSpell'+me.id),'click',function(spell){return function(){PlaySound('snd/tick.mp3');M.castSpell(spell);}}(me));
 		}
 		
+		M.refillTooltip=function(){
+			return '<div style="padding:8px;width:300px;font-size:11px;text-align:center;">Click to refill <b>100 units</b> of your magic meter for <span class="price lump">1 sugar lump</span>.'+
+				(Game.canRefillLump()?'<br><small>(can be done once every '+Game.sayTime(Game.getLumpRefillMax(),-1)+')</small>':('<br><small class="red">(usable again in '+Game.sayTime(Game.getLumpRefillRemaining()+Game.fps,-1)+')</small>'))+
+			'</div>';
+		};
 		AddEvent(M.lumpRefill,'click',function(){
-			if (Game.lumps>=1 && M.magic<M.magicM)
-			{
+			if (M.magic<M.magicM)
+			{Game.refillLump(1,function(){
 				M.magic+=100;
 				M.magic=Math.min(M.magic,M.magicM);
-				Game.lumps-=1;
 				PlaySound('snd/pop'+Math.floor(Math.random()*3+1)+'.mp3',0.75);
-			}
+			});}
 		});
 		
 		M.computeMagicM();
@@ -446,7 +448,8 @@ M.launch=function()
 		var str=''+
 		parseFloat(M.magic)+' '+
 		parseInt(Math.floor(M.spellsCast))+' '+
-		parseInt(Math.floor(M.spellsCastTotal))
+		parseInt(Math.floor(M.spellsCastTotal))+
+		' '+parseInt(M.parent.onMinigame?'1':'0')
 		;
 		return str;
 	}
@@ -461,6 +464,7 @@ M.launch=function()
 		M.magic=parseFloat(spl[i++]||M.magicM);
 		M.spellsCast=parseInt(spl[i++]||0);
 		M.spellsCastTotal=parseInt(spl[i++]||0);
+		var on=parseInt(spl[i++]||0);if (on && Game.ascensionMode!=1) M.parent.switchMinigame(1);
 	}
 	M.reset=function()
 	{

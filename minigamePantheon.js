@@ -13,27 +13,27 @@ M.launch=function()
 			'asceticism':{
 				name:'Holobore, Spirit of Asceticism',
 				icon:[21,18],
-				desc1:'+15% base CpS.',
-				desc2:'+10% base CpS.',
-				desc3:'+5% base CpS.',
-				descAfter:'If a golden cookie is clicked, this spirit is unslotted and all worship swaps will be used up.',
+				desc1:'<span class="green">+15% base CpS.</span>',
+				desc2:'<span class="green">+10% base CpS.</span>',
+				desc3:'<span class="green">+5% base CpS.</span>',
+				descAfter:'<span class="red">If a golden cookie is clicked, this spirit is unslotted and all worship swaps will be used up.</span>',
 				quote:'An immortal life spent focusing on the inner self, away from the distractions of material wealth.',
 			},
 			'decadence':{
 				name:'Vomitrax, Spirit of Decadence',
 				icon:[22,18],
-				desc1:'Golden and wrath cookie effect duration +7%, but buildings grant -7% CpS.',
-				desc2:'Golden and wrath cookie effect duration +5%, but buildings grant -5% CpS.',
-				desc3:'Golden and wrath cookie effect duration +2%, but buildings grant -2% CpS.',
+				desc1:'<span class="green">Golden and wrath cookie effect duration +7%,</span> <span class="red">but buildings grant -7% CpS.</span>',
+				desc2:'<span class="green">Golden and wrath cookie effect duration +5%,</span> <span class="red">but buildings grant -5% CpS.</span>',
+				desc3:'<span class="green">Golden and wrath cookie effect duration +2%,</span> <span class="red">but buildings grant -2% CpS.</span>',
 				quote:'This sleazy spirit revels in the lust for quick easy gain and contempt for the value of steady work.',
 			},
 			'ruin':{
 				name:'Godzamok, Spirit of Ruin',
 				icon:[23,18],
-				descBefore:'Selling buildings triggers a buff boosted by how many buildings were sold.',
-				desc1:'Buff boosts clicks by +1% for every building sold for 10 seconds.',
-				desc2:'Buff boosts clicks by +0.5% for every building sold for 10 seconds.',
-				desc3:'Buff boosts clicks by +0.25% for every building sold for 10 seconds.',
+				descBefore:'<span class="green">Selling buildings triggers a buff boosted by how many buildings were sold.</span>',
+				desc1:'<span class="green">Buff boosts clicks by +1% for every building sold for 10 seconds.</span>',
+				desc2:'<span class="green">Buff boosts clicks by +0.5% for every building sold for 10 seconds.</span>',
+				desc3:'<span class="green">Buff boosts clicks by +0.25% for every building sold for 10 seconds.</span>',
 				quote:'The embodiment of natural disasters. An impenetrable motive drives the devastation caused by this spirit.',
 			},
 			'ages':{
@@ -48,7 +48,7 @@ M.launch=function()
 					else if (godLvl==3) mult*=0.15*Math.sin((Date.now()/1000/(60*60*24))*Math.PI*2);
 					return 'Current bonus : '+(mult<0?'-':'+')+Beautify(Math.abs(mult)*100,2)+'%.';
 				},
-				descBefore:'CpS bonus fluctuating between +15% and -15% over time.',
+				descBefore:'CpS bonus fluctuating between <span class="green">+15%</span> and <span class="red">-15%</span> over time.',
 				desc1:'Effect cycles over 3 hours.',
 				desc2:'Effect cycles over 12 hours.',
 				desc3:'Effect cycles over 24 hours.',
@@ -57,51 +57,51 @@ M.launch=function()
 			'seasons':{
 				name:'Selebrak, Spirit of Festivities',
 				icon:[25,18],
-				descBefore:'Some seasonal effects are boosted.',
-				desc1:'Large boost. Switching seasons is 100% pricier.',
-				desc2:'Medium boost. Switching seasons is 50% pricier.',
-				desc3:'Small boost. Switching seasons is 25% pricier.',
+				descBefore:'<span class="green">Some seasonal effects are boosted.</span>',
+				desc1:'<span class="green">Large boost.</span> <span class="red">Switching seasons is 100% pricier.</span>',
+				desc2:'<span class="green">Medium boost.</span> <span class="red">Switching seasons is 50% pricier.</span>',
+				desc3:'<span class="green">Small boost.</span> <span class="red">Switching seasons is 25% pricier.</span>',
 				quote:'This is the spirit of merry getaways and regretful Monday mornings.',
 			},
 			'creation':{
 				name:'Dotjeiess, Spirit of Creation',
 				icon:[26,18],
-				desc1:'Buildings are 7% cheaper, but heavenly chips have 30% less effect.',
-				desc2:'Buildings are 5% cheaper, but heavenly chips have 20% less effect.',
-				desc3:'Buildings are 2% cheaper, but heavenly chips have 10% less effect.',
+				desc1:'<span class="green">Buildings are 7% cheaper,</span> <span class="red">but heavenly chips have 30% less effect.</span>',
+				desc2:'<span class="green">Buildings are 5% cheaper,</span> <span class="red">but heavenly chips have 20% less effect.</span>',
+				desc3:'<span class="green">Buildings are 2% cheaper,</span> <span class="red">but heavenly chips have 10% less effect.</span>',
 				quote:'All things that be and ever will be were scripted long ago by this spirit\'s inscrutable tendrils.',
 			},
 			'labor':{
 				name:'Muridal, Spirit of Labor',
 				icon:[27,18],
-				desc1:'Clicks are 15% more powerful, but buildings produce 3% less.',
-				desc2:'Clicks are 10% more powerful, but buildings produce 2% less.',
-				desc3:'Clicks are 5% more powerful, but buildings produce 1% less.',
+				desc1:'<span class="green">Clicks are 15% more powerful,</span> <span class="red">but buildings produce 3% less.</span>',
+				desc2:'<span class="green">Clicks are 10% more powerful,</span> <span class="red">but buildings produce 2% less.</span>',
+				desc3:'<span class="green">Clicks are 5% more powerful,</span> <span class="red">but buildings produce 1% less.</span>',
 				quote:'This spirit enjoys a good cheese after a day of hard work.',
 			},
 			'industry':{
 				name:'Jeremy, Spirit of Industry',
 				icon:[28,18],
-				desc1:'Buildings produce 10% more cookies, but golden and wrath cookies appear 10% less.',
-				desc2:'Buildings produce 6% more cookies, but golden and wrath cookies appear 6% less.',
-				desc3:'Buildings produce 3% more cookies, but golden and wrath cookies appear 3% less.',
+				desc1:'<span class="green">Buildings produce 10% more cookies,</span> <span class="red">but golden and wrath cookies appear 10% less.</span>',
+				desc2:'<span class="green">Buildings produce 6% more cookies,</span> <span class="red">but golden and wrath cookies appear 6% less.</span>',
+				desc3:'<span class="green">Buildings produce 3% more cookies,</span> <span class="red">but golden and wrath cookies appear 3% less.</span>',
 				quote:'While this spirit has many regrets, helping you rule the world through constant industrialization is not one of them.',
 			},
 			'mother':{
 				name:'Mokalsium, Mother Spirit',
 				icon:[29,18],
-				desc1:'Milk is 10% more powerful, but golden and wrath cookies appear 15% less.',
-				desc2:'Milk is 5% more powerful, but golden and wrath cookies appear 10% less.',
-				desc3:'Milk is 3% more powerful, but golden and wrath cookies appear 5% less.',
+				desc1:'<span class="green">Milk is 10% more powerful,</span> <span class="red">but golden and wrath cookies appear 15% less.</span>',
+				desc2:'<span class="green">Milk is 5% more powerful,</span> <span class="red">but golden and wrath cookies appear 10% less.</span>',
+				desc3:'<span class="green">Milk is 3% more powerful,</span> <span class="red">but golden and wrath cookies appear 5% less.</span>',
 				quote:'A caring spirit said to contain itself, inwards infinitely.',
 			},
 			'scorn':{
 				name:'Skruuia, Spirit of Scorn',
 				icon:[21,19],
-				descBefore:'All golden cookies are wrath cookies with a greater chance of a negative effect.',
-				desc1:'Wrinklers appear 150% faster and digest 15% more cookies.',
-				desc2:'Wrinklers appear 100% faster and digest 10% more cookies.',
-				desc3:'Wrinklers appear 50% faster and digest 5% more cookies.',
+				descBefore:'<span class="red">All golden cookies are wrath cookies with a greater chance of a negative effect.</span>',
+				desc1:'<span class="green">Wrinklers appear 150% faster and digest 15% more cookies.</span>',
+				desc2:'<span class="green">Wrinklers appear 100% faster and digest 10% more cookies.</span>',
+				desc3:'<span class="green">Wrinklers appear 50% faster and digest 5% more cookies.</span>',
 				quote:'This spirit enjoys poking foul beasts and watching them squirm, but has no love for its own family.',
 			},
 			'order':{
@@ -112,10 +112,10 @@ M.launch=function()
 					if (Game.BuildingsOwned%10==0) return 'Buildings owned : '+Beautify(Game.BuildingsOwned)+'.<br>Effect is active.';
 					else return 'Buildings owned : '+Beautify(Game.BuildingsOwned)+'.<br>Effect is inactive.';
 				},
-				desc1:'Sugar lumps ripen an hour sooner.',
-				desc2:'Sugar lumps ripen 40 minutes sooner.',
-				desc3:'Sugar lumps ripen 20 minutes sooner.',
-				descAfter:'Effect is only active when your total amount of buildings ends with 0.',
+				desc1:'<span class="green">Sugar lumps ripen an hour sooner.</span>',
+				desc2:'<span class="green">Sugar lumps ripen 40 minutes sooner.</span>',
+				desc3:'<span class="green">Sugar lumps ripen 20 minutes sooner.</span>',
+				descAfter:'<span class="red">Effect is only active when your total amount of buildings ends with 0.</span>',
 				quote:'You will find that life gets just a little bit sweeter if you can motivate this spirit with tidy numbers and properly-filled tax returns.',
 			},
 		};
@@ -315,7 +315,7 @@ M.launch=function()
 		
 		var str='';
 		str+='<style>'+
-		'#templeBG{background:url(img/shadedBorders.png),url(img/pantheonBG.png);background-size:100% 100%,auto;position:absolute;left:0px;right:0px;top:0px;bottom:16px;}'+
+		'#templeBG{background:url(img/shadedBorders.png),url(img/BGpantheon.jpg);background-size:100% 100%,auto;position:absolute;left:0px;right:0px;top:0px;bottom:16px;}'+
 		'#templeContent{position:relative;box-sizing:border-box;padding:4px 24px;text-align:center;}'+
 		'#templeGods{text-align:center;width:100%;padding:8px;box-sizing:border-box;}'+
 		'.templeIcon{pointer-events:none;margin:12px 6px 0px 6px;width:48px;height:48px;opacity:0.8;position:relative;}'+
@@ -333,6 +333,7 @@ M.launch=function()
 		
 		'.templeGod:hover .templeIcon{top:-1px;}'+
 		'.templeGod.ready:hover .templeIcon{animation-name:bounce;animation-iteration-count:infinite;animation-duration:0.8s;}'+
+		'.noFancy .templeGod.ready:hover .templeIcon{animation:none;}'+
 		
 		'.templeGem{z-index:100;width:24px;height:24px;}'+
 		'.templeEffect{font-weight:bold;font-size:11px;position:relative;margin:0px -12px;padding:4px;padding-left:28px;}'+
@@ -360,10 +361,6 @@ M.launch=function()
 		'#templeSlot1{top:0px;}'+
 		'#templeSlot2{top:4px;}'+
 		
-		'#templeLumpRefill{cursor:pointer;width:48px;height:48px;position:absolute;left:-6px;top:-10px;transform:scale(0.5);z-index:1000;transition:transform 0.05s;}'+
-		'#templeLumpRefill:hover{transform:scale(1);}'+
-		'#templeLumpRefill:active{transform:scale(0.4);}'+
-		
 		'#templeInfo{position:relative;display:inline-block;margin:8px auto 0px auto;padding:8px 16px;padding-left:32px;text-align:center;font-size:11px;color:rgba(255,255,255,0.75);text-shadow:-1px 1px 0px #000;background:rgba(0,0,0,0.75);border-radius:16px;}'+
 		'</style>';
 		str+='<div id="templeBG"></div>';
@@ -376,8 +373,7 @@ M.launch=function()
 				str+='<div class="ready templeGod templeGod'+(i%4)+' templeSlot titleFont" id="templeSlot'+i+'" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.slotTooltip('+i+')','this')+'><div class="usesIcon shadowFilter templeGem templeGem'+(parseInt(i)+1)+'"></div></div>';
 			}
 			str+='</div>';
-			var icon=[29,14];
-			str+='<div id="templeInfo"><div '+Game.getTooltip('<div style="padding:8px;width:300px;font-size:11px;text-align:center;">Click to refill all your worship swaps for <span class="price lump">1 sugar lump</span>.</div>')+' id="templeLumpRefill" class="usesIcon shadowFilter" style="background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div><div id="templeSwaps" '+Game.getTooltip('<div style="padding:8px;width:350px;font-size:11px;text-align:center;">Each time you slot a spirit, you use up one worship swap.<div class="line"></div>If you have 0 swaps left, you will get one after 16 hours.<br>If you have 1 swap left, the next one will refill after 4 hours.<br>If you have 2 swaps left, the next one will refill after 1 hour.<div class="line"></div>Unslotting a spirit costs no swaps.</div>')+'>-</div></div>';
+			str+='<div id="templeInfo"><div '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.refillTooltip','this')+' id="templeLumpRefill" class="usesIcon shadowFilter lumpRefill" style="left:-6px;top:-10px;background-position:'+(-29*48)+'px '+(-14*48)+'px;"></div><div id="templeSwaps" '+Game.getTooltip('<div style="padding:8px;width:350px;font-size:11px;text-align:center;">Each time you slot a spirit, you use up one worship swap.<div class="line"></div>If you have 2 swaps left, the next one will refill after 1 hour.<br>If you have 1 swap left, the next one will refill after 4 hours.<br>If you have 0 swaps left, you will get one after 16 hours.<div class="line"></div>Unslotting a spirit costs no swaps.</div>')+'>-</div></div>';
 			str+='<div id="templeGods">';
 			for (var i in M.gods)
 			{
@@ -407,14 +403,19 @@ M.launch=function()
 		
 		AddEvent(document,'mouseup',M.dropGod);
 		
+		
+		M.refillTooltip=function(){
+			return '<div style="padding:8px;width:300px;font-size:11px;text-align:center;">Click to refill all your worship swaps for <span class="price lump">1 sugar lump</span>.'+
+				(Game.canRefillLump()?'<br><small>(can be done once every '+Game.sayTime(Game.getLumpRefillMax(),-1)+')</small>':('<br><small class="red">(usable again in '+Game.sayTime(Game.getLumpRefillRemaining()+Game.fps,-1)+')</small>'))+
+			'</div>';
+		};
 		AddEvent(M.lumpRefill,'click',function(){
-			if (Game.lumps>=1 && M.swaps<3)
-			{
+			if (M.swaps<3)
+			{Game.refillLump(1,function(){
 				M.swaps=3;
 				M.swapT=Date.now();
-				Game.lumps-=1;
 				PlaySound('snd/pop'+Math.floor(Math.random()*3+1)+'.mp3',0.75);
-			}
+			});}
 		});
 		
 		//M.parent.switchMinigame(1);
@@ -427,6 +428,7 @@ M.launch=function()
 		{str+=parseFloat(M.slot[i])+'/';}
 		str=str.slice(0,-1);
 		str+=' '+parseFloat(M.swaps)+' '+parseFloat(M.swapT);
+		str+=' '+parseInt(M.parent.onMinigame?'1':'0');
 		return str;
 	}
 	M.load=function(str)
@@ -448,6 +450,7 @@ M.launch=function()
 			}
 		M.swaps=parseFloat(spl[i++]||3);
 		M.swapT=parseFloat(spl[i++]||Date.now());
+		var on=parseInt(spl[i++]||0);if (on && Game.ascensionMode!=1) M.parent.switchMinigame(1);
 	}
 	M.reset=function()
 	{
