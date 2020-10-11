@@ -1,6 +1,8 @@
 BGgarden.jpg
 BGgrimoire.jpg
+BGmarket.jpg
 BGpantheon.jpg
+Thumbs.db
 alchemylab.png
 alchemylabBackground.png
 alteredGrandma.png
@@ -137,6 +139,7 @@ milkFire.png
 milkGold.png
 milkGreenFire.png
 milkHoney.png
+milkLicorice.png
 milkLime.png
 milkMaple.png
 milkMint.png

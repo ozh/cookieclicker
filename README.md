@@ -15,7 +15,7 @@ If the original game updates, here is how you can update the mirror:
 from the `/img/` directory :
 
 * `wget --convert-links -O index.html http://orteil.dashnet.org/cookieclicker/img/`
-* `grep -o 'href="[^/?"]*' index.html | sed 's/href="//' | sed 's/Thumbs.db//' | sed '/^[[:space:]]*$/d'> list.txt`
+* `grep -v PARENTDIR index.html | grep -o '/img/*[a-zA-ZA-z]*.*"' | sed 's/\/img\///' | sed 's/"//' >list.txt`
 * `wget -N -i list.txt -B http://orteil.dashnet.org/cookieclicker/img/`
 
 #### 2. Fetch all new sounds :
@@ -23,7 +23,7 @@ from the `/img/` directory :
 Similarly, from the `/snd/` directory :
 
 * `wget --convert-links -O index.html http://orteil.dashnet.org/cookieclicker/snd/`
-* `grep -o 'href="[^/?"]*' index.html | sed 's/href="//' | sed 's/Thumbs.db//' | sed '/^[[:space:]]*$/d'> list.txt`
+* `grep -v PARENTDIR index.html | grep -o '/snd/*[a-zA-ZA-z]*.*"' | sed 's/\/snd\///' | sed 's/"//' >list.txt`
 * `wget -N -i list.txt -B http://orteil.dashnet.org/cookieclicker/snd/`
 
 #### 3. Update `js` and `html` files :
