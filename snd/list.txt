@@ -3,6 +3,9 @@ buy2.mp3
 buy3.mp3
 buy4.mp3
 buyHeavenly.mp3
+cashIn.mp3
+cashIn2.mp3
+cashOut.mp3
 charging.mp3
 chime.mp3
 choir.mp3
@@ -27,6 +30,7 @@ cymbalCrash.mp3
 cymbalRev.mp3
 fortune.mp3
 freezeGarden.mp3
+growl.mp3
 harvest1.mp3
 harvest2.mp3
 harvest3.mp3
@@ -45,6 +49,7 @@ sell4.mp3
 shimmerClick.mp3
 smallCymbalCrash.mp3
 smallTick.mp3
+snarl.mp3
 spell.mp3
 spellFail.mp3
 spirit.mp3
