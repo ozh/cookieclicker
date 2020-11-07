@@ -1,4 +1,4 @@
-var M={};
+﻿var M={};
 M.parent=Game.Objects['Bank'];
 M.parent.minigame=M;
 M.launch=function()
@@ -99,6 +99,12 @@ M.launch=function()
 				symbol:'RCP',
 				company:'Figments Associated',
 				desc:'In a post-material world, the market of ideas is where value is created. <b>Figments Associated</b> understands that, and is the prime designer (and patenter) of baking recipes, ingredient nomenclature, custom cooking procedures, and other kitchen processes.',
+			},
+			'Idleverse':{
+				name:'Subsidiaries',
+				symbol:'SBD',
+				company:'Polyvalent Acquisitions',
+				desc:'Avoid the uncouth nastiness of mass layoffs and hostile takeovers by delegating the purchase, management, and eventual dissolution of other companies to the boys at <b>Polyvalent Acquisitions</b>. Let \'em deal with it!',
 			},
 		};
 		M.goodsById=[];var n=0;
@@ -224,7 +230,8 @@ M.launch=function()
 				if (costInS*n>=86400) Game.Win('Make my day');
 				M.profit+=costInS*n;
 				if (M.profit>0) Game.Win('Initial public offering');
-				if (M.profit>=31536000) Game.Win('Liquid assets');
+				if (M.profit>=10000000) Game.Win('Liquid assets');
+				if (M.profit>=31536000) Game.Win('Gaseous assets');
 				//Game.Earn(Game.cookiesPsRawHighest*costInS*n);
 				Game.cookies+=Game.cookiesPsRawHighest*costInS*n;
 				Game.cookiesEarned=Math.max(Game.cookies,Game.cookiesEarned);
@@ -741,8 +748,7 @@ M.launch=function()
 		M.officeLevel=0;
 		M.brokers=0;
 		
-		M.graphLines=1;
-		M.graphCols=0;M.setCols();
+		if (hard) {M.graphLines=1;M.graphCols=0;}M.setCols();
 		M.hoverOnGood=-1;
 		M.ticks=0;
 		M.lastTickDrawn=0;

@@ -6,6 +6,7 @@ Thumbs.db
 alchemylab.png
 alchemylabBackground.png
 alteredGrandma.png
+alternateGrandma.png
 antiGrandma.png
 antimattercondenser.png
 antimattercondenserBackground.png
@@ -107,6 +108,8 @@ heavenRing2.jpg
 heavenlyMoney.png
 heraldFlag.png
 icons.png
+idleverse.png
+idleverseBackground.png
 imperfectCookie.png
 infoBG.png
 infoBGfade.png
@@ -135,6 +138,7 @@ milkCherry.png
 milkChocolate.png
 milkCoconut.png
 milkCoffee.png
+milkDragonfruit.png
 milkFire.png
 milkGold.png
 milkGreenFire.png
@@ -146,6 +150,7 @@ milkMint.png
 milkOrange.png
 milkPlain.png
 milkRaspberry.png
+milkRose.png
 milkSoy.png
 milkSpiced.png
 milkStars.png
