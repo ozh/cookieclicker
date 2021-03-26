@@ -1,4 +1,4 @@
-# cookieclicker
+# cookieclicker mirror fork
 
 <img src="img/perfectCookie.png" width="128">
 
