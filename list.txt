@@ -1,4 +1,5 @@
 ajax.js
+showads.js
 base64.js
 DungeonGen.js
 dungeons.js

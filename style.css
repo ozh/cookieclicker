@@ -1,4 +1,4 @@
-/* reset CSS */
+﻿/* reset CSS */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -829,6 +829,7 @@ input[type=range]:active::-ms-thumb,input[type=range]:hover::-ms-thumb {backgrou
 	font-size:14px;
 	font-family:Georgia;
 	font-weight:bold;
+	margin-top:-2px;
 }
 .framed .close
 {
@@ -2208,7 +2209,7 @@ from {background-position:0px 0px;}
 	position:absolute;
 	left:0px;
 	top:0px;
-	background:url(img/buildings.png?v=4);
+	background:url(img/buildings.png?v=5);
 	background-repeat:no-repeat;
 	margin:0px;
 }
@@ -2229,7 +2230,7 @@ from {background-position:0px 0px;}
 	height:64px;
 	left:0px;
 	top:0px;
-	background:url(img/buildings.png?v=4);
+	background:url(img/buildings.png?v=5);
 	background-repeat:no-repeat;
 	margin:-16px;
 	transform:scale(0.5);
@@ -2270,7 +2271,7 @@ from {background-position:0px 0px;}
 {
 	z-index:100;
 	opacity:1;
-	background:url(img/buildings.png?v=4);
+	background:url(img/buildings.png?v=5);
 	background-repeat:no-repeat;
 	-webkit-transition: opacity 2s ease-out;
 	-moz-transition: opacity 2s ease-out;

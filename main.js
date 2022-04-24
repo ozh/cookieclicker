@@ -1880,7 +1880,7 @@ Game.Launch=function()
 		
 		Game.GrabData=function()
 		{
-			ajax('/patreon/grab.php',Game.GrabDataResponse);
+			ajax('grab.txt',Game.GrabDataResponse);
 		}
 		Game.GrabDataResponse=function(response)
 		{
