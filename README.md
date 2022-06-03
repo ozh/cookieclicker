@@ -37,7 +37,7 @@ Similarly, from the root :
 * `grep -v PARENTDIR index.html | grep '\[  ' | grep -Po 'a href="\K.*?(?=")' | sed 's/\?.*//' > _loclist.txt`
 * `wget -N -i _loclist.txt -B http://orteil.dashnet.org/cookieclicker/loc/`
 
-#### 3. Update `js` and `html` files :
+#### 4. Update `js` and `html` files :
 
 From the root directory :
 
@@ -49,6 +49,6 @@ From the root directory :
   * Look for `ajax('/patreon/grab.php'` and replace it with `ajax('grab.txt'`
   * In the root: `wget -O grab.txt http://orteil.dashnet.org/patreon/grab.php`
 
-#### 4. Report update here :)
+#### 5. Report update here :)
 
 If you happen to update, please make a pull request for others to benefit, thanks!
