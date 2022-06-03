@@ -21,7 +21,7 @@ From the root,
 
 #### 2. Fetch all new sounds :
 
-Similarly :
+Similarly, from the root :
 
 * `cd snd/`
 * `wget --convert-links -O index.html http://orteil.dashnet.org/cookieclicker/snd/`
@@ -35,7 +35,7 @@ From the root directory :
 * Fetch the updated `index.html` file: `wget -O index.html http://orteil.dashnet.org/cookieclicker/` 
 * Fetch the updated `style.css` file: `wget -O style.css http://orteil.dashnet.org/cookieclicker/style.css`
 * Fetch updated `js` files : `wget -N -i list.txt -B http://orteil.dashnet.org/cookieclicker/`
-* Scan `index.html` for any new `<script src` and also `main.js` for any new local javascript (eg `Game.last.minigameUrl`)
+* Scan `index.html` for any new `<script src` and also `main.js` for any new local javascript (eg `Game.last.minigameUrl`). If there are new scripts, update the `list.txt` accordingly.
 * In `main.js` there is a call to a remote script we need to modify:
   * Look for `ajax('/patreon/grab.php'` and replace it with `ajax('grab.txt'`
   * In the root: `wget -O grab.txt http://orteil.dashnet.org/patreon/grab.php`
