@@ -16,8 +16,8 @@ From the root,
 
 * `cd img/`
 * `wget --convert-links -O index.html http://orteil.dashnet.org/cookieclicker/img/`
-* `grep -v PARENTDIR index.html | grep -o '<a href=".*">' | sed 's/<a href="//' | sed 's/">//' > list.txt`
-* `wget -N -i list.txt -B http://orteil.dashnet.org/cookieclicker/img/`
+* `grep -v PARENTDIR index.html | grep '\[IMG' | grep -Po 'a href="\K.*?(?=")' | sed 's/\?.*//' > _imglist.txt`
+* `wget -N -i _imglist.txt -B http://orteil.dashnet.org/cookieclicker/img/`
 
 #### 2. Fetch all new sounds :
 
@@ -25,8 +25,17 @@ Similarly, from the root :
 
 * `cd snd/`
 * `wget --convert-links -O index.html http://orteil.dashnet.org/cookieclicker/snd/`
-* `grep -v PARENTDIR index.html | grep -o '<a href=".*">' | sed 's/<a href="//' | sed 's/">//' > list.txt`
-* `wget -N -i list.txt -B http://orteil.dashnet.org/cookieclicker/snd/`
+* `grep -v PARENTDIR index.html | grep '\[SND' | grep -Po 'a href="\K.*?(?=")' | sed 's/\?.*//' > _sndlist.txt`
+* `wget -N -i _sndlist.txt -B http://orteil.dashnet.org/cookieclicker/snd/`
+
+#### 3. Fetch all new translations :
+
+Similarly, from the root :
+
+* `cd loc/`
+* `wget --convert-links -O index.html http://orteil.dashnet.org/cookieclicker/loc/`
+* `grep -v PARENTDIR index.html | grep '\[  ' | grep -Po 'a href="\K.*?(?=")' | sed 's/\?.*//' > _loclist.txt`
+* `wget -N -i _loclist.txt -B http://orteil.dashnet.org/cookieclicker/loc/`
 
 #### 3. Update `js` and `html` files :
 
@@ -34,8 +43,8 @@ From the root directory :
 
 * Fetch the updated `index.html` file: `wget -O index.html http://orteil.dashnet.org/cookieclicker/` 
 * Fetch the updated `style.css` file: `wget -O style.css http://orteil.dashnet.org/cookieclicker/style.css`
-* Fetch updated `js` files : `wget -N -i list.txt -B http://orteil.dashnet.org/cookieclicker/`
-* Scan `index.html` for any new `<script src` and also `main.js` for any new local javascript (eg `Game.last.minigameUrl`). If there are new scripts, update the `list.txt` accordingly.
+* Fetch updated `js` files : `wget -N -i _jslist.txt -B http://orteil.dashnet.org/cookieclicker/`
+* Scan `index.html` for any new `<script src` and also `main.js` for any new local javascript (eg `Game.last.minigameUrl`). If there are new scripts, update the `_jslist.txt` accordingly.
 * In `main.js` there is a call to a remote script we need to modify:
   * Look for `ajax('/patreon/grab.php'` and replace it with `ajax('grab.txt'`
   * In the root: `wget -O grab.txt http://orteil.dashnet.org/patreon/grab.php`

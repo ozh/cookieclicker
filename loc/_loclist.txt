@@ -1,0 +1,13 @@
+CS.js
+DE.js
+EN.js
+ES.js
+FR.js
+IT.js
+JA.js
+KO.js
+NL.js
+PL.js
+PT-BR.js
+RU.js
+ZH-CN.js

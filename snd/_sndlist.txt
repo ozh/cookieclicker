@@ -17,7 +17,9 @@ click5.mp3
 click6.mp3
 click7.mp3
 clickOff.mp3
+clickOff2.mp3
 clickOn.mp3
+clickOn2.mp3
 clickb1.mp3
 clickb2.mp3
 clickb3.mp3
@@ -53,6 +55,10 @@ snarl.mp3
 spell.mp3
 spellFail.mp3
 spirit.mp3
+squeak1.mp3
+squeak2.mp3
+squeak3.mp3
+squeak4.mp3
 squish1.mp3
 squish2.mp3
 squish3.mp3
@@ -62,6 +68,7 @@ swooshIn.mp3
 swooshOut.mp3
 thud.mp3
 tick.mp3
+tickOff.mp3
 till1.mp3
 till2.mp3
 till3.mp3
