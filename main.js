@@ -1874,13 +1874,13 @@ Game.Launch=function()
 	
 	Game.ready=0;
 	
-	Game.Load=function()
+	Game.Load=function(callback)
 	{
 		//l('offGameMessage').innerHTML='<div style="padding:64px 128px;"><div class="title">Loading...</div></div>';
 		Game.Loader=new Loader();
 		Game.Loader.domain='img/';
 		if (typeof PRELOAD!=='undefined') Game.Loader.loaded=PRELOAD(Game.Init);
-		else Game.Loader.loaded=Game.Init;
+		else Game.Loader.loaded=callback;
 		Game.Loader.Load(['filler.png']);
 	}
 	Game.ErrorFrame=function()
@@ -4910,7 +4910,7 @@ Game.Launch=function()
 			Game.lastActivity=Game.time;
 			if (e.keyCode==27)
 			{
-				if (Game.promptOn) {Game.ClosePrompt();PlaySound('snd/tickOff.mp3');}
+				if (Game.promptOn && !Game.promptNoClose) {Game.ClosePrompt();PlaySound('snd/tickOff.mp3');}
 				if (Game.AscendTimer>0) Game.AscendTimer=Game.AscendDuration;
 			}//esc closes prompt
 			if (Game.promptOn)
@@ -5637,7 +5637,31 @@ Game.Launch=function()
 						'Thanks! That hit the spot!',
 						'Thank you. A team has been dispatched.',
 						'They know.',
-						'Oops. This was just a chocolate cookie with shiny aluminium foil.'
+						'Oops. This was just a chocolate cookie with shiny aluminium foil.',
+						'Eschaton immanentized!',
+						'Oh, that tickled!',
+						'Again.',
+						'You\'ve made a grave mistake.',
+						'Chocolate chips reshuffled!',
+						'Randomized chance card outcome!',
+						'Mouse acceleration +0.03%!',
+						'Ascension bonuses x5,000 for 0.1 seconds!',
+						'Gained 1 extra!',
+						'Sorry, better luck next time!',
+						'I felt that.',
+						'Nice try, but no.',
+						'Wait, sorry, I wasn\'t ready yet.',
+						'Yippee!',
+						'Bones removed.',
+						'Organs added.',
+						'Did you just click that?',
+						'Huh? Oh, there was nothing there.',
+						'You saw nothing.',
+						'It seems you hallucinated that golden cookie.',
+						'This golden cookie was a complete fabrication.',
+						'In theory there\'s no wrong way to click a golden cookie, but you just did that, somehow.',
+						'All cookies multiplied by 999!<br>All cookies divided by 999!',
+						'Why?'
 						])):choose(loc("Cookie blab"));
 						popup=str;
 					}
@@ -6278,7 +6302,7 @@ Game.Launch=function()
 		PROMPT
 		=======================================================================================*/
 		Game.darkenL=l('darken');
-		AddEvent(Game.darkenL,'click',function(){Game.Click=0;PlaySound('snd/tickOff.mp3');Game.ClosePrompt();});
+		AddEvent(Game.darkenL,'click',function(){if (Game.promptNoClose) {} else {Game.Click=0;PlaySound('snd/tickOff.mp3');Game.ClosePrompt();}});
 		Game.promptL=l('promptContent');
 		Game.promptAnchorL=l('promptAnchor');
 		Game.promptWrapL=l('prompt');
@@ -6287,6 +6311,7 @@ Game.Launch=function()
 		Game.promptUpdateFunc=0;
 		Game.promptOptionsN=0;
 		Game.promptOptionFocus=0;
+		Game.promptNoClose=false;
 		Game.UpdatePrompt=function()
 		{
 			if (Game.promptUpdateFunc) Game.promptUpdateFunc();
@@ -6294,6 +6319,7 @@ Game.Launch=function()
 		}
 		Game.Prompt=function(content,options,updateFunc,style)
 		{
+			Game.promptNoClose=false;
 			if (updateFunc) Game.promptUpdateFunc=updateFunc;
 			if (style) Game.promptWrapL.className='framed '+style; else Game.promptWrapL.className='framed';
 			var str='';
@@ -6303,6 +6329,11 @@ Game.Launch=function()
 				var id=str.substring(4,str.indexOf('>'));
 				str=str.substring(str.indexOf('>')+1);
 				str='<div id="promptContent'+id+'">'+str+'</div>';
+			}
+			if (str.indexOf('<noClose>')!=-1)
+			{
+				str=str.replace('<noClose>','');
+				Game.promptNoClose=true;
 			}
 			var opts='';
 			Game.promptOptionsN=0;
@@ -6328,6 +6359,7 @@ Game.Launch=function()
 			Game.promptOptionFocus=0;
 			Game.FocusPromptOption(0);
 			Game.UpdatePrompt();
+			if (!Game.promptNoClose) l('promptClose').style.display='block'; else l('promptClose').style.display='none';
 		}
 		Game.ClosePrompt=function()
 		{
@@ -6338,6 +6370,7 @@ Game.Launch=function()
 			Game.promptUpdateFunc=0;
 			Game.promptOptionFocus=0;
 			Game.promptOptionsN=0;
+			Game.promptNoClose=false;
 		}
 		Game.ConfirmPrompt=function()
 		{
@@ -6545,25 +6578,25 @@ Game.Launch=function()
 			if (Music) Music.setFilter(what/100);
 		}
 		
-		Game.showLangSelection=function()
+		Game.showLangSelection=function(firstLaunch)
 		{
 			var str='';
 			for (var i in Langs)
 			{
 				var lang=Langs[i];
-				str+='<div class="langSelectButton title'+(locId==lang.file?' selected':'')+'" style="padding:4px;" id="langSelect-'+i+'">'+lang.name+'</div>';
+				str+='<div class="langSelectButton title'+((!firstLaunch && locId==lang.file)?' selected':'')+'" style="padding:4px;" id="langSelect-'+i+'">'+lang.name+'</div>';
 			}
-			Game.Prompt('<id ChangeLanguage><h3>'+loc("Change language")+'</h3>'+
+			Game.Prompt('<id ChangeLanguage>'+(firstLaunch?'<noClose>':'')+'<h3 id="languageSelectHeader">'+loc("Change language")+'</h3>'+
 				'<div class="line"></div>'+
-				'<div style="font-size:11px;opacity:0.5;margin-bottom:12px;">('+loc("note: this will save and reload your game")+')</div>'+
+				(firstLaunch?'':'<div style="font-size:11px;opacity:0.5;margin-bottom:12px;">('+loc("note: this will save and reload your game")+')</div>')+
 				str,
-				[loc("Cancel")]);
+				(firstLaunch?0:[loc("Cancel")]));
 			
 			for (var i in Langs)
 			{
 				var lang=Langs[i];
 				AddEvent(l('langSelect-'+i),'click',function(lang){return function(){
-					if (lang!=locId)
+					if (true)//lang!=locId)
 					{
 						PlaySound('snd/tick.mp3');
 						localStorageSet('CookieClickerLang',lang);
@@ -6572,7 +6605,8 @@ Game.Launch=function()
 					}
 				};}(i));
 				AddEvent(l('langSelect-'+i),'mouseover',function(lang){return function(){
-					if (lang!=locId) PlaySound('snd/smallTick.mp3',0.75);
+					PlaySound('snd/smallTick.mp3',0.75);
+					l('languageSelectHeader').innerHTML=Langs[lang].changeLanguage;
 				};}(i));
 			}
 		}
@@ -6968,7 +7002,9 @@ Game.Launch=function()
 			
 			var NEWS=loc("News :").replace(' ','&nbsp;')+' ';
 			
-			if (Game.TickerN%2==0 || Game.cookiesEarned>=10100000000)
+			var loreProgress=Math.round(Math.log(Game.cookiesEarned/10)*Math.LOG10E+1|0);
+			
+			if (Game.TickerN%2==0 || loreProgress>14)
 			{
 				var animals=['newts','penguins','scorpions','axolotls','puffins','porpoises','blowfish','horses','crayfish','slugs','humpback whales','nurse sharks','giant squids','polar bears','fruit bats','frogs','sea squirts','velvet worms','mole rats','paramecia','nematodes','tardigrades','giraffes','monkfish','wolfmen','goblins','hippies'];
 				
@@ -7342,33 +7378,21 @@ Game.Launch=function()
 			
 			if (list.length==0)
 			{
-				if (Game.cookiesEarned<5) list.push(loc("You feel like making cookies. But nobody wants to eat your cookies."));
-				else if (Game.cookiesEarned<50) list.push(loc("Your first batch goes to the trash. The neighborhood raccoon barely touches it."));
-				else if (Game.cookiesEarned<100) list.push(loc("Your family accepts to try some of your cookies."));
-				else if (Game.cookiesEarned<500) list.push(loc("Your cookies are popular in the neighborhood."));
-				else if (Game.cookiesEarned<1000) list.push(loc("People are starting to talk about your cookies."));
-				else if (Game.cookiesEarned<5000) list.push(loc("Your cookies are talked about for miles around."));
-				else if (Game.cookiesEarned<10000) list.push(loc("Your cookies are renowned in the whole town!"));
-				else if (Game.cookiesEarned<50000) list.push(loc("Your cookies bring all the boys to the yard."));
-				else if (Game.cookiesEarned<100000) list.push(loc("Your cookies now have their own website!"));
-				else if (Game.cookiesEarned<500000) list.push(loc("Your cookies are worth a lot of money."));
-				else if (Game.cookiesEarned<1000000) list.push(loc("Your cookies sell very well in distant countries."));
-				else if (Game.cookiesEarned<5000000) list.push(loc("People come from very far away to get a taste of your cookies."));
-				else if (Game.cookiesEarned<10000000) list.push(loc("Kings and queens from all over the world are enjoying your cookies."));
-				else if (Game.cookiesEarned<50000000) list.push(loc("There are now museums dedicated to your cookies."));
-				else if (Game.cookiesEarned<100000000) list.push(loc("A national day has been created in honor of your cookies."));
-				else if (Game.cookiesEarned<500000000) list.push(loc("Your cookies have been named a part of the world wonders."));
-				else if (Game.cookiesEarned<1000000000) list.push(loc("History books now include a whole chapter about your cookies."));
-				else if (Game.cookiesEarned<5000000000) list.push(loc("Your cookies have been placed under government surveillance."));
-				else if (Game.cookiesEarned<10000000000) list.push(loc("The whole planet is enjoying your cookies!"));
-				else if (Game.cookiesEarned<50000000000) list.push(loc("Strange creatures from neighboring planets wish to try your cookies."));
-				else if (Game.cookiesEarned<100000000000) list.push(loc("Elder gods from the whole cosmos have awoken to taste your cookies."));
-				else if (Game.cookiesEarned<500000000000) list.push(loc("Beings from other dimensions lapse into existence just to get a taste of your cookies."));
-				else if (Game.cookiesEarned<1000000000000) list.push(loc("Your cookies have achieved sentience."));
-				else if (Game.cookiesEarned<5000000000000) list.push(loc("The universe has now turned into cookie dough, to the molecular level."));
-				else if (Game.cookiesEarned<10000000000000) list.push(loc("Your cookies are rewriting the fundamental laws of the universe."));
-				else if (Game.cookiesEarned<10000000000000) list.push(loc("A local news station runs a 10-minute segment about your cookies. Success!<br><span style=\"font-size:50%;\">(you win a cookie)</span>"));
-				else if (Game.cookiesEarned<10100000000000) list.push(loc("it's time to stop playing"));//only show this for 100 millions (it's funny for a moment)
+				if (loreProgress<=0) list.push(loc("You feel like making cookies. But nobody wants to eat your cookies."));
+				else if (loreProgress<=1) list.push(loc("Your first batch goes to the trash. The neighborhood raccoon barely touches it."));
+				else if (loreProgress<=2) list.push(loc("Your family accepts to try some of your cookies."));
+				else if (loreProgress<=3) list.push(loc("Your cookies are popular in the neighborhood."),loc("People are starting to talk about your cookies."));
+				else if (loreProgress<=4) list.push(loc("Your cookies are talked about for miles around."),loc("Your cookies are renowned in the whole town!"));
+				else if (loreProgress<=5) list.push(loc("Your cookies bring all the boys to the yard."),loc("Your cookies now have their own website!"));
+				else if (loreProgress<=6) list.push(loc("Your cookies are worth a lot of money."),loc("Your cookies sell very well in distant countries."));
+				else if (loreProgress<=7) list.push(loc("People come from very far away to get a taste of your cookies."),loc("Kings and queens from all over the world are enjoying your cookies."));
+				else if (loreProgress<=8) list.push(loc("There are now museums dedicated to your cookies."),loc("A national day has been created in honor of your cookies."));
+				else if (loreProgress<=9) list.push(loc("Your cookies have been named a part of the world wonders."),loc("History books now include a whole chapter about your cookies."));
+				else if (loreProgress<=10) list.push(loc("Your cookies have been placed under government surveillance."),loc("The whole planet is enjoying your cookies!"));
+				else if (loreProgress<=11) list.push(loc("Strange creatures from neighboring planets wish to try your cookies."),loc("Elder gods from the whole cosmos have awoken to taste your cookies."));
+				else if (loreProgress<=12) list.push(loc("Beings from other dimensions lapse into existence just to get a taste of your cookies."),loc("Your cookies have achieved sentience."));
+				else if (loreProgress<=13) list.push(loc("The universe has now turned into cookie dough, to the molecular level."),loc("Your cookies are rewriting the fundamental laws of the universe."));
+				else if (loreProgress<=14) list.push(loc("A local news station runs a 10-minute segment about your cookies. Success!<br><small>(you win a cookie)</small>"),loc("it's time to stop playing"));
 			}
 			
 			//if (Game.elderWrath>0 && (Game.pledges==0 || Math.random()<0.2))
@@ -7403,21 +7427,22 @@ Game.Launch=function()
 				list=[];
 				
 				if (Game.cookiesEarned>=1000) list.push(choose([
-					'Your office chair is really comfortable.',
-					'Business meetings are such a joy!',
-					'You\'ve spent the whole day '+choose(['signing contracts','filling out forms','touching base with the team','examining exciting new prospects','playing with your desk toys','getting new nameplates done','attending seminars','videoconferencing','hiring dynamic young executives','meeting new investors','playing minigolf in your office'])+'!',
-					'The word of the day is : '+choose(['viral','search engine optimization','blags and wobsites','social networks','web 3.0','logistics','leveraging','branding','proactive','synergizing','market research','demographics','pie charts','blogular','blogulacious','blogastic','authenticity','electronic mail','cellular phones','rap music','cookies, I guess'])+'.',
-					'Profit\'s in the air!'
+					choose(['Your office chair is really comfortable.','Profit\'s in the air!','Business meetings are such a joy!','What a great view from your office!','Smell that? That\'s capitalism, baby!','You truly love answering emails.','Working hard, or hardly working?','Another day in paradise!','Expensive lunch time!','Another government bailout coming up! Splendid!','These profits are doing wonderful things for your skin.','You daydream for a moment about a world without taxes.','You\'ll worry about environmental damage when you\'re dead!','Yay, office supplies!','Sweet, those new staplers just came in!','Ohh, coffee break!']),
+					choose(['You\'ve spent the whole day','Another great day','First order of business today:','Why, you truly enjoy','What next? That\'s right,','You check what\'s next on the agenda. Oh boy,'])+' '+choose(['signing contracts','filling out forms','touching base with the team','examining exciting new prospects','playing with your desk toys','getting new nameplates done','attending seminars','videoconferencing','hiring dynamic young executives','meeting new investors','updating your rolodex','pumping up those numbers','punching in some numbers','getting investigated for workers\' rights violations','reorganizing documents','belittling underlings','reviewing employee performance','revising company policies','downsizing','pulling yourself up by your bootstraps','adjusting your tie','performing totally normal human activities','recentering yourself in the scream room','immanentizing the eschaton','shredding some sensitive documents','comparing business cards','pondering the meaning of your existence','listening to the roaring emptiness inside your soul','playing minigolf in your office'])+'!',
+					'The word of the day is: '+choose(['viral','search engine optimization','blags and wobsites','social networks','webinette','staycation','user experience','crowdfunding','carbon neutral','big data','machine learning','disrupting','influencers','monoconsensual transactions','sustainable','freemium','incentives','grassroots','web 3.0'/*this was before this whole crypto mess i'm so sorry*/,'logistics','leveraging','branding','proactive','synergizing','market research','demographics','pie charts','blogular','blogulacious','blogastic','authenticity','plastics','electronic mail','cellular phones','rap music','bulbs','goblinization','straight-to-bakery','microbakeries','chocolativity','flavorfulness','tastyfication','sugar offsets','activated wheat','reification','immanentize the eschaton','cookies, I guess'])+'.'
 				]));
-				if (Game.cookiesEarned>=1000 && Math.random()<0.1) list.push(choose([
+				if (Game.cookiesEarned>=1000 && Math.random()<0.05) list.push(choose([
 					'If you could get some more cookies baked, that\'d be great.',
 					'So. About those TPS reports.',
-					'Another day in paradise!',
-					'Working hard, or hardly working?'
+					'Hmm, you\'ve got some video tapes to return.',
+					'They\'ll pay. They\'ll all pay.',
+					'You haven\'t even begun to peak.',
+					'There is an idea of a '+Game.bakeryName+'. Some kind of abstraction. But there is no real you, only an entity. Something illusory.',
+					'This was a terrible idea!'
 				]));
 				
 				
-				if (Game.TickerN%2==0 || Game.cookiesEarned>=10100000000)
+				if (Game.TickerN%2==0)
 				{
 					if (Game.Objects['Grandma'].amount>0) list.push(choose([
 					'Your rolling pins are rolling and pinning!',
@@ -7507,18 +7532,18 @@ Game.Launch=function()
 					]));
 				}
 				
-				if (Game.cookiesEarned<5) list.push('Such a grand day to begin a new business.');
-				else if (Game.cookiesEarned<50) list.push('You\'re baking up a storm!');
-				else if (Game.cookiesEarned<100) list.push('You are confident that one day, your cookie company will be the greatest on the market!');
-				else if (Game.cookiesEarned<1000) list.push('Business is picking up!');
-				else if (Game.cookiesEarned<5000) list.push('You\'re making sales left and right!');
-				else if (Game.cookiesEarned<20000) list.push('Everyone wants to buy your cookies!');
-				else if (Game.cookiesEarned<50000) list.push('You are now spending most of your day signing contracts!');
-				else if (Game.cookiesEarned<500000) list.push('You\'ve been elected "business tycoon of the year"!');
-				else if (Game.cookiesEarned<1000000) list.push('Your cookies are a worldwide sensation! Well done, old chap!');
-				else if (Game.cookiesEarned<5000000) list.push('Your brand has made its way into popular culture. Children recite your slogans and adults reminisce them fondly!');
-				else if (Game.cookiesEarned<1000000000) list.push('A business day like any other. It\'s good to be at the top!');
-				else if (Game.cookiesEarned<10100000000) list.push('You look back at your career. It\'s been a fascinating journey, building your baking empire from the ground up.');//only show this for 100 millions
+				if (loreProgress<=0) list.push('Such a grand day to begin a new business.');
+				else if (loreProgress<=1) list.push('You\'re baking up a storm!');
+				else if (loreProgress<=2) list.push('You are confident that one day, your cookie company will be the greatest on the market!');
+				else if (loreProgress<=3) list.push('Business is picking up!');
+				else if (loreProgress<=4) list.push('You\'re making sales left and right!');
+				else if (loreProgress<=5) list.push('Everyone wants to buy your cookies!');
+				else if (loreProgress<=6) list.push('You are now spending most of your day signing contracts!');
+				else if (loreProgress<=7) list.push('You\'ve been elected "business tycoon of the year"!');
+				else if (loreProgress<=8) list.push('Your cookies are a worldwide sensation! Well done, old chap!');
+				else if (loreProgress<=9) list.push('Your brand has made its way into popular culture. Children recite your slogans and adults reminisce them fondly!');
+				else if (loreProgress<=10) list.push('A business day like any other. It\'s good to be at the top!');
+				else if (loreProgress<=11) list.push('You look back on your career. It\'s been a fascinating journey, building your baking empire from the ground up.');
 			}
 			
 			for (var i=0;i<Game.modHooks['ticker'].length;i++)
@@ -10919,6 +10944,7 @@ Game.Launch=function()
 				{
 					Game.Notify(loc("The reinforced membrane protects the shimmering veil."),'',[7,10]);
 					Game.Win('Thick-skinned');
+					Math.seedrandom();
 					return false;
 				}
 				Math.seedrandom();
@@ -12118,7 +12144,7 @@ Game.Launch=function()
 		new Game.Achievement('Tiny cookie',loc("Click the tiny cookie.")+'<q>These aren\'t the cookies<br>you\'re clicking for.</q>',[0,5]);
 		
 		order=400000;
-		new Game.Achievement('You win a cookie',loc("This is for baking %1 and making it on the local news.",loc("%1 cookie",LBeautify(1e13)))+'<q>We\'re all so proud of you.</q>',[10,0]);
+		new Game.Achievement('You win a cookie',loc("This is for baking %1 and making it on the local news.",loc("%1 cookie",LBeautify(1e14)))+'<q>We\'re all so proud of you.</q>',[10,0]);
 		
 		order=1070;
 		Game.ProductionAchievement('Click delegator','Cursor',1,0,7);
@@ -15513,7 +15539,7 @@ Game.Launch=function()
 					if (kittens>=10) Game.Win('Jellicles');
 				}
 				
-				if (Game.cookiesEarned>=10000000000000 && !Game.HasAchiev('You win a cookie')) {Game.Win('You win a cookie');Game.Earn(1);}
+				if (Game.cookiesEarned>=1e14 && !Game.HasAchiev('You win a cookie')) {Game.Win('You win a cookie');Game.Earn(1);}
 				
 				if (Game.shimmerTypes['golden'].n>=4) Game.Win('Four-leaf cookie');
 				
@@ -15883,9 +15909,9 @@ window.onload=function()
 {
 	if (!Game.ready)
 	{
-		var loadLangAndLaunch=function(lang)
+		var loadLangAndLaunch=function(lang,firstLaunch)
 		{
-			localStorageSet('CookieClickerLang',lang);
+			if (!firstLaunch) localStorageSet('CookieClickerLang',lang);
 			
 			//LoadLang('../Cookie Clicker Localization/EN.js',function(lang){return function(){
 			LoadLang('loc/EN.js?v='+Game.version,function(lang){return function(){
@@ -15903,8 +15929,8 @@ window.onload=function()
 								'Remember : cheated cookies taste awful!',
 								'Hey, Orteil here. Cheated cookies taste awful... or do they?',
 							])+' ===]');
-							Game.Load();
-							//try {Game.Load();}
+							Game.Load(function(){Game.Init();if (firstLaunch) Game.showLangSelection(true);});
+							//try {Game.Load(Game.Init);}
 							//catch(err) {console.log('ERROR : '+err.message);}
 						}
 					}
@@ -15930,12 +15956,13 @@ window.onload=function()
 			{
 				var lang=Langs[i];
 				AddEvent(l('langSelect-'+i),'click',function(lang){return function(){callback(lang);};}(i));
-				AddEvent(l('langSelect-'+i),'mouseover',function(lang){return function(){l('languageSelectHeader').innerHTML=Langs[lang].changeLanguage;};}(i));
+				AddEvent(l('langSelect-'+i),'mouseover',function(lang){return function(){PlaySound('snd/smallTick.mp3',0.75);l('languageSelectHeader').innerHTML=Langs[lang].changeLanguage;};}(i));
 			}
 		}
 		
 		var lang=localStorageGet('CookieClickerLang');
-		if (!lang) showLangSelect(loadLangAndLaunch);
+		if (App && !lang) showLangSelect(loadLangAndLaunch);
+		else if (!lang) {loadLangAndLaunch('EN',true);}
 		else loadLangAndLaunch(lang);
 	}
 };

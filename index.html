@@ -42,8 +42,8 @@ var BETA=0;
 var App=typeof App==='undefined'?0:App;
 </script>
 
-<link href="style.css?v=4" rel="stylesheet" type="text/css">
-<script  src="main.js?v=4"></script>
+<link href="style.css?v=5" rel="stylesheet" type="text/css">
+<script  src="main.js?v=5"></script>
 
 <!-- ad -->
 <script src="showads.js"></script><!-- this just detects adblockers so we can adjust the layout and play nice -->
@@ -80,7 +80,7 @@ var App=typeof App==='undefined'?0:App;
 		<div><a class="lightblueLink" style="font-weight:bold;" href="https://store.steampowered.com/app/1454400/Cookie_Clicker/" target="_blank" id="topbarSteamCC">Cookie Clicker on Steam</a></div>
 		<div><a href="//orteil.dashnet.org/randomgen/" target="_blank" id="topbarRandomgen">RandomGen</a></div>
 		<div><a href="//orteil.dashnet.org/igm/" target="_blank" id="topbarIGM">Idle Game Maker</a></div>
-		<div style="float:right;"><a id="changeLanguage" style="font-variant:small-caps;">Change language</a></div>
+		<div style="float:right;position:relative;"><div id="tinyglobe" style="position:absolute;top:-4px;width:22px;height:22px;background:url(img/tinyglobeSheet.gif);right:4px;top:4px;pointer-events:none;"></div><a id="changeLanguage" style="font-variant:small-caps;padding-right:20px;" onmouseover="INTERVAL_TINYGLOBE=setInterval(function(){var tinyglobe=document.getElementById('tinyglobe');tinyglobe.style.backgroundPosition=(parseInt(tinyglobe.style.backgroundPosition)-22)+'px';},30);" onmouseout="clearInterval(INTERVAL_TINYGLOBE);">Change language</a><script>document.getElementById('tinyglobe').style.backgroundPosition=(-[0,19,27][Math.floor(Math.random()*3)]*22)+'px';</script></div>
 		<div id="links" class="hoverer">
 			Other versions
 			<div class="hoverable">
@@ -119,7 +119,7 @@ var App=typeof App==='undefined'?0:App;
 		<div id="notes"></div>
 		<div id="darken"></div>
 		<div id="toggleBox" class="framed prompt"></div>
-		<div id="promptAnchor"><div id="prompt" class="framed"><div id="promptContent"></div><div class="close" onclick="PlaySound('snd/tickOff.mp3');Game.ClosePrompt();">x</div></div></div>
+		<div id="promptAnchor"><div id="prompt" class="framed"><div id="promptContent"></div><div id="promptClose" class="close" style="display:none;" onclick="PlaySound('snd/tickOff.mp3');Game.ClosePrompt();">x</div></div></div>
 		<div id="ascend">
 			<div id="ascendBG"></div>
 			<div id="ascendZoomable"><div id="ascendContent"><div id="ascendUpgrades" style="position:absolute;"></div></div></div>
@@ -243,7 +243,14 @@ var App=typeof App==='undefined'?0:App;
 						});
 						</script>
 						
-						<div style="height:16px;"></div>
+						<div style="height:32px;"></div>
+						
+						<!-- Playsaurus banner -->
+						<a class="ad" id="plad" href="http://www.aq.com/landing/cookie/?utm_campaign=AQW_CookieClicker&utm_source=CookieClicker" target="_blank" title="AdventureQuest Worlds" style="background:url(img/playsaurusbanner1.png) no-repeat;width:300px;height:64px;display:block;position:relative;margin:0px auto;">
+						</a>
+						<script>var plAd=document.getElementById('plad');var plAdList=[['Mr. Mine','playsaurusbanner1.png','https://playsaurusstats.com/redirect.php?url=https%3A%2F%2Fmrmine.com&cmd=pageVisit&gameName=MrMine&utm_source=Dashnet&utm_medium=CC&utm_campaign=CCAd&utm_content=&influencer=&hash=bdf9709304a910abd955a4a9d607f7b2'],['Clicker Heroes','playsaurusbanner2.png','https://playsaurusstats.com/redirect.php?url=https%3A%2F%2Fclickerheroes.com&cmd=pageVisit&gameName=CH1&utm_source=Dashnet&utm_medium=CC&utm_campaign=CCAd&utm_content=&influencer=&hash=a1cb78d7d68c2f6bacd193aef75aa3ce'],['Clicker Heroes','playsaurusbanner3.png','https://playsaurusstats.com/redirect.php?url=https%3A%2F%2Fclickerheroes.com&cmd=pageVisit&gameName=CH1&utm_source=Dashnet&utm_medium=CC&utm_campaign=CCAd&utm_content=&influencer=&hash=a1cb78d7d68c2f6bacd193aef75aa3ce']];var plAdRandom=plAdList[Math.floor(Math.random()*plAdList.length)];plAd.style.background='url(img/'+plAdRandom[1]+')';plAd.href=plAdRandom[2];plAd.title=plAdRandom[0];</script>
+						
+						<div style="height:32px;"></div>
 						
 						<!-- AdventureQuest Worlds banner -->
 						<a class="ad" id="aqad" href="http://www.aq.com/landing/cookie/?utm_campaign=AQW_CookieClicker&utm_source=CookieClicker" target="_blank" title="AdventureQuest Worlds" style="background:url(img/aqworldsbanner.jpg) no-repeat;width:300px;height:64px;display:block;position:relative;margin:0px auto;">

@@ -205,6 +205,9 @@ patreon.png
 perfectCookie.png
 pieFill.png
 playsaurusLogo.png
+playsaurusbanner1.png
+playsaurusbanner2.png
+playsaurusbanner3.png
 pointGlow.gif
 pointyLad.png
 portal.png
@@ -264,6 +267,8 @@ timerBars.png
 tinyEyeEmpty.png
 tinyEyeOff.png
 tinyEyeOn.png
+tinyglobe.gif
+tinyglobeSheet.gif
 transmutedGrandma.png
 turnInto.png
 upgradeFrame.png
