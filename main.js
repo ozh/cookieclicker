@@ -7037,19 +7037,19 @@ Game.Launch=function()
 					else
 					{
 						if (Game.Objects['Farm'].amount>0) list.push(choose([
-						'News : cookie farms suspected of employing undeclared elderly workforce!',
-						'News : cookie farms release harmful chocolate in our rivers, says scientist!',
-						'News : genetically-modified chocolate controversy strikes cookie farmers!',
-						'News : free-range farm cookies popular with today\'s hip youth, says specialist.',
-						'News : farm cookies deemed unfit for vegans, says nutritionist.'
+						'News : rice farms suspected of employing asian workforce!',
+						'News : rice farms release harmful emotional damage in our rivers, says scientist!',
+						'News : genetically-modified rice controversy strikes rice farmers!',
+						'News : free-range farm rice creackers popular with today\'s hip youth, says specialist.',
+						'News : farm rice crackers deemed unfit for vegans, says nutritionist.'
 						]));
 						
 						if (Game.Objects['Mine'].amount>0) list.push(choose([
-						'News : is our planet getting lighter? Experts examine the effects of intensive chocolate mining.',
-						'News : '+Math.floor(Math.random()*1000+2)+' miners trapped in collapsed chocolate mine!',
+						'News : is our planet getting lighter? Experts examine the effects of intensive rice mining.',
+						'News : '+Math.floor(Math.random()*1000+2)+' miners trapped in collapsed rice mine asian parents claim its more efficient!',
 						'News : chocolate mines found to cause earthquakes and sinkholes!',
-						'News : chocolate mine goes awry, floods village in chocolate!',
-						'News : depths of chocolate mines found to house "peculiar, chocolaty beings"!'
+						'News : rice mine goes awry, floods village in rice!',
+						'News : depths of rice mines found to house "peculiar, asian beings"!'
 						]));
 						
 						if (Game.Objects['Factory'].amount>0) list.push(choose([
