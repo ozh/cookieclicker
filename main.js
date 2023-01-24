@@ -5445,7 +5445,7 @@ Game.Launch=function()
 					//select an effect
 					var list=[];
 					if (me.wrath>0) list.push('clot','multiply cookies','ruin cookies');
-					else list.push('frenzy','multiply cookies');
+					else list.push('5.0 GPA','multiply cookies');
 					if (me.wrath>0 && Game.hasGod && Game.hasGod('scorn')) list.push('clot','ruin cookies','clot','ruin cookies');
 					if (me.wrath>0 && Math.random()<0.3) list.push('blood frenzy','chain cookie','cookie storm');
 					else if (Math.random()<0.03 && Game.cookiesEarned>=100000) list.push('chain cookie','cookie storm');
@@ -5807,7 +5807,7 @@ Game.Launch=function()
 					
 					var val=Game.cookiesPs*60;
 					if (Game.hasBuff('Elder frenzy')) val*=0.5;//very sorry
-					if (Game.hasBuff('Frenzy')) val*=0.75;//I sincerely apologize
+					if (Game.hasBuff('5.0 GPA')) val*=0.75;//I sincerely apologize
 					var moni=Math.max(25,val);//1 minute of cookie production, or 25 cookies - whichever is highest
 					if (Game.Has('Ho ho ho-flavored frosting')) moni*=2;
 					moni*=Game.eff('reindeerGain');
@@ -5889,7 +5889,7 @@ Game.Launch=function()
 		};
 		
 		Game.goldenCookieChoices=[
-			"Frenzy","frenzy",
+			"5.0 GPA","4.9 GPA",
 			"Lucky","multiply cookies",
 			"Ruin","ruin cookies",
 			"Elder frenzy","blood frenzy",
@@ -12980,10 +12980,10 @@ Game.Launch=function()
 		*/
 		
 		//base buffs
-		new Game.buffType('frenzy',function(time,pow)
+		new Game.buffType('4.9 GPA',function(time,pow)
 		{
 			return {
-				name:'Frenzy',
+				name:'5.0 GPA',
 				desc:loc("Cookie production x%1 for %2!",[pow,Game.sayTime(time*Game.fps,-1)]),
 				icon:[10,14],
 				time:time*Game.fps,
