@@ -5277,12 +5277,12 @@ Game.Launch=function()
 			}
 			
 			//cookie storm!
-			if (Game.hasBuff('Cookie storm') && Math.random()<0.5)
+			if (Game.hasBuff('Rice blizzard') && Math.random()<0.5)
 			{
-				var newShimmer=new Game.shimmer('golden',{type:'cookie storm drop'},1);
+				var newShimmer=new Game.shimmer('golden',{type:'rice blizzard drop'},1);
 				newShimmer.dur=Math.ceil(Math.random()*4+1);
 				newShimmer.life=Math.ceil(Game.fps*newShimmer.dur);
-				//newShimmer.force='cookie storm drop';
+				//newShimmer.force='rice blizzard drop';
 				newShimmer.sizeMult=Math.random()*0.75+0.25;
 			}
 			
@@ -5338,7 +5338,7 @@ Game.Launch=function()
 				},
 				initFunc:function(me)
 				{
-					if (!this.spawned && me.force!='cookie storm drop' && Game.chimeType!=0 && Game.ascensionMode!=1) Game.playGoldenCookieChime();
+					if (!this.spawned && me.force!='rice blizzard drop' && Game.chimeType!=0 && Game.ascensionMode!=1) Game.playGoldenCookieChime();
 					
 					//set image
 					var bgPic='img/goldCookie.png';
@@ -5444,11 +5444,11 @@ Game.Launch=function()
 					
 					//select an effect
 					var list=[];
-					if (me.wrath>0) list.push('clot','multiply cookies','ruin cookies');
+					if (me.wrath>0) list.push('b+','multiply cookies','ruin cookies');
 					else list.push('4.9 GPA','multiply cookies');
-					if (me.wrath>0 && Game.hasGod && Game.hasGod('scorn')) list.push('clot','ruin cookies','clot','ruin cookies');
-					if (me.wrath>0 && Math.random()<0.3) list.push('blood frenzy','chain cookie','cookie storm');
-					else if (Math.random()<0.03 && Game.cookiesEarned>=100000) list.push('chain cookie','cookie storm');
+					if (me.wrath>0 && Game.hasGod && Game.hasGod('scorn')) list.push('b+','ruin cookies','b+','ruin cookies');
+					if (me.wrath>0 && Math.random()<0.3) list.push('blood frenzy','chain cookie','rice blizzard');
+					else if (Math.random()<0.03 && Game.cookiesEarned>=100000) list.push('chain cookie','rice blizzard');
 					if (Math.random()<0.05 && Game.season=='fools') list.push('everything must go');
 					if (Math.random()<0.1 && (Math.random()<0.05 || !Game.hasBuff('Dragonflight'))) list.push('click frenzy');
 					if (me.wrath && Math.random()<0.1) list.push('cursed finger');
@@ -5569,9 +5569,9 @@ Game.Launch=function()
 					{
 						buff=Game.gainBuff('blood frenzy',Math.ceil(6*effectDurMod),666);
 					}
-					else if (choice=='clot')
+					else if (choice=='b+')
 					{
-						buff=Game.gainBuff('clot',Math.ceil(66*effectDurMod),0.5);
+						buff=Game.gainBuff('b+',Math.ceil(66*effectDurMod),0.5);
 					}
 					else if (choice=='cursed finger')
 					{
@@ -5611,11 +5611,11 @@ Game.Launch=function()
 						}
 						Game.Earn(moni);
 					}
-					else if (choice=='cookie storm')
+					else if (choice=='rice blizzard')
 					{
-						buff=Game.gainBuff('cookie storm',Math.ceil(7*effectDurMod),7);
+						buff=Game.gainBuff('rice blizzard',Math.ceil(7*effectDurMod),7);
 					}
-					else if (choice=='cookie storm drop')
+					else if (choice=='rice blizzard drop')
 					{
 						var moni=Math.max(mult*(Game.cookiesPs*60*Math.floor(Math.random()*7+1)),Math.floor(Math.random()*7+1));//either 1-7 cookies or 1-7 minutes of cookie production, whichever is highest
 						Game.Earn(moni);
@@ -5673,7 +5673,7 @@ Game.Launch=function()
 					
 					//sparkle and kill the shimmer
 					Game.SparkleAt(me.x+48,me.y+48);
-					if (choice=='cookie storm drop')
+					if (choice=='rice blizzard drop')
 					{
 						if (Game.prefs.cookiesound) PlaySound('snd/clickb'+Math.floor(Math.random()*7+1)+'.mp3',0.75);
 						else PlaySound('snd/click'+Math.floor(Math.random()*7+1)+'.mp3',0.75);
@@ -5893,11 +5893,11 @@ Game.Launch=function()
 			"Lucky","multiply cookies",
 			"Ruin","ruin cookies",
 			"Elder frenzy","blood frenzy",
-			"Clot","clot",
+			"B+","b+",
 			"Click frenzy","click frenzy",
 			"Cursed finger","cursed finger",
 			"Cookie chain","chain cookie",
-			"Cookie storm","cookie storm",
+			"Rice blizzard","rice blizzard",
 			"Building special","building special",
 			"Dragon Harvest","dragon harvest",
 			"Dragonflight","dragonflight",
@@ -13004,10 +13004,10 @@ Game.Launch=function()
 				aura:1
 			};
 		});
-		new Game.buffType('clot',function(time,pow)
+		new Game.buffType('b+',function(time,pow)
 		{
 			return {
-				name:'Clot',
+				name:'B+',
 				desc:loc("Cookie production halved for %1!",Game.sayTime(time*Game.fps,-1)),
 				icon:[15,5],
 				time:time*Game.fps,
@@ -13079,10 +13079,10 @@ Game.Launch=function()
 				aura:1
 			};
 		});
-		new Game.buffType('cookie storm',function(time,pow)
+		new Game.buffType('rice blizzard',function(time,pow)
 		{
 			return {
-				name:'Cookie storm',
+				name:'Rice blizzard',
 				desc:loc("Cookies everywhere!"),
 				icon:[22,6],
 				time:time*Game.fps,
