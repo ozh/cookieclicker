@@ -1,4 +1,4 @@
-# cookieclicker
+# rice clicker
 
 <img src="img/perfectCookie.png" width="128">
 
