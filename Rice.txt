@@ -30,3 +30,5 @@ Gingerbread Men = White-People Rice
 Gingerbread Trees = Eco-Friendly Rice
 Pure Black Chocolate Cookies = Egg-Yolk Rice
 Pure White Chocolate Cookies = Furikake Rice.
+Lady Fingers = Herb rice
+Millionares shortbread = calrose rice
