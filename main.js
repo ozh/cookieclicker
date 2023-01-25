@@ -7069,7 +7069,7 @@ Game.Launch=function()
 						]));
 						
 						if (Game.Objects['Temple'].amount>0) list.push(choose([
-						'News : explorers bring back ancient artifact from abandoned temple; archeologists marvel at the centuries-old '+choose(['magic','carved','engraved','sculpted','royal','imperial','mummified','ritual','golden','silver','stone','cursed','plastic','bone','blood','holy','sacred','sacrificial','electronic','singing','tapdancing'])+' '+choose(['spoon','fork','pizza','washing machine','calculator','hat','piano','napkin','skeleton','gown','dagger','sword','shield','skull','emerald','bathtub','mask','rollerskates','litterbox','bait box','cube','sphere','fungus'])+'!',
+						'News : explorers bring back ancient rice artifact from abandoned rice cooker temple; archeologists marvel at the centuries-old '+choose(['magic','carved','engraved','sculpted','royal','imperial','mummified','ritual','golden','silver','stone','cursed','plastic','bone','blood','holy','sacred','sacrificial','electronic','singing','tapdancing'])+' '+choose(['spoon','fork','pizza','washing machine','calculator','hat','piano','napkin','skeleton','gown','dagger','sword','shield','skull','emerald','bathtub','mask','rollerskates','litterbox','bait box','cube','sphere','fungus'])+'!',
 						'News : recently-discovered short grain rice temples now sparking new rice-related cult; thousands pray to asian in the sky!',
 						'News : just how extensive is the rice pantheon? Theologians speculate about possible '+choose(['god','goddess'])+' of '+choose([choose(animals),choose(['kazoos','web design','web browsers','kittens','atheism','handbrakes','hats','aglets','elevator music','idle games','the letter "P"','memes','hamburgers','bad puns','kerning','stand-up comedy','failed burglary attempts','clickbait','one weird tricks'])])+'.',
 						'News : theists of the world discover new rice religion - "Oh boy, guess we were wrong all along!"',
@@ -7079,49 +7079,49 @@ Game.Launch=function()
 						if (Game.Objects['Wizard tower'].amount>0) list.push(choose([
 						'News : all '+choose([choose(animals),choose(['public restrooms','clouds','politicians','moustaches','hats','shoes','pants','clowns','encyclopedias','websites','potted plants','lemons','household items','bodily fluids','cutlery','national landmarks','yogurt','rap music','underwear'])])+' turned into '+choose([choose(animals),choose(['public restrooms','clouds','politicians','moustaches','hats','shoes','pants','clowns','encyclopedias','websites','potted plants','lemons','household items','bodily fluids','cutlery','national landmarks','yogurt','rap music','underwear'])])+' in freak magic catastrophe!',
 						'News : heavy dissent rages between the schools of '+choose(['water','fire','earth','air','lightning','acid','song','battle','peace','pencil','internet','space','time','brain','nature','techno','plant','bug','ice','poison','crab','kitten','dolphin','bird','punch','fart'])+' magic and '+choose(['water','fire','earth','air','lightning','acid','song','battle','peace','pencil','internet','space','time','brain','nature','techno','plant','bug','ice','poison','crab','kitten','dolphin','bird','punch','fart'])+' magic!',
-						'News : get your new charms and curses at the yearly National Spellcrafting Fair! Exclusive prices on runes and spellbooks.',
-						'News : cookie wizards deny involvement in shockingly ugly newborn - infant is "honestly grody-looking, but natural", say doctors.',
-						'News : "Any sufficiently crude magic is indistinguishable from technology", claims renowned technowizard.'
+						'News : get your new charms and curses at the yearly National Asian Parent Fair! Exclusive prices on ricecookers and slippers.',
+						'News : asian wizards deny involvement in shockingly dumb newborn - infant is "fine with a b", say doctors.',
+						'News : "Any sufficiently crude magic is indistinguishable from technology", claims renowned asianwizard.'
 						]));
 						
 						if (Game.Objects['Shipment'].amount>0) list.push(choose([
-						'News : new chocolate planet found, becomes target of cookie-trading spaceships!',
-						'News : massive chocolate planet found with 99.8% certified pure dark chocolate core!',
-						'News : space tourism booming as distant planets attract more bored millionaires!',
-						'News : chocolate-based organisms found on distant planet!',
-						'News : ancient baking artifacts found on distant planet; "terrifying implications", experts say.'
+						'News : new rice cooker planet found, becomes target of rice-trading spaceships!',
+						'News : massive jasmine rice planet found with 99.8% certified pure asian chocolate core!',
+						'News : space tourism booming as distant planets attract more bored asians!',
+						'News : jasmine-rice-based organisms found on distant planet!',
+						'News : ancient asian beating artifacts found on distant planet; "terrifying implications", experts say.'
 						]));
 						
 						if (Game.Objects['Alchemy lab'].amount>0) list.push(choose([
-						'News : national gold reserves dwindle as more and more of the precious mineral is turned to cookies!',
-						'News : chocolate jewelry found fashionable, gold and diamonds "just a fad", says specialist.',
-						'News : silver found to also be transmutable into white chocolate!',
-						'News : defective alchemy lab shut down, found to convert cookies to useless gold.',
-						'News : alchemy-made cookies shunned by purists!'
+						'News : national gold reserves dwindle as more and more of the precious mineral is turned to rice!',
+						'News : Basmati rice jewelry found fashionable, gold and diamonds "just a fad", says specialist.',
+						'News : silver found to also be transmutable into calrose rice!',
+						'News : defective alchemy lab shut down, found to convert Arborio rice to useless gold.',
+						'News : alchemy-made rice shunned by purists!'
 						]));
 						
 						if (Game.Objects['Portal'].amount>0) list.push(choose([
-						'News : nation worried as more and more unsettling creatures emerge from dimensional portals!',
+						'News : nation worried as more and more unsettling asians emerge from dimensional portals!',
 						'News : dimensional portals involved in city-engulfing disaster!',
-						'News : tourism to cookieverse popular with bored teenagers! Casualty rate as high as 73%!',
-						'News : cookieverse portals suspected to cause fast aging and obsession with baking, says study.',
+						'News : tourism to riceverse popular with bored teenagers! Casualty rate as high as 73%!',
+						'News : riceverse portals suspected to cause fast turning into white person and obsession with rice, says study.',
 						'News : "do not settle near portals," says specialist; "your children will become strange and corrupted inside."'
 						]));
 						
 						if (Game.Objects['Time machine'].amount>0) list.push(choose([
-						'News : time machines involved in history-rewriting scandal! Or are they?',
-						'News : time machines used in unlawful time tourism!',
-						'News : cookies brought back from the past "unfit for human consumption", says historian.',
-						'News : various historical figures inexplicably replaced with talking lumps of dough!',
-						'News : "I have seen the future," says time machine operator, "and I do not wish to go there again."'
+						'News : time machines involved in rice-smuggling scandal! Or are they?',
+						'News : time machines used in unlawful non-asian rice',
+						'News : sticky rice brought back from the past "unfit for human consumption", says historian.',
+						'News : various historical figures inexplicably replaced with talking lumps of wild rice!',
+						'News : "I have seen the future," says white time machine operator, "and I do not wish to go there again."'
 						]));
 						
 						if (Game.Objects['Antimatter condenser'].amount>0) list.push(choose([
-						'News : whole town seemingly swallowed by antimatter-induced black hole; more reliable sources affirm town "never really existed"!',
-						'News : "explain to me again why we need particle accelerators to bake cookies?" asks misguided local woman.',
+						'News : whole town seemingly swallowed by sushi-rice-induced black hole; more reliable sources affirm town "never really existed"!',
+						'News : "explain to me again why we need particle accelerators to cook rice?" asks misguided local white man.',
 						'News : first antimatter condenser successfully turned on, doesn\'t rip apart reality!',
-						'News : researchers conclude that what the cookie industry needs, first and foremost, is "more magnets".',
-						'News : "unravelling the fabric of reality just makes these cookies so much tastier", claims scientist.'
+						'News : researchers conclude that what the rosematta rice industry needs, first and foremost, is "more magnets".',
+						'News : "unravelling the fabric of reality just makes this rice so much tastier", claims scientist.'
 						]));
 						
 						if (Game.Objects['Prism'].amount>0) list.push(choose([
@@ -7141,16 +7141,16 @@ Game.Launch=function()
 						]));
 						
 						if (Game.Objects['Fractal engine'].amount>0) list.push(choose([
-						'News : local man "done with Cookie Clicker", finds the constant self-references "grating and on-the-nose".',
+						'News : local man "done with Rice Clicker", finds the constant self-references "grating and on-the-nose".',
 						'News : local man sails around the world to find himself - right where he left it.',
 						'News : local guru claims "there\'s a little bit of ourselves in everyone", under investigation for alleged cannibalism.',
 						'News : news writer finds herself daydreaming about new career. Or at least a raise.',
-						'News : polls find idea of cookies made of cookies "acceptable" - "at least we finally know what\'s in them", says interviewed citizen.',
+						'News : polls find idea of rice made of b grades "unacceptable" - "at least we finally know what\'s in them", says interviewed citizen.',
 						]));
 						
 						if (Game.Objects['Javascript console'].amount>0) list.push(choose([
-						'News : strange fad has parents giving their newborns names such as Emma.js or Liam.js. At least one Baby.js reported.',
-						'News : coding is hip! More and more teenagers turn to technical fields like programming, ensuring a future robot apocalypse and the doom of all mankind.',
+						'News : strange fad has parents giving their newborns names such as Bingchiling.js or Liam.js. At least one Baby.js reported.',
+						'News : coding is hip! More and more teenagers turn to technical fields like programming, ensuring a future robot apocalypse and the doom of all asiankind.',
 						'News : developers unsure what to call their new javascript libraries as all combinations of any 3 dictionary words have already been taken.',
 						'News : nation holds breath as nested ifs about to hatch.',
 						'News : clueless copywriter forgets to escape a quote, ends news line prematurely; last words reported to be "Huh, why isn',
@@ -7158,18 +7158,18 @@ Game.Launch=function()
 						
 						if (Game.Objects['Idleverse'].amount>0) list.push(choose([
 						'News : is another you living out their dreams in an alternate universe? Probably, you lazy bum!',
-						'News : public recoils at the notion of a cosmos made of infinite idle games. "I kinda hoped there\'d be more to it", says distraught citizen.',
+						'News : public recoils at the notion of a cosmos made of asian slippers. "I kinda hoped there\'d be more to it", says distraught citizen.',
 						'News : with an infinity of parallel universes, people turn to reassuring alternate dimensions, which only number "in the high 50s".',
-						'News : "I find solace in the knowledge that at least some of my alternate selves are probably doing fine out there", says citizen\'s last remaining exemplar in the multiverse.',
-						'News : comic book writers point to actual multiverse in defense of dubious plot points. "See? I told you it wasn\'t \'hackneyed and contrived\'!"'
+						'News : "I find solace in the knowledge that at least some of my alternate selves are probably getting good grades out there", says citizen\'s last remaining exemplar in the multiverse.',
+						'News : asian writers point to actual multiverse in defense of dubious plot points. "See? I told you it wasn\'t \'hackneyed and contrived\'!"'
 						]));
 						
 						if (Game.Objects['Cortex baker'].amount>0) list.push(choose([
 						'News : cortex baker wranglers kindly remind employees that cortex bakers are the bakery\'s material property and should not be endeared with nicknames.',
-						'News : space-faring employees advised to ignore unusual thoughts and urges experienced within 2 parsecs of gigantic cortex bakers, say guidelines.',
-						'News : astronomers warn of cortex baker trajectory drift, fear future head-on collisions resulting in costly concussions.',
-						'News : runt cortex baker identified with an IQ of only quintuple digits: "just a bit of a dummy", say specialists.',
-						'News : are you smarter than a cortex baker? New game show deemed "unfair" by contestants.'
+						'News : space-faring employees advised to ignore unusual thoughts and urges experienced within 2 parsecs of gigantic asians, say guidelines.',
+						'News : astronomers warn of asian grade trajectory drift, fear future head-on collisions resulting in costly concussions.',
+						'News : asian identified with an IQ of only quintuple digits: "just a bit of a dummy", say specialists.',
+						'News : are you smarter than a master asian? New game show deemed "unfair" by contestants.'
 						]));
 						
 						if (Game.season=='halloween' && Game.cookiesEarned>=1000) list.push(choose([
