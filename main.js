@@ -5795,7 +5795,7 @@ Game.Launch=function()
 					me.l.style.opacity=curve;
 					me.l.style.transform='translate('+(me.x+(Game.bounds.right-Game.bounds.left)*(1-me.life/(Game.fps*me.dur)))+'px,'+(me.y-Math.abs(Math.sin(me.life*0.1))*128)+'px) rotate('+(Math.sin(me.life*0.2+0.3)*10)+'deg) scale('+(me.sizeMult*(1+Math.sin(me.id*0.53)*0.1))+')';
 					me.life--;
-					if (me.life<=0) {this.missFunc(me);me.die();}
+				f	if (me.life<=0) {this.missFunc(me);me.die();}
 				},
 				popFunc:function(me)
 				{
@@ -7133,11 +7133,11 @@ Game.Launch=function()
 						]));
 						
 						if (Game.Objects['Chancemaker'].amount>0) list.push(choose([
-						'News : strange statistical anomalies continue as weather forecast proves accurate an unprecedented 3 days in a row!',
-						'News : local casino ruined as all gamblers somehow hit a week-long winning streak! "We might still be okay", says owner before being hit by lightning 47 times.',
-						'News : neighboring nation somehow elects president with sensible policies in freak accident of random chance!',
+						'News : strange statistical anomalies continue as non asian run weather forecast proves accurate an unprecedented 3 days in a row!',
+						'News : local casino ruined as all asian gamblers somehow hit a week-long winning streak! "We might still be okay", says owner before being hit by lightning 69 times.',
+						'News : neighboring nation somehow elects non asian president with sensible policies in freak accident of random chance!',
 						'News : million-to-one event sees gritty movie reboot turning out better than the original! "We have no idea how this happened", say movie execs.',
-						'News : all scratching tickets printed as winners, prompting national economy to crash and, against all odds, recover overnight.',
+						'News : all rice based scratching tickets printed as winners, prompting national economy to crash and, against all odds, recover overnight.',
 						]));
 						
 						if (Game.Objects['Fractal engine'].amount>0) list.push(choose([
