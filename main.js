@@ -7125,26 +7125,26 @@ Game.Launch=function()
 						]));
 						
 						if (Game.Objects['Prism'].amount>0) list.push(choose([
-						'News : new cookie-producing prisms linked to outbreak of rainbow-related viral videos.',
+						'News : new rice-refracting prisms linked to outbreak of rainbow-related viral videos.',
 						'News : scientists warn against systematically turning light into matter - "One day, we\'ll end up with all matter and no light!"',
-						'News : cookies now being baked at the literal speed of light thanks to new prismatic contraptions.',
-						'News : "Can\'t you sense the prism watching us?", rambles insane local man. "No idea what he\'s talking about", shrugs cookie magnate/government official.',
-						'News : world citizens advised "not to worry" about frequent atmospheric flashes.',
+						'News : minute rice now being cooked at the literal speed of light thanks to new prismatic contraptions.',
+						'News : "Can\'t you sense the prism watching us?", rambles insane local man. "No idea what he\'s talking about", shrugs asian magnate/government official.',
+						'News : non asian citizens advised "not to worry" about frequent atmospheric flashes.',
 						]));
 						
 						if (Game.Objects['Chancemaker'].amount>0) list.push(choose([
-						'News : strange statistical anomalies continue as weather forecast proves accurate an unprecedented 3 days in a row!',
-						'News : local casino ruined as all gamblers somehow hit a week-long winning streak! "We might still be okay", says owner before being hit by lightning 47 times.',
+						'News : strange statistical anomalies continue as white run weather forecast proves accurate an unprecedented 3 days in a row!',
+						'News : local casino ruined as asian gamblers start and somehow hit a week-long winning streak! "We might still be okay", says owner before being hit by lightning 47 times.',
 						'News : neighboring nation somehow elects president with sensible policies in freak accident of random chance!',
 						'News : million-to-one event sees gritty movie reboot turning out better than the original! "We have no idea how this happened", say movie execs.',
-						'News : all scratching tickets printed as winners, prompting national economy to crash and, against all odds, recover overnight.',
+						'News : all rice scratching tickets printed as winners, prompting basmati rice economy to crash and, against all odds, recover overnight.',
 						]));
 						
 						if (Game.Objects['Fractal engine'].amount>0) list.push(choose([
 						'News : local man "done with Rice Clicker", finds the constant self-references "grating and on-the-nose".',
 						'News : local man sails around the world to find himself - right where he left it.',
 						'News : local guru claims "there\'s a little bit of ourselves in everyone", under investigation for alleged cannibalism.',
-						'News : news writer finds herself daydreaming about new career. Or at least a raise.',
+						'News : news writer finds herself daydreaming about new career. Or at least a raise, professional asian parents say he gets b as grades so he will never get one.',
 						'News : polls find idea of rice made of b grades "unacceptable" - "at least we finally know what\'s in them", says interviewed citizen.',
 						]));
 						
@@ -7153,19 +7153,19 @@ Game.Launch=function()
 						'News : coding is hip! More and more teenagers turn to technical fields like programming, ensuring a future robot apocalypse and the doom of all asiankind.',
 						'News : developers unsure what to call their new javascript libraries as all combinations of any 3 dictionary words have already been taken.',
 						'News : nation holds breath as nested ifs about to hatch.',
-						'News : clueless copywriter forgets to escape a quote, ends news line prematurely; last words reported to be "Huh, why isn',
+						'News : copywriter that wasnt punished for getting a b forgets to escape a quote, ends news line prematurely; asian parents say it was deserved last words reported to be "Huh, why isn',
 						]));
 						
 						if (Game.Objects['Idleverse'].amount>0) list.push(choose([
 						'News : is another you living out their dreams in an alternate universe? Probably, you lazy bum!',
 						'News : public recoils at the notion of a cosmos made of asian slippers. "I kinda hoped there\'d be more to it", says distraught citizen.',
-						'News : with an infinity of parallel universes, people turn to reassuring alternate dimensions, which only number "in the high 50s".',
+						'News : with an infinity of parallel universes, people turn to reassuring alternate dimensions where they get good grades, which only number "in the high 50s".',
 						'News : "I find solace in the knowledge that at least some of my alternate selves are probably getting good grades out there", says citizen\'s last remaining exemplar in the multiverse.',
 						'News : asian writers point to actual multiverse in defense of dubious plot points. "See? I told you it wasn\'t \'hackneyed and contrived\'!"'
 						]));
 						
 						if (Game.Objects['Cortex baker'].amount>0) list.push(choose([
-						'News : cortex baker wranglers kindly remind employees that cortex bakers are the bakery\'s material property and should not be endeared with nicknames.',
+						'News : cortex asian wranglers kindly remind employees that cortex asians are the asian\'s material property and should not be endeared with nicknames.',
 						'News : space-faring employees advised to ignore unusual thoughts and urges experienced within 2 parsecs of gigantic asians, say guidelines.',
 						'News : astronomers warn of asian grade trajectory drift, fear future head-on collisions resulting in costly concussions.',
 						'News : asian identified with an IQ of only quintuple digits: "just a bit of a dummy", say specialists.',
@@ -7252,14 +7252,14 @@ Game.Launch=function()
 					}
 					
 					if (Game.HasAchiev('Dude, sweet') && Math.random()<0.2) list.push(choose([
-					'News : major sugar-smuggling ring dismantled by authorities; '+Math.floor(Math.random()*30+3)+' tons of sugar lumps seized, '+Math.floor(Math.random()*48+2)+' suspects apprehended.',
-					'News : authorities warn tourists not to buy bootleg sugar lumps from street peddlers - "You think you\'re getting a sweet deal, but what you\'re being sold is really just ordinary cocaine", says agent.',
-					'News : pro-diabetes movement protests against sugar-shaming. "I\'ve eaten nothing but sugar lumps for the past '+Math.floor(Math.random()*10+4)+' years and I\'m feeling great!", says woman with friable skin.',
-					'News : experts in bitter disagreement over whether sugar consumption turns children sluggish or hyperactive.',
-					'News : fishermen deplore upturn in fish tooth decay as sugar lumps-hauling cargo sinks into the ocean.',
-					'News : rare black sugar lump that captivated millions in unprecedented auction revealed to be common toxic fungus.',
-					'News : "Back in my day, sugar lumps were these little cubes you\'d put in your tea, not those fist-sized monstrosities people eat for lunch", whines curmudgeon with failing memory.',
-					'News : sugar lump-snacking fad sweeps the nation; dentists everywhere rejoice.'
+					'News : major rice-smuggling ring dismantled by authorities; '+Math.floor(Math.random()*30+3)+' tons of sugar lumps seized, '+Math.floor(Math.random()*48+2)+' suspects apprehended.',
+					'News : authorities warn tourists not to buy bootleg soy sauce lumps from street peddlers - "You think you\'re getting a sweet deal, but what you\'re being sold is really just ordinary cocaine", says agent.',
+					'News : pro-diabetes movement protests against soy-sauce-shaming. "I\'ve eaten nothing but sugar lumps for the past '+Math.floor(Math.random()*10+4)+' years and I\'m feeling great!", says woman with friable skin.',
+					'News : experts in bitter disagreement over whether sticky rice with herbs consumption turns children sluggish or hyperactive.',
+					'News : fishermen deplore upturn in fish tooth decay as soy-sauce hauling cargo sinks into the ocean.',
+					'News : rare yellow soy sauce that captivated millions in unprecedented auction revealed to be common toxic fungus.',
+					'News : "Back in my day, soy sauce was this sauce you\'d put in your food, not those fist-sized monstrosities people eat for lunch", whines curmudgeon with failing memory.',
+					'News : soy sauce lump-snacking fad sweeps the nation; dentists everywhere rejoice.'
 					]));
 					
 					if (Math.random()<0.001)//apologies to Will Wright
@@ -7276,58 +7276,58 @@ Game.Launch=function()
 					
 					if (Game.cookiesEarned>=10000) list.push(
 					'News : '+choose([
-						'cookies found to '+choose(['increase lifespan','sensibly increase intelligence','reverse aging','decrease hair loss','prevent arthritis','cure blindness'])+' in '+choose(animals)+'!',
-						'cookies found to make '+choose(animals)+' '+choose(['more docile','more handsome','nicer','less hungry','more pragmatic','tastier'])+'!',
-						'cookies tested on '+choose(animals)+', found to have no ill effects.',
-						'cookies unexpectedly popular among '+choose(animals)+'!',
-						'unsightly lumps found on '+choose(animals)+' near cookie facility; "they\'ve pretty much always looked like that", say biologists.',
+						'calrose rice found to '+choose(['increase lifespan','sensibly increase intelligence','reverse aging','decrease hair loss','prevent arthritis','cure blindness'])+' in '+choose(animals)+'!',
+						'sticky rice found to make '+choose(animals)+' '+choose(['more docile','more handsome','nicer','less hungry','more pragmatic','tastier'])+'!',
+						'chicken rice tested on '+choose(animals)+', found to have no ill effects.',
+						'wild rice unexpectedly popular among '+choose(animals)+'!',
+						'unsightly lumps found on '+choose(animals)+' near rice facility; "they\'ve pretty much always looked like that", say biologists.',
 						'new species of '+choose(animals)+' discovered in distant country; "yup, tastes like cookies", says biologist.',
-						'cookies go well with '+choose([choose(['roasted','toasted','boiled','sauteed','minced'])+' '+choose(animals),choose(['sushi','soup','carpaccio','steak','nuggets'])+' made from '+choose(animals)])+', says controversial chef.',
-						'"do your cookies contain '+choose(animals)+'?", asks PSA warning against counterfeit cookies.',
-						'doctors recommend twice-daily consumption of fresh cookies.',
-						'doctors warn against chocolate chip-snorting teen fad.',
-						'doctors advise against new cookie-free fad diet.',
-						'doctors warn mothers about the dangers of "home-made cookies".'
+						'jasmine rice go well with '+choose([choose(['roasted','toasted','boiled','sauteed','minced'])+' '+choose(animals),choose(['sushi','soup','carpaccio','steak','nuggets'])+' made from '+choose(animals)])+', says controversial chef.',
+						'"does your rice contain '+choose(animals)+'?", asks PSA warning against counterfeit cookies.',
+						'doctors recommend twice-daily consumption of fresh rice.',
+						'doctors warn against soy sauce-snorting teen fad.',
+						'doctors advise against new rice-free fad diet.',
+						'doctors warn non asian mothers about the dangers of "non rice cooker made rice".'
 						]),
 					'News : "'+choose([
-						'I\'m all about cookies',
-						'I just can\'t stop eating cookies. I think I seriously need help',
-						'I guess I have a cookie problem',
-						'I\'m not addicted to cookies. That\'s just speculation by fans with too much free time',
-						'my upcoming album contains 3 songs about cookies',
-						'I\'ve had dreams about cookies 3 nights in a row now. I\'m a bit worried honestly',
-						'accusations of cookie abuse are only vile slander',
-						'cookies really helped me when I was feeling low',
-						'cookies are the secret behind my perfect skin',
-						'cookies helped me stay sane while filming my upcoming movie',
-						'cookies helped me stay thin and healthy',
-						'I\'ll say one word, just one : cookies',
-						'alright, I\'ll say it - I\'ve never eaten a single cookie in my life'
+						'I\'m all about brown rice',
+						'I just can\'t stop eating brown rice. I think I seriously need help',
+						'I guess I have a sticky rice problem',
+						'I\'m not addicted to rainbow rice. That\'s just speculation by fans with too much free time',
+						'my upcoming album contains 3 songs about calrose rice',
+						'I\'ve had dreams about asian parents whipping me 3 nights in a row now. I\'m a bit worried honestly',
+						'accusations of rice abuse are only vile slander',
+						'green rice really helped me when I was feeling low',
+						'long grain rice are the secret behind my perfect skin',
+						'short grain rice helped me stay sane while filming my upcoming movie',
+						'herb blended rice helped me stay thin and healthy',
+						'I\'ll say one word, just one : slipper',
+						'alright, I\'ll say it - I\'ve never eaten a single grain of rice in my life'
 						])+'", reveals celebrity.',
 					choose([
-						'News : scientist predicts imminent cookie-related "end of the world"; becomes joke among peers.',
-						'News : man robs bank, buys cookies.',
-						'News : scientists establish that the deal with airline food is, in fact, a critical lack of cookies.',
-						'News : hundreds of tons of cookies dumped into starving country from airplanes; thousands dead, nation grateful.',
-						'News : new study suggests cookies neither speed up nor slow down aging, but instead "take you in a different direction".',
-						'News : overgrown cookies found in fishing nets, raise questions about hormone baking.',
-						'News : "all-you-can-eat" cookie restaurant opens in big city; waiters trampled in minutes.',
-						'News : man dies in cookie-eating contest; "a less-than-impressive performance", says judge.',
-						'News : what makes cookies taste so right? "Probably all the [*****] they put in them", says anonymous tipper.',
-						'News : man found allergic to cookies; "what a weirdo", says family.',
-						'News : foreign politician involved in cookie-smuggling scandal.',
-						'News : cookies now more popular than '+choose(['cough drops','broccoli','smoked herring','cheese','video games','stable jobs','relationships','time travel','cat videos','tango','fashion','television','nuclear warfare','whatever it is we ate before','politics','oxygen','lamps'])+', says study.',
+						'News : scientist predicts imminent rice-related "end of the world"; becomes joke among peers.',
+						'News : man robs bank, buys sticky rice.',
+						'News : scientists establish that the deal with airline food is, in fact, a critical lack of rice.',
+						'News : hundreds of tons of rainbow dumped into starving country from airplanes; thousands dead, nation grateful.',
+						'News : new study suggests clarose rice will neither speed up nor slow down aging, but instead "take you in a different direction".',
+						'News : overgrown rice found in fishing nets, raise questions about hormone baking.',
+						'News : "all-you-can-eat" Chinese restaurant opens in big city; waiters trampled in minutes.',
+						'News : man dies in green-rice-eating contest; "a less-than-impressive performance", says judge.',
+						'News : what makes cheese rice taste so right? "Probably all the [*****] they put in them", says anonymous tipper.',
+						'News : man found allergic to rice; "what a weirdo", says family.',
+						'News : foreign politician involved in rice-smuggling scandal.',
+						'News : rice now more popular than '+choose(['cough drops','broccoli','smoked herring','cheese','video games','stable jobs','relationships','time travel','cat videos','tango','fashion','television','nuclear warfare','whatever it is we ate before','politics','oxygen','lamps'])+', says study.',
 						'News : obesity epidemic strikes nation; experts blame '+choose(['twerking','that darn rap music','video-games','lack of cookies','mysterious ghostly entities','aliens','parents','schools','comic-books','cookie-snorting fad'])+'.',
-						'News : cookie shortage strikes town, people forced to eat cupcakes; "just not the same", concedes mayor.',
-						'News : "you gotta admit, all this cookie stuff is a bit ominous", says confused idiot.',
+						'News : rice shortage strikes town, people forced to eat cookies; "just not the same", concedes mayor.',
+						'News : "you gotta admit, all this rice stuff is a bit ominous", says confused idiot.',
 						//'News : scientists advise getting used to cookies suffusing every aspect of life; "this is the new normal", expert says.',
 						//'News : doctors advise against wearing face masks when going outside. "You never know when you might need a cookie... a mask would just get in the way."',//these were written back when covid hadn't really done much damage yet but they just feel in poor taste now
-						'News : is there life on Mars? Various chocolate bar manufacturers currently under investigation for bacterial contaminants.',
-						'News : "so I guess that\'s a thing now", scientist comments on cookie particles now present in virtually all steel manufactured since cookie production ramped up worldwide.',
-						'News : trace amounts of cookie particles detected in most living creatures, some of which adapting them as part of new and exotic metabolic processes.',
+						'News : is there life on Mars? Various rice cracker manufacturers currently under investigation for bacterial contaminants.',
+						'News : "so I guess that\'s a thing now", scientist comments on rice particles now present in virtually all steel manufactured since ruce production ramped up worldwide.',
+						'News : trace amounts of asian particles detected in most living creatures, some of which adapting them as part of new and exotic metabolic processes.',
 					]),
 					choose([
-						'News : movie cancelled from lack of actors; "everybody\'s at home eating cookies", laments director.',
+						'News : movie cancelled from lack of actors; "everybody\'s at home eating rice", laments director.',
 						'News : comedian forced to cancel cookie routine due to unrelated indigestion.',
 						'News : new cookie-based religion sweeps the nation.',
 						'News : fossil records show cookie-based organisms prevalent during Cambrian explosion, scientists say.',
