@@ -30,3 +30,4 @@ Rice Cracker = Gingerbread Tree | done
 No-Carb Rice = pure black choc | done
 Crazy Rice = pure white choc | done
 粽子 = ladyfingers | done
+3 layer rice (red yellow orange) = millionares shortbread 
