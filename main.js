@@ -5795,7 +5795,7 @@ Game.Launch=function()
 					me.l.style.opacity=curve;
 					me.l.style.transform='translate('+(me.x+(Game.bounds.right-Game.bounds.left)*(1-me.life/(Game.fps*me.dur)))+'px,'+(me.y-Math.abs(Math.sin(me.life*0.1))*128)+'px) rotate('+(Math.sin(me.life*0.2+0.3)*10)+'deg) scale('+(me.sizeMult*(1+Math.sin(me.id*0.53)*0.1))+')';
 					me.life--;
-				f	if (me.life<=0) {this.missFunc(me);me.die();}
+					if (me.life<=0) {this.missFunc(me);me.die();}
 				},
 				popFunc:function(me)
 				{
@@ -7133,11 +7133,11 @@ Game.Launch=function()
 						]));
 						
 						if (Game.Objects['Chancemaker'].amount>0) list.push(choose([
-						'News : strange statistical anomalies continue as non asian run weather forecast proves accurate an unprecedented 3 days in a row!',
-						'News : local casino ruined as all asian gamblers somehow hit a week-long winning streak! "We might still be okay", says owner before being hit by lightning 69 times.',
-						'News : neighboring nation somehow elects non asian president with sensible policies in freak accident of random chance!',
+						'News : strange statistical anomalies continue as weather forecast proves accurate an unprecedented 3 days in a row!',
+						'News : local casino ruined as all gamblers somehow hit a week-long winning streak! "We might still be okay", says owner before being hit by lightning 47 times.',
+						'News : neighboring nation somehow elects president with sensible policies in freak accident of random chance!',
 						'News : million-to-one event sees gritty movie reboot turning out better than the original! "We have no idea how this happened", say movie execs.',
-						'News : all rice based scratching tickets printed as winners, prompting national economy to crash and, against all odds, recover overnight.',
+						'News : all scratching tickets printed as winners, prompting national economy to crash and, against all odds, recover overnight.',
 						]));
 						
 						if (Game.Objects['Fractal engine'].amount>0) list.push(choose([
@@ -8626,7 +8626,7 @@ Game.Launch=function()
 		}
 		
 		//define objects
-		new Game.Object('Cursor','cursor|cursors|clicked|[X] extra finger|[X] extra fingers','Autoclicks once every 10 seconds.',0,0,{},15,function(me){
+		new Game.Object('Cursor','Chopstick|Chopsticks|picked up|[X] extra finger|[X] extra fingers','Autoclicks once every 10 seconds.',0,0,{},15,function(me){
 			var add=0;
 			if (Game.Has('Thousand fingers')) add+=		0.1;
 			if (Game.Has('Million fingers')) add*=		5;
@@ -8667,7 +8667,7 @@ Game.Launch=function()
 		});
 		
 		Game.SpecialGrandmaUnlock=15;
-		new Game.Object('Grandma','grandma|grandmas|baked|Grandmas are [X] year older|Grandmas are [X] years older','A nice grandma to bake more cookies.',1,1,{pic:function(i){
+		new Game.Object('Grandma','老爷|老爷|cooked|老爷 are [X] year older|老爷 are [X] years older','A nice 老爷 to cook more rice.',1,1,{pic:function(i){
 			var list=['grandma'];
 			if (Game.Has('Farmer grandmas')) list.push('farmerGrandma');
 			if (Game.Has('Worker grandmas')) list.push('workerGrandma');
@@ -11055,7 +11055,7 @@ Game.Launch=function()
 		Game.NewUpgradeCookie({name:'Pizza',desc:'What is a pizza if not a large, chewy cookie, frosted with a rather exuberant tomato & cheese icing? Not a cookie, that\'s what.',icon:[31,9],require:'Box of not cookies',		power:5,price: Math.pow(10,44)});
 		
 		order=10050;
-		Game.NewUpgradeCookie({name:'Crackers',desc:'These are the non-flavored kind with no salt added. Really just a judgment-free wheat square begging to have bits of ham and spreadable cheese piled onto it, its main contribution being "crunchy".',icon:[30,9],require:'Box of maybe cookies',		power:4,price: Math.pow(10,45)});
+		Game.NewUpgradeCookie({name:'Crackers',desc:'These are the non-flavored kind with no salt added. Really just a judgment-free wheat square begging to have bits of ham and spreadable cheese piled onto it, its cursor contribution being "crunchy".',icon:[30,9],require:'Box of maybe cookies',		power:4,price: Math.pow(10,45)});
 		
 		order=10030;
 		Game.NewUpgradeCookie({name:'Havabreaks',desc:'You can snap the sections neatly or just bite into the whole thing like some kind of lunatic. Some oversea countries manufacture these in hundreds of unique flavors, such as green tea, lobster bisque, and dark chocolate.',icon:[31,3],require:'Box of brand biscuits',power:												2,	price:	999999999999999999999999999*5});
