@@ -1,4 +1,4 @@
-﻿/*
+/*
 All this code is copyright Orteil, 2013-2022.
 	-with some help, advice and fixes by Nicholas Laux, Debugbro, Opti, the folks at Playsaurus, and lots of people on reddit, Discord, and the DashNet forums
 	-also includes a bunch of snippets found on stackoverflow.com and others
@@ -9630,19 +9630,19 @@ Game.Launch=function()
 		new Game.Upgrade('Kitten workers',strKittenDesc+'<q>meow meow meow meow</q>',9000000000,Game.GetIcon('Kitten',2));Game.last.kitten=1;Game.MakeTiered(Game.last,2,18);
 		
 		order=10000;
-		Game.NewUpgradeCookie({name:'Plain cookies',desc:'We all gotta start somewhere.',icon:[2,3],power:										1,	price:	999999});
-		Game.NewUpgradeCookie({name:'Sugar cookies',desc:'Tasty, if a little unimaginative.',icon:[7,3],power:									1,	price:	999999*5});
-		Game.NewUpgradeCookie({name:'Oatmeal raisin cookies',desc:'No raisin to hate these.',icon:[0,3],power:									1,	price:	9999999});
-		Game.NewUpgradeCookie({name:'Peanut butter cookies',desc:'Get yourself some jam cookies!',icon:[1,3],power:								2,	price:	9999999*5});
-		Game.NewUpgradeCookie({name:'Coconut cookies',desc:'Flaky, but not unreliable. Some people go crazy for these.',icon:[3,3],power:		2,	price:	99999999});
+		Game.NewUpgradeCookie({name:'White Rice',desc:'You can\'t miss with this classic.',icon:[2,3],power:										1,	price:	999999});
+		Game.NewUpgradeCookie({name:'Jasmine Rice',desc:'Not very creative, but ok.',icon:[7,3],power:									1,	price:	999999*5});
+		Game.NewUpgradeCookie({name:'Brown Rice',desc:'Some people like it, we call them health nuts.',icon:[0,3],power:									1,	price:	9999999});
+		Game.NewUpgradeCookie({name:'Basmati Rice',desc:'Your computer has virus!',icon:[1,3],power:								2,	price:	9999999*5});
+		Game.NewUpgradeCookie({name:'Black Rice',desc:'The rice that rebelled.',icon:[3,3],power:		2,	price:	99999999});
 		order=10001;
-		Game.NewUpgradeCookie({name:'White chocolate cookies',desc:'I know what you\'ll say. It\'s just cocoa butter! It\'s not real chocolate!<br>Oh please.',icon:[4,3],power:2,	price:	99999999*5});
+		Game.NewUpgradeCookie({name:'Japanese Gluitonous Rice',desc:'It\'s not sushi rice. <br> TRUST ME!!!.',icon:[4,3],power:2,	price:	99999999*5});
 		order=10000;
-		Game.NewUpgradeCookie({name:'Macadamia nut cookies',desc:'They\'re macadamn delicious!',icon:[5,3],power:								2,	price:	99999999});
+		Game.NewUpgradeCookie({name:'Arborio Rice',desc:'For all of your Italian needs!',icon:[5,3],power:								2,	price:	99999999});
 		order=10002;
-		Game.NewUpgradeCookie({name:'Double-chip cookies',desc:'DOUBLE THE CHIPS<br>DOUBLE THE TASTY<br>(double the calories)',icon:[6,3],power:2,	price:	999999999*5});
-		Game.NewUpgradeCookie({name:'White chocolate macadamia nut cookies',desc:'Orteil\'s favorite.',icon:[8,3],power:						2,	price:	9999999999});
-		Game.NewUpgradeCookie({name:'All-chocolate cookies',desc:'CHOCOVERDOSE.',icon:[9,3],power:												2,	price:	9999999999*5});
+		Game.NewUpgradeCookie({name:'Medium-Grain Brown Rice',desc:'How specific do you want me to be?',icon:[6,3],power:2,	price:	999999999*5});
+		Game.NewUpgradeCookie({name:'Rice Mix',desc:'For the picky ones! (With no taste.)',icon:[8,3],power:						2,	price:	9999999999});
+		Game.NewUpgradeCookie({name:'Tomato Rice',desc:'Also for all of your Italian needs!',icon:[9,3],power:												2,	price:	9999999999*5});
 		
 		order=100;
 		new Game.Upgrade('Quadrillion fingers',getStrThousandFingersGain(20)+'<q>clickityclickityclickityclickityclick</q>',10000000000,[0,17]);Game.MakeTiered(Game.last,8,0);
@@ -9664,8 +9664,8 @@ Game.Launch=function()
 		new Game.Upgrade('Kitten engineers',strKittenDesc+'<q>meow meow meow meow, sir</q>',90000000000000,Game.GetIcon('Kitten',3));Game.last.kitten=1;Game.MakeTiered(Game.last,3,18);
 		
 		order=10020;
-		Game.NewUpgradeCookie({name:'Dark chocolate-coated cookies',desc:'These absorb light so well you almost need to squint to see them.',icon:[10,3],power:			5,	price:	99999999999});
-		Game.NewUpgradeCookie({name:'White chocolate-coated cookies',desc:'These dazzling cookies absolutely glisten with flavor.',icon:[11,3],power:					5,	price:	99999999999});
+		Game.NewUpgradeCookie({name:'Yellow Rice',desc:'This one appears once in a while, if you know what I mean.',icon:[10,3],power:			5,	price:	99999999999});
+		Game.NewUpgradeCookie({name:'Rainbow Rice',desc:'The secret activist, if you know what I mean.',icon:[11,3],power:					5,	price:	99999999999});
 		
 		Game.GrandmaSynergies=[];
 		Game.GrandmaSynergy=function(name,desc,building)
@@ -9749,8 +9749,8 @@ Game.Launch=function()
 		Game.last.pool='debug';
 		
 		order=10020;
-		Game.NewUpgradeCookie({name:'Eclipse cookies',desc:'Look to the cookie.',icon:[0,4],power:					2,	price:	99999999999*5});
-		Game.NewUpgradeCookie({name:'Zebra cookies',desc:'...',icon:[1,4],power:									2,	price:	999999999999});
+		Game.NewUpgradeCookie({name:'Half-Half Rice',desc:'They couldn\t have just chosen one, they had to be healthy but not all healthy. <br> REALLY GUYS?!!!',icon:[0,4],power:					2,	price:	99999999999*5});
+		Game.NewUpgradeCookie({name:'White-People Rice',desc:'It\'s rice, but it\'s meant to be good for you. <br> Their loss.',icon:[1,4],power:									2,	price:	999999999999});
 		
 		order=100;
 		new Game.Upgrade('Quintillion fingers',getStrThousandFingersGain(20)+'<q>man, just go click click click click click, it\'s real easy, man.</q>',10000000000000,[0,18]);Game.MakeTiered(Game.last,9,0);
@@ -9786,16 +9786,16 @@ Game.Launch=function()
 		new Game.Upgrade('Sacrificial rolling pins',loc("Elder pledges last <b>twice</b> as long.")+'<q>These are mostly just for spreading the anti-aging cream.<br>(And accessorily, shortening the chicken\'s suffering.)</q>',2888888888888,[2,9]);
 		
 		order=10020;
-		Game.NewUpgradeCookie({name:'Snickerdoodles',desc:'True to their name.',icon:[2,4],power:												2,	price:	999999999999*5});
-		Game.NewUpgradeCookie({name:'Stroopwafels',desc:'If it ain\'t dutch, it ain\'t much.',icon:[3,4],power:									2,	price:	9999999999999});
-		Game.NewUpgradeCookie({name:'Macaroons',desc:'Not to be confused with macarons.<br>These have coconut, okay?',icon:[4,4],power:			2,	price:	9999999999999*5});
+		Game.NewUpgradeCookie({name:'Fried Rice Balls',desc:'Deep frying makes even rice better!',icon:[2,4],power:												2,	price:	999999999999*5});
+		Game.NewUpgradeCookie({name:'Congee',desc:'If you\'re sick and your parents don\'t make this, then you\re not Asian. <br> STOP PLAYING!!!',icon:[3,4],power:									2,	price:	9999999999999});
+		Game.NewUpgradeCookie({name:'Stone Bown Burnt Rice',desc:'Don\'t you dare throw it away your monster!',icon:[4,4],power:			2,	price:	9999999999999*5});
 		
 		order=40000;
 		new Game.Upgrade('Neuromancy',loc("Can toggle upgrades on and off at will in the stats menu.")+'<q>Can also come in handy to unsee things that can\'t be unseen.</q>',7,[4,9]);//debug purposes only
 		Game.last.pool='debug';
 		
 		order=10020;
-		Game.NewUpgradeCookie({name:'Empire biscuits',desc:'For your growing cookie empire, of course!',icon:[5,4],power:											2,	price:	99999999999999});
+		Game.NewUpgradeCookie({name:'Dry Rice',desc:'I cry... when rice deserves to dry...',icon:[5,4],power:											2,	price:	99999999999999});
 		order=10031;
 		Game.NewUpgradeCookie({name:'British tea biscuits',desc:'Quite.',icon:[6,4],require:'Tin of british tea biscuits',power:									2,	price:	99999999999999});
 		Game.NewUpgradeCookie({name:'Chocolate british tea biscuits',desc:'Yes, quite.',icon:[7,4],require:Game.last.name,power:									2,	price:	99999999999999});
@@ -9814,10 +9814,10 @@ Game.Launch=function()
 		Game.GrandmaSynergy('Antigrandmas','A mean antigrandma to vomit more cookies.','Antimatter condenser');
 
 		order=10020;
-		Game.NewUpgradeCookie({name:'Madeleines',desc:'Unforgettable!',icon:[12,3],power:																2,	price:	99999999999999*5});
-		Game.NewUpgradeCookie({name:'Palmiers',desc:'Palmier than you!',icon:[13,3],power:																2,	price:	99999999999999*5});
-		Game.NewUpgradeCookie({name:'Palets',desc:'You could probably play hockey with these.<br>I mean, you\'re welcome to try.',icon:[12,4],power:	2,	price:	999999999999999});
-		Game.NewUpgradeCookie({name:'Sabl&eacute;s',desc:'The name implies they\'re made of sand. But you know better, don\'t you?',icon:[13,4],power:	2,	price:	999999999999999});
+		Game.NewUpgradeCookie({name:'Deffinitely no GMOs Rice',desc:'Did you not hear me?',icon:[12,3],power:																2,	price:	99999999999999*5});
+		Game.NewUpgradeCookie({name:'Chicken Rice',desc:'You can eat this by itself and be satisfied! <br> (Not saying this doesn\'t go for other rices.)',icon:[13,3],power:																2,	price:	99999999999999*5});
+		Game.NewUpgradeCookie({name:'Raisin Rice',desc:'There\s no raisin not to like these.',icon:[12,4],power:	2,	price:	999999999999999});
+		Game.NewUpgradeCookie({name:'Mango Sticky Rice',desc:'Hall of Fame of desserts musn\'t ignore this gem.',icon:[13,4],power:	2,	price:	999999999999999});
 		
 		order=20000;
 		new Game.Upgrade('Kitten overseers',strKittenDesc+'<q>my purrpose is to serve you, sir</q>',90000000000000000,Game.GetIcon('Kitten',4));Game.last.kitten=1;Game.MakeTiered(Game.last,4,18);
@@ -9901,8 +9901,8 @@ Game.Launch=function()
 		Game.NewUpgradeCookie({name:'Present biscuits',desc:'The prequel to future biscuits. Watch out!',locked:1,icon:[18,10],power:2,price: 252525252525});
 		
 		order=10020;
-		Game.NewUpgradeCookie({name:'Gingerbread men',desc:'You like to bite the legs off first, right? How about tearing off the arms? You sick monster.',icon:[18,4],power:		2,price: 9999999999999999});
-		Game.NewUpgradeCookie({name:'Gingerbread trees',desc:'Evergreens in pastry form. Yule be surprised what you can come up with.',icon:[18,3],power:							2,price: 9999999999999999});
+		Game.NewUpgradeCookie({name:'Rice Crispy Treat',desc:'What do you mean it\'s rice?!',icon:[18,4],power:		2,price: 9999999999999999});
+		Game.NewUpgradeCookie({name:'Rice Cracker',desc:'The deafening crunch defines this one.',icon:[18,3],power:							2,price: 9999999999999999});
 		
 		order=25000;
 		new Game.Upgrade('A festive hat','<b>'+loc("Unlocks... something.")+'</b><q>Not a creature was stirring, not even a mouse.</q>',25,[19,9],function()
@@ -10147,9 +10147,9 @@ Game.Launch=function()
 		new Game.Upgrade('Box of brand biscuits',loc("Contains an assortment of popular biscuits.")+'<q>They\'re brand new!</q>',25,[20,9]);Game.last.pool='prestige';Game.last.parents=['Heavenly cookies'];
 	
 		order=10020;
-		Game.NewUpgradeCookie({name:'Pure black chocolate cookies',desc:'Dipped in a lab-made substance darker than the darkest cocoa (dubbed "chocoalate").',icon:[26,3],power:									5,price: 9999999999999999*5});
-		Game.NewUpgradeCookie({name:'Pure white chocolate cookies',desc:'Elaborated on the nano-scale, the coating on this biscuit is able to refract light even in a pitch-black environment.',icon:[26,4],power:	5,price: 9999999999999999*5});
-		Game.NewUpgradeCookie({name:'Ladyfingers',desc:'Cleaned and sanitized so well you\'d swear they\'re actual biscuits.',icon:[27,3],power:																	3,price: 99999999999999999});
+		Game.NewUpgradeCookie({name:'No-Carb Rice',desc:'This isn\'t happening!',icon:[26,3],power:									5,price: 9999999999999999*5});
+		Game.NewUpgradeCookie({name:'Crazy Rice',desc:'I don\t know why, but I\m digging this.',icon:[26,4],power:	5,price: 9999999999999999*5});
+		Game.NewUpgradeCookie({name:'粽子',desc:'太好了!!!',icon:[27,3],power:																	3,price: 99999999999999999});
 		Game.NewUpgradeCookie({name:'Tuiles',desc:'These never go out of tile.',icon:[27,4],power:																													3,price: 99999999999999999*5});
 		Game.NewUpgradeCookie({name:'Chocolate-stuffed biscuits',desc:'A princely snack!<br>The holes are so the chocolate stuffing can breathe.',icon:[28,3],power:												3,price: 999999999999999999});
 		Game.NewUpgradeCookie({name:'Checker cookies',desc:'A square cookie? This solves so many storage and packaging problems! You\'re a genius!',icon:[28,4],power:												3,price: 999999999999999999*5});
@@ -10789,9 +10789,9 @@ Game.Launch=function()
 		
 		order=10000;
 		//early cookies that unlock at the same time as coconut cookies; meant to boost early game a little bit
-		Game.NewUpgradeCookie({name:'Almond cookies',desc:'Sometimes you feel like one of these. Sometimes you don\'t.',icon:[21,27],power:							2,	price:	99999999});
-		Game.NewUpgradeCookie({name:'Hazelnut cookies',desc:'Tastes like a morning stroll through a fragrant forest, minus the clouds of gnats.',icon:[22,27],power:							2,	price:	99999999});
-		Game.NewUpgradeCookie({name:'Walnut cookies',desc:'Some experts have pointed to the walnut\'s eerie resemblance to the human brain as a sign of its sentience - a theory most walnuts vehemently object to.',icon:[23,27],power:							2,	price:	99999999});
+		Game.NewUpgradeCookie({name:'Wild Rice',desc:'It\s just a scam.',icon:[21,27],power:							2,	price:	99999999});
+		Game.NewUpgradeCookie({name:'Calrose Rice',desc:'SUSHI!!!',icon:[22,27],power:							2,	price:	99999999});
+		Game.NewUpgradeCookie({name:'Japanese Short-Grain Rice',desc:'ALSO SUSHI!!!',icon:[23,27],power:							2,	price:	99999999});
 		
 		
 		new Game.Upgrade('Label printer',loc("Mouse over an upgrade to see its tier.<br><small>Note: only some upgrades have tiers. Tiers are purely cosmetic and have no effect on gameplay.</small>")+'<q>Also comes in real handy when you want to tell catsup apart from ketchup.</q>',5000000,[28,29]);Game.last.pool='prestige';Game.last.parents=['Genius accounting'];
@@ -11243,9 +11243,9 @@ Game.Launch=function()
 		Game.NewUpgradeCookie({name:'Pokey',desc:'While commonly thought to be named so because it\'s fun to poke your classmates with these, Pokey-brand biscuit sticks actually get their name from their popularity in smoke-free prisons, where they\'re commonly smuggled and traded in lieu of cigarettes.',icon:[33,10],require:'Box of brand biscuits',power:												2,	price:	999999999999999999999999999999999999*5});
 		
 		order=10000;
-		Game.NewUpgradeCookie({name:'Cashew cookies',desc:'Let me tell you about cashews. Cashews are not nuts, but seeds that grow out of curious red or yellow fruits - which can be eaten on their own, or made into drinks. The shell around the nut itself contains a nasty substance that stains and irritates the hands of whoever handles it for too long. But that\'s okay, since now that you\'ve read this you\'ll make sure it doesn\'t get in the cookies! Oh, you\'ve already eaten how many? Okay then.',icon:[32,7],power:							2,	price:	99999999});
+		Game.NewUpgradeCookie({name:'Sushi Rice',desc:'ALSO ALSO SUSHI!!!',icon:[32,7],power:							2,	price:	99999999});
 		order=10001;
-		Game.NewUpgradeCookie({name:'Milk chocolate cookies',desc:'A strange inversion of chocolate milk. For those who are a little bit too hardcore for white chocolate, but not hardcore enough for dark.',icon:[33,7],power:2,	price:	99999999*5});
+		Game.NewUpgradeCookie({name:'Fried Rice',desc:'Only BBC could ruin it!',icon:[33,7],power:2,	price:	99999999*5});
 		
 		
 		
