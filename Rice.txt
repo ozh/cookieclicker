@@ -30,4 +30,179 @@ Rice Cracker = Gingerbread Tree | done
 No-Carb Rice = pure black choc | done
 Crazy Rice = pure white choc | done
 粽子 = ladyfingers | done
-3 layer rice (red yellow orange) = millionares shortbread 
+----------------------
+Tuiles
+Chocolate Stuffed Biscuits
+Checker Cookies
+Butter Cookies
+Cream Cookies
+Gingersnaps
+Cinnamon Cookies
+Vanity Cookies Cigar
+Pinwheel 
+Fudge Squares
+Shortbread biscuits
+Millionaire's shortbreads
+caramel cookies
+Pecan Sandles
+Moravian Spice Cookies
+Anzac biscuits
+Buttercakes
+Ice Cream Sandwiches
+Pink Biscuits
+Whole grain Cookies
+Candy Cookies
+Big Chip Cookies
+One Chip cookies
+Sprinkles Cookies
+Peanut Butter Blossoms
+No-bake Cookies
+Florentines
+Chocolate Crinkles
+Maple Cookies
+Persian Rice Cookies
+NOrwegian Cookies
+Crispy rice Cookies
+Ube Cookies
+Butterscotch Cookies
+Speculaas
+Chocolate Oatmeal cookies
+Molasses Cookies
+Biscotti
+WAffle Cookies
+Custard Creams
+Bourbon Biscuits
+Mini-cookies
+Whoopie Pies
+Caramel Wafer Biscuits
+Chocolate Chip Mocha Cookies
+Earl Grey Cookies
+Chai Tea Cookies
+Corn Syrup Cookies
+Icebox Cookies
+Graham Crackers
+Hardtack
+Cornflake Cookies
+Tofu Cookies
+Gluten-Free Cookies
+Russian Bread Cookies
+Lebkuchen
+Aachener Printen
+Canistrelli
+Nice Biscuits
+French Pure Butter
+Petit Beurre
+Nanaimo Bars
+Berger Cookies
+Chinsuko
+Panda Koala Biscuits
+Putri Saliju
+Milk Cookies
+Kruidnotes
+Mario Biscuits
+Meringue Cookies
+Yogurt Cookies
+Thumbprint
+Pizzelle
+Granola Cookies
+Ricotta Cookies
+Roze Koeken
+Peanut Butter Cup Cookies
+Sesame Cookies
+Tayaki
+Vanillekiferl
+Battenberg Biscuits
+Rosette Cookies
+Gangmakers
+Welsh Cookies
+Raspberry Cheesecake Cookies
+Bakkenpootjes
+Fat Fascals
+Ischler Cookies
+Matcha Cookies
+Dalgona Cookies
+Spicy Cookies
+Smile Cookies
+Kolachy Cookies
+Gomma Cookies
+Vegan Cookies
+Coyotas
+Frosted Sugar Cookies
+Marshmallow Sandwich Cookies
+Web Cookies
+-----------------------------------
+Tin of British Tea Biscuits = Bimbimbap ingredients:
+British Tea Biscuits = rice and carrots
+Chocolate British Tea Biscuits = rice and cucumbers
+Round British Tea Biscuits = rice and Spinach
+Round Chocolate British Tea Biscuits = rice and Beef
+Round British Tea Biscuits with Heart Motif = Rice and Sriracha
+Round Chocolate British TEa Biscuits with HEart Motif = rice and egg
+---------------------------------------
+Box of Brand Biscuits = Specific Fried Rice
+Caramoas = Egg Fried Rice
+Sagalongs = Kimchi Fried Rice
+Shortfoils = Spam Fried Rice
+Win Mints = Shrimp Fried Rice
+Fig Gluttons = Veggie Fried Rice
+Loreols = Chickem Fried Rice
+Jaffa Cakes = Pork Fried Rice
+Grease's Cups = MSG Fried Rice
+Digits = BBC Fried Rice
+Lombardiai Cookies = Salt Fried Rice
+Bastenaken Cookies = Tuna Fried Rice
+Festivity Loops = Bacon Fried Rice
+Havabreaks = Hawaian Style Fried Rice
+Zilla Wafers = Soy Sauce Fried Rice
+Dim Dams = Spicy Fried Rice
+Pokey = ASIAN Fried Rice
+------------------------------------
+Box of Macarons = Box of Mochi
+Rose Macarons = Rose Mochi
+Lemon Macarons = Lemon Mochi
+Chocolate MAcarons = Chocolate Mochi
+Pistachi Macarons = Green Tea Mochi
+Hazlenut Macarons = Brown Sugar Mochi
+Violet Macarons = Violet Mochi
+Caramel Macarons = Boba Mochi
+Licorice Macarons = Mango Mochi
+Earl Grey Macarons = Strawberry Mochi
+------------------------------
+Tin of Butter Cookies = Tin of Ice Cream Mochi
+Butter Horseshoes = Vanilla Ice Cream Mochi
+Butter Pucks = Chocolate Ice Cream Mochi
+Butter Knots = Mango Ice Cream Mochi
+Butter Slabs = Strawberry Ice Cream Mochi
+Butter Swirls = Green Tea Ice Cream Mochi
+-----------------------------
+Box of Maybe Cookies = Accidental Bread
+Cookie Dough = Bread Dough
+Burnt Cookie = Burnt Bread
+A Chocolate Chip Cookie but with... = Bread
+Flavor Text Cookie = White Bread
+Hiegh Defintion Cookie = Fancy Bread
+Crackers = Slabs of Dense Bread
+Deep-Fried Cookie Dough = Deef fried bread Dough
+----------------------------------------
+Box of not Cookies = Box of not Rice
+Toast = same
+Peanut Butter and Jelly = same
+Wookies = same
+Cheeseburger = same
+One lone Chocolate Chip = One lone Rice Grain
+Pizza = same
+Candy = Same
+-------------------------------------
+Box of Pastries = Type of Furikake
+Profiteroles = Classic Nori Komi Furikake
+Jelly Donut = Salmon Furikake
+Glazed Donut = Noritamago Furikake
+Chocolate Cake = Seto Fumi Furikake
+Strawberry Cake = Shiso Fumi Furikake
+Apple PIe = Ebi Fumi Furikake
+Lemon Meringue Pie = Wasabi Furikake
+Butter Croissant = Katsuo Furikake
+--------------------------------
+legacy cookies = Legacy Rice:
+Cookie Crumbs = Rice off plate
+chocolate Chip Cookie = The heavenly Bowl.
