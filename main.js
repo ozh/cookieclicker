@@ -8626,7 +8626,7 @@ Game.Launch=function()
 		}
 		
 		//define objects
-		new Game.Object('Cursor','Chopstick|Chopsticks|picked up|[X] extra finger|[X] extra fingers','Autoclicks once every 10 seconds.',0,0,{},15,function(me){
+		new Game.Object('Cursor','cursor|cursors|clicked|[X] extra finger|[X] extra fingers','Autoclicks once every 10 seconds.',0,0,{},15,function(me){
 			var add=0;
 			if (Game.Has('Thousand fingers')) add+=		0.1;
 			if (Game.Has('Million fingers')) add*=		5;
@@ -8667,7 +8667,7 @@ Game.Launch=function()
 		});
 		
 		Game.SpecialGrandmaUnlock=15;
-		new Game.Object('Grandma','老爷|老爷|cooked|老爷 are [X] year older|老爷 are [X] years older','A nice 老爷 to cook more rice.',1,1,{pic:function(i){
+		new Game.Object('Grandma','grandmas|grandma|baked|grandmas are [X] year older|老爷 are [X] years older','A nice 老爷 to cook more rice.',1,1,{pic:function(i){
 			var list=['grandma'];
 			if (Game.Has('Farmer grandmas')) list.push('farmerGrandma');
 			if (Game.Has('Worker grandmas')) list.push('workerGrandma');
@@ -11908,7 +11908,7 @@ Game.Launch=function()
 		
 		var order=0;//this is used to set the order in which the items are listed
 		
-		Game.BankAchievement('Wake and bake');
+		Game.BankAchievement('Wake and dissapointment');
 		Game.BankAchievement('Making some dough');
 		Game.BankAchievement('So baked right now');
 		Game.BankAchievement('Fledgling bakery');
@@ -12005,12 +12005,12 @@ Game.Launch=function()
 		new Game.Achievement('Base 10',loc("Have at least <b>10 of the most expensive object, 20 of the second-most expensive, 30 of the next</b> and so on."),[23,12]);
 		
 		order=10000;
-		new Game.Achievement('Golden A',loc("Click a <b>golden A</b>."),[10,14]);
-		new Game.Achievement('Lucky A',loc("Click <b>%1</b>.",loc("%1 golden cookie",LBeautify(7))),[22,6]);
+		new Game.Achievement('Golden A',loc("Click a <b>golden cookie</b>."),[10,14]);
+		new Game.Achievement('Lucky Rice',loc("Click <b>%1</b>.",loc("%1 golden cookie",LBeautify(7))),[22,6]);
 		new Game.Achievement('A stroke of luck',loc("Click <b>%1</b>.",loc("%1 golden cookie",LBeautify(27))),[23,6]);
 		
 		order=30200;
-		new Game.Achievement('Cheated rice taste awful',loc("Hack in some cookies."),[10,6]);Game.last.pool='shadow';
+		new Game.Achievement('Cheated cookies taste awful',loc("Hack in some cookies."),[10,6]);Game.last.pool='shadow';
 		order=11010;
 		new Game.Achievement('Uncanny clicker',loc("Click really, really fast.")+'<q>Well I\'ll be!</q>',[12,0]);
 		
