@@ -31,52 +31,52 @@ No-Carb Rice = pure black choc | done
 Crazy Rice = pure white choc | done
 粽子 = ladyfingers | done
 ----------------------
-Tuiles
-Chocolate Stuffed Biscuits
-Checker Cookies
-Butter Cookies
-Cream Cookies
-Gingersnaps
-Cinnamon Cookies
-Vanity Cookies Cigar
-Pinwheel 
-Fudge Squares
-Shortbread biscuits
-Millionaire's shortbreads
-caramel cookies
-Pecan Sandles
-Moravian Spice Cookies
-Anzac biscuits
-Buttercakes
-Ice Cream Sandwiches
-Pink Biscuits
-Whole grain Cookies
-Candy Cookies
-Big Chip Cookies
-One Chip cookies
-Sprinkles Cookies
-Peanut Butter Blossoms
-No-bake Cookies
-Florentines
-Chocolate Crinkles
-Maple Cookies
-Persian Rice Cookies
-NOrwegian Cookies
-Crispy rice Cookies
-Ube Cookies
-Butterscotch Cookies
-Speculaas
-Chocolate Oatmeal cookies
-Molasses Cookies
-Biscotti
-WAffle Cookies
-Custard Creams
-Bourbon Biscuits
-Mini-cookies
-Whoopie Pies
-Caramel Wafer Biscuits
-Chocolate Chip Mocha Cookies
-Earl Grey Cookies
+Tuiles = American Fried Rice
+Chocolate Stuffed Biscuits = Chili Rice
+Checker Cookies = Rice and Beans
+Butter Cookies = Claypot Rice
+Cream Cookies = Dosa
+Gingersnaps = Rice with ginger
+Cinnamon Cookies = 年糕
+Vanity Cookies Cigar = 年糕
+Pinwheel = Coconut steamed Rice
+Fudge Squares = Onigiri
+Shortbread biscuits = Spicy Tuna Roll
+Millionaire's shortbreads = California Roll
+caramel cookies = Rice and Gravy
+Pecan Sandles = Rice Bread
+Moravian Spice Cookies = Rice noodle Roll
+Anzac biscuits = Ride Pudding
+Buttercakes = Risotto
+Ice Cream Sandwiches = Taco Rice
+Pink Biscuits = 汤圆
+Whole grain Cookies = Cheesey Rice
+Candy Cookies = overly fancy rice
+Big Chip Cookies = Horribly huge Rice grain
+One Chip cookies = Silantro Rice
+Sprinkles Cookies = Orange Rice
+Peanut Butter Blossoms = Blue Rice
+No-bake Cookies = Pink Rice
+Florentines = Rice Pudding Popsicles
+Chocolate Crinkles = Chili Paste and Rice
+Maple Cookies = Kimchi and Rice
+Persian Rice Cookies = Steaming Rice
+NOrwegian Cookies = Rice and furikake
+Crispy rice Cookies = Red bean and rice
+Ube Cookies = Sugar and rice
+Butterscotch Cookies = Buttered Rice
+Speculaas = Arancini
+Chocolate Oatmeal cookies = Flattened Rice
+Molasses Cookies = Gimbap
+Biscotti = Cold Rice
+WAffle Cookies = Katsudon
+Custard Creams = Vegan Rice Burger
+Bourbon Biscuits = 红烧肉 and rice
+Mini-cookies = Pad Thai
+Whoopie Pies = Pho
+Caramel Wafer Biscuits = Curry Rice Noodles
+Chocolate Chip Mocha Cookies = Chocolate Rice Pudding
+Earl Grey Cookies = 
 Chai Tea Cookies
 Corn Syrup Cookies
 Icebox Cookies
