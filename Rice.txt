@@ -76,14 +76,14 @@ Mini-cookies = Pad Thai
 Whoopie Pies = Pho
 Caramel Wafer Biscuits = Curry Rice Noodles
 Chocolate Chip Mocha Cookies = Chocolate Rice Pudding
-Earl Grey Cookies = 
-Chai Tea Cookies
-Corn Syrup Cookies
-Icebox Cookies
-Graham Crackers
-Hardtack
+Earl Grey Cookies = Ochazuke
+Chai Tea Cookies = nước gạo lứt
+Corn Syrup Cookies = 
+Icebox Cookies = Rice ice cream
+Graham Crackers = Rice krispies treats
+Hardtack = Rice rations
 Cornflake Cookies
-Tofu Cookies
+Tofu Cookies = Tofu fried rice
 Gluten-Free Cookies
 Russian Bread Cookies
 Lebkuchen
@@ -125,7 +125,7 @@ Spicy Cookies
 Smile Cookies
 Kolachy Cookies
 Gomma Cookies
-Vegan Cookies
+Vegan Cookies = green rice
 Coyotas
 Frosted Sugar Cookies
 Marshmallow Sandwich Cookies
