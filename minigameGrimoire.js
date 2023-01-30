@@ -36,8 +36,8 @@ M.launch=function()
 			},
 			'hand of fate':{
 				name:'Force the Hand of Fate',
-				desc:'Summon a random golden cookie. Each existing golden cookie makes this spell +15% more likely to backfire.',
-				failDesc:'Summon an unlucky wrath cookie.',
+				desc:'Summon a random asian grade. Each existing asian grade makes this spell +15% more likely to backfire.',
+				failDesc:'Summon an unlucky b',
 				icon:[22,11],
 				costMin:10,
 				costPercent:0.6,
