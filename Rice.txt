@@ -78,15 +78,15 @@ Caramel Wafer Biscuits = Curry Rice Noodles
 Chocolate Chip Mocha Cookies = Chocolate Rice Pudding
 Earl Grey Cookies = Ochazuke
 Chai Tea Cookies = nước gạo lứt
-Corn Syrup Cookies = 
+Corn Syrup Cookies = Ssal-jocheong mixed rice
 Icebox Cookies = Rice ice cream
 Graham Crackers = Rice krispies treats
 Hardtack = Rice rations
-Cornflake Cookies
+Cornflake Cookies = flaky dried rice
 Tofu Cookies = Tofu fried rice
-Gluten-Free Cookies
-Russian Bread Cookies
-Lebkuchen
+Gluten-Free Cookies = glutinous rice (still gluten-free)
+Russian Bread Cookies = Alphabet rice
+Lebkuchen = Honey sweetened rice pudding
 Aachener Printen
 Canistrelli
 Nice Biscuits
