@@ -13,6 +13,15 @@ http://orteil.dashnet.org
 /*=====================================================================================
 MISC HELPER FUNCTIONS
 =======================================================================================*/
+const maxIq = 172
+const raymondIq = 23
+const yanjiaIq = 69
+const williamIq = 157
+const ethanliuIq = 169
+const cadenIq = 50
+const averageAsianIq = 140
+const averageAmericanIq = 40
+const theCorrectIq = 150
 function l(what) {return document.getElementById(what);}
 function choose(arr) {return arr[Math.floor(Math.random()*arr.length)];}
 
@@ -2227,6 +2236,7 @@ Game.Launch=function()
 			Game.Prompt('<id NameBakery><h3>'+loc("Name your bakery")+'</h3><div class="block" style="text-align:center;">'+loc("What should your bakery's name be?")+'</div><div class="block"><input type="text" style="text-align:center;width:100%;" id="bakeryNameInput" value="'+Game.bakeryName+'"/></div>',[[loc("Confirm"),'if (l(\'bakeryNameInput\').value.length>0) {Game.bakeryNameSet(l(\'bakeryNameInput\').value);Game.Win(\'What\\\'s in a name\');Game.ClosePrompt();}'],[loc("Random"),'Game.bakeryNamePromptRandom();'],loc("Cancel")]);
 			l('bakeryNameInput').focus();
 			l('bakeryNameInput').select();
+			document.getElementById("bakeryName").innerHTML = Game.bakeryName + " Rice Co."
 		}
 		Game.bakeryNamePromptRandom=function()
 		{
@@ -2586,7 +2596,7 @@ Game.Launch=function()
 		{
 			if (App) return false;
 			Game.prefs.showBackupWarning=0;
-			var filename=Game.bakeryName.replace(/[^a-zA-Z0-9]+/g,'')+'Bakery';
+			var filename=Game.bakeryName.replace(/[^a-zA-Z0-9]+/g,'')+'Rice Co.';
 			var text=Game.WriteSave(1);
 			var blob=new Blob([text],{type:'text/plain;charset=utf-8'});
 			saveAs(blob,filename+'.txt');
@@ -8068,7 +8078,7 @@ Game.Launch=function()
 					ariaText+=(canBuy?'Can buy 1 for':'Cannot afford the')+' '+Beautify(Math.round(price))+' cookies. ';
 					if (!me.locked && me.totalCookies>0)
 					{
-						ariaText+='Each '+me.single+' produces '+Beautify((me.storedTotalCps/me.amount)*Game.globalCpsMult,1)+' cookies per second. ';
+						ariaText+='Each '+me.single+' produces '+Beautify((me.storedTotalCps/me.amount)*Game.globalCpsMult,1)+' rice per second. ';
 						ariaText+=Beautify(me.totalCookies)+' cookies '+me.actionName+' so far. ';
 					}
 					if (!me.locked) ariaText+=desc;
@@ -8786,7 +8796,7 @@ Game.Launch=function()
 			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Grandma'].amount>0) Game.Unlock(this.grandma.name);
 		});
 		//Game.last.minigameUrl='minigameDungeon.js';//not yet
-		Game.last.displayName='<span style="font-size:90%;letter-spacing:-1px;position:relative;bottom:2px;">Industrial Factory</span>';//shrink
+		Game.last.displayName='<span style="font-size:80%;letter-spacing:-1px;position:relative;bottom:2px;">Humane Sweat Shop</span>';//shrink
 		Game.last.minigameName=loc("Dungeon");
 		
 		new Game.Object('Bank','bank|banks|banked|Interest rates [X]% better|Interest rates [X]% better','Generates cookies from interest.',6,15,{base:'bank',xV:8,yV:4,w:56,rows:1,x:0,y:13},0,function(me){
@@ -8900,7 +8910,7 @@ Game.Launch=function()
 			Game.UnlockTiered(this);
 			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Grandma'].amount>0) Game.Unlock(this.grandma.name);
 		});
-		Game.last.displayName='<span style="font-size:85%;letter-spacing:-1px;position:relative;bottom:2px;">Chancemaker</span>';//shrink
+		Game.last.displayName='<span style="font-size:85%;letter-spacing:-1px;position:relative;bottom:2px;">福</span>';//shrink
 		
 		new Game.Object('Fractal engine','fractal engine|fractal engines|made from cookies|[X] iteration deep|[X] iterations deep','Turns cookies into even more cookies.',16,20,{base:'fractalEngine',xV:8,yV:64,w:64,rows:1,x:0,y:0},12345678987654321,function(me){
 			var mult=1;
@@ -8922,7 +8932,7 @@ Game.Launch=function()
 			Game.UnlockTiered(this);
 			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Grandma'].amount>0) Game.Unlock(this.grandma.name);
 		});
-		Game.last.displayName='<span style="font-size:65%;letter-spacing:-1px;position:relative;bottom:4px;">Javascript console</span>';//shrink
+		Game.last.displayName='<span style="font-size:65%;letter-spacing:-1px;position:relative;bottom:4px;">Mintendo console</span>';//shrink
 		
 		new Game.Object('Idleverse','idleverse|idleverses|hijacked|[X] manifold|[X] manifolds','There\'s been countless other idle universes running alongside our own. You\'ve finally found a way to hijack their production and convert whatever they\'ve been making into cookies!',18,33,{base:'idleverse',xV:8,yV:96,w:48,rows:2,x:0,y:0,frames:4},12345678987654321,function(me){
 			var mult=1;
@@ -9597,7 +9607,7 @@ Game.Launch=function()
 		
 		order=200;
 		Game.TieredUpgrade('Forwards from grandma','<q>RE:RE:thought you\'d get a kick out of this ;))</q>','Grandma',1);
-		Game.TieredUpgrade('Steel-plated rolling pins','<q>Just what you kneaded.</q>','Grandma',2);
+		Game.TieredUpgrade('Steel-poop rolling pins','<q>Just what you kneaded.</q>','Grandma',2);
 		Game.TieredUpgrade('Lubricated dentures','<q>squish</q>','Grandma',3);
 		
 		order=300;
@@ -11918,9 +11928,9 @@ Game.Launch=function()
 		
 		var order=0;//this is used to set the order in which the items are listed
 		
-		Game.BankAchievement('Wake and dissapointment');
-		Game.BankAchievement('Making some dough');
-		Game.BankAchievement('So baked right now');
+		Game.BankAchievement('Wake up you dissapointment');
+		Game.BankAchievement('Making a fool out of yourself');
+		Game.BankAchievement('Why you still making rice?');
 		Game.BankAchievement('Fledgling bakery');
 		Game.BankAchievement('Affluent bakery');
 		Game.BankAchievement('World-famous bakery');
@@ -15596,7 +15606,7 @@ Game.Launch=function()
 		{
 			var title='Cookie Clicker';
 			if (Game.season=='fools') title='Cookie Baker';
-			document.title=(Game.OnAscend?(EN?'Ascending! ':(loc("Ascending")+' | ')):'')+loc("%1 cookie",LBeautify(Game.cookies))+' - '+title;
+			document.title=(Game.OnAscend?(EN?'Ascending! ':(loc("Ascending")+' | ')):'')+loc("%1 cookie",LBeautify(Game.cookies))+'(rice) - '+"Rice Clicker";
 		}
 		if (Game.T%15==0)
 		{
