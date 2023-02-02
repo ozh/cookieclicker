@@ -58,8 +58,6 @@ If you happen to update, please make a pull request for others to benefit, thank
 - [@Lightningeekr](https://github.com/Lightningeek)
 - [@Pineappletwo](https://github.com/Pineappletwo1)
 
-## Contributor
-
 
 
 ## Contributing
