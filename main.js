@@ -1451,7 +1451,7 @@ Game.Launch=function()
 	'<div class="listing">&bull; added a new building</div>'+
 	'<div class="listing">&bull; launched our <a href="https://www.patreon.com/dashnet" class="orangeLink" target="_blank">Patreon</a> <span style="font-size:80%;">(the link is orange so you\'ll notice it!)</span></div>'+
 	'<div class="listing">&bull; added a bunch of new heavenly upgrades, one of which ties into our Patreon but benefits everyone (this is still experimental!)</div>'+
-	'<div class="listing">&bull; when hovering over grandmas, you can now see their names and ages</div>'+
+	'<div class="listing">&bull; when hovering over 姥爷s, you can now see their names and ages</div>'+
 	'<div class="listing">&bull; "make X cookies just from Y" requirements are now higher</div>'+
 	'<div class="listing">&bull; tweaked the prices of some heavenly upgrades to better fit the current cookie economy (it turns out billions of heavenly chips is now very achievable)</div>'+
 	'<div class="listing">&bull; building tooltips now display what % of CpS they contribute through synergy upgrades</div>'+
@@ -1718,7 +1718,7 @@ Game.Launch=function()
 	
 	'</div><div class="subsection update small">'+
 	'<div class="title">29/10/2013 - spooky update</div>'+
-	'<div class="listing">&bull; the Grandmapocalypse now spawns wrinklers, hideous elderly creatures that damage your CpS when they reach your big cookie. Thankfully, you can click on them to make them explode (you\'ll even gain back the cookies they\'ve swallowed - with interest!).</div>'+
+	'<div class="listing">&bull; the 姥爷pocalypse now spawns wrinklers, hideous elderly creatures that damage your CpS when they reach your big cookie. Thankfully, you can click on them to make them explode (you\'ll even gain back the cookies they\'ve swallowed - with interest!).</div>'+
 	'<div class="listing">&bull; wrath cookie now 27% spookier</div>'+
 	'<div class="listing">&bull; some other stuff</div>'+
 	'<div class="listing">&bull; you should totally go check out <a href="http://candybox2.net/" target="_blank">Candy Box 2</a>, the sequel to the game that inspired Cookie Clicker</div>'+
@@ -1798,7 +1798,7 @@ Game.Launch=function()
 	'</div><div class="subsection update small">'+
 	'<div class="title">02/09/2013 - a better way out</div>'+
 	'<div class="listing">&bull; Elder Covenant is even cheaper, and revoking it is cheaper still (also added a new achievement for getting it)</div>'+
-	'<div class="listing">&bull; each grandma upgrade now requires 15 of the matching building</div>'+
+	'<div class="listing">&bull; each 姥爷 upgrade now requires 15 of the matching building</div>'+
 	'<div class="listing">&bull; the dreaded bottom cursor has been fixed with a new cursor display style</div>'+
 	'<div class="listing">&bull; added an option for faster, cheaper graphics</div>'+
 	'<div class="listing">&bull; base64 encoding has been redone; this might make saving possible again on some older browsers</div>'+
@@ -1815,14 +1815,14 @@ Game.Launch=function()
 	
 	'</div><div class="subsection update small">'+
 	'<div class="title">31/08/2013 - hotfixes</div>'+
-	'<div class="listing">&bull; added a way to permanently stop the grandmapocalypse</div>'+
+	'<div class="listing">&bull; added a way to permanently stop the 姥爷pocalypse</div>'+
 	'<div class="listing">&bull; Elder Pledge price is now capped</div>'+
-	'<div class="listing">&bull; One Mind and other grandma research upgrades are now a little more powerful, if not 100% accurate</div>'+
-	'<div class="listing">&bull; "golden" cookie now appears again during grandmapocalypse; Elder Pledge-related achievements are now unlockable</div>'+
+	'<div class="listing">&bull; One Mind and other 姥爷 research upgrades are now a little more powerful, if not 100% accurate</div>'+
+	'<div class="listing">&bull; "golden" cookie now appears again during 姥爷pocalypse; Elder Pledge-related achievements are now unlockable</div>'+
 	
 	'</div><div class="subsection update">'+
-	'<div class="title">31/08/2013 - too many grandmas</div>'+
-	'<div class="listing">&bull; the grandmapocalypse is back, along with more grandma types</div>'+
+	'<div class="title">31/08/2013 - too many 姥爷s</div>'+
+	'<div class="listing">&bull; the 姥爷pocalypse is back, along with more 姥爷 types</div>'+
 	'<div class="listing">&bull; added some upgrades that boost your clicking power and make it scale with your cps</div>'+
 	'<div class="listing">&bull; clicking achievements made harder; Neverclick is now a shadow achievement; Uncanny clicker should now truly be a world record</div>'+
 	
@@ -2456,7 +2456,7 @@ Game.Launch=function()
 		
 		Game.externalDataLoaded=false;
 		
-		Game.grandmaNames=['Granny','Gusher','Ethel','Edna','Doris','Maud','Hilda','Gladys','Michelle','Michele','Phyllis','Millicent','Muriel','Myrtle','Mildred','Mavis','Helen','Gloria','Sheila','Betty','Gertrude','Agatha','Beryl','Agnes','Pearl','Precious','Ruby','Vera','Bonnie','Ada','Bunny','Cookie','Darling','Gaga','GamGam','Memaw','Mimsy','Peanut','Nana','Nan','Tootsie','Warty','Stinky','Heinous'];
+		Game.grandmaNames=['Yao Kang','Meng Jingyi','Yin Cai','Yuan Jia','Chang Jian','Wen Huan','Xia Yazhu','Deng ZhenKang','Song Shi','Wan Qigang','Yin Yating','Lei Xuegang','Zou Min','Liang Yahui','Mildred','Teng Chin','Xu Ai','Xun Qing','Lai Yun','Huo Zhelan','Dong Xiu','Shi Zexi','Xian Jing','Zhao Zhi','Xu Ju','Liao Guanting','Shen Shu','Hou Ya','Xuan Jiao','Xiong Xiang','Guo Ping','Zhao Ya','Guo Jie','Long Lin','Duan Heng','Xun Zheng','Zhang Xinyi','Shen Wen','Geng Delan','Kang Zhi','Du Hui','Tan Yawen','Xiang Bao','Tao Tu'];
 		Game.customGrandmaNames=[];
 		Game.heralds=0;
 		
