@@ -10,7 +10,7 @@ This mirror for, errrr, like, educational purpose, either to download for your o
 
 If the original game updates, here is how you can update the mirror:
 
-#### 1. Fetch all new images :
+## 1. Fetch all new images :
 
 From the root,
 
@@ -19,7 +19,7 @@ From the root,
 * `grep -v PARENTDIR index.html | grep '\[IMG' | grep -Po 'a href="\K.*?(?=")' | sed 's/\?.*//' > _imglist.txt`
 * `wget -N -i _imglist.txt -B http://orteil.dashnet.org/cookieclicker/img/`
 
-#### 2. Fetch all new sounds :
+## 2. Fetch all new sounds :
 
 Similarly, from the root :
 
@@ -28,7 +28,7 @@ Similarly, from the root :
 * `grep -v PARENTDIR index.html | grep '\[SND' | grep -Po 'a href="\K.*?(?=")' | sed 's/\?.*//' > _sndlist.txt`
 * `wget -N -i _sndlist.txt -B http://orteil.dashnet.org/cookieclicker/snd/`
 
-#### 3. Fetch all new translations :
+## 3. Fetch all new translations :
 
 Similarly, from the root :
 
@@ -37,7 +37,7 @@ Similarly, from the root :
 * `grep -v PARENTDIR index.html | grep '\[  ' | grep -Po 'a href="\K.*?(?=")' | sed 's/\?.*//' > _loclist.txt`
 * `wget -N -i _loclist.txt -B http://orteil.dashnet.org/cookieclicker/loc/`
 
-#### 4. Update `js` and `html` files :
+## 4. Update `js` and `html` files :
 
 From the root directory :
 
@@ -49,6 +49,33 @@ From the root directory :
   * Look for `ajax('/patreon/grab.php'` and replace it with `ajax('grab.txt'`
   * In the root: `wget -O grab.txt http://orteil.dashnet.org/patreon/grab.php`
 
-#### 5. Report update here :)
+## 5. Report update here :)
 
 If you happen to update, please make a pull request for others to benefit, thanks!
+
+## Authors
+- [@TheLazyCodernothacker](https://github.com/TheLazyCodernothacker)
+- [@Lightningeekr](https://github.com/Lightningeek)
+- [@Pineappletwo](https://github.com/Pineappletwo1)
+
+## Contributor
+
+
+
+## Contributing
+
+Contributions are always welcome!
+
+If you want to contribute to the repo please issue a pull request, we'll check and merge the code
+
+## Roadmap
+- Add more text
+## Support
+comming soon
+
+
+
+
+
+
+
