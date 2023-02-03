@@ -85,7 +85,7 @@ M.launch=function()
 				desc1:'<span class="green">Buildings produce 10% more cookies,</span> <span class="red">but golden and wrath cookies appear 10% less.</span>',
 				desc2:'<span class="green">Buildings produce 6% more cookies,</span> <span class="red">but golden and wrath cookies appear 6% less.</span>',
 				desc3:'<span class="green">Buildings produce 3% more cookies,</span> <span class="red">but golden and wrath cookies appear 3% less.</span>',
-				quote:'While this spirit has many regrets, helping you rule the world through constant industrialization is not one of them.',
+				quote:'While this spirit has many regrets, helping you rule the world through constant communism is not one of them.',
 			},
 			'mother':{
 				name:'Mokalsium, Mother Spirit',
@@ -96,13 +96,13 @@ M.launch=function()
 				quote:'A caring spirit said to contain itself, inwards infinitely.',
 			},
 			'scorn':{
-				name:'Skruuia, Spirit of Scorn',
+				name:'Skruuia, Spirit of B',
 				icon:[21,19],
 				descBefore:'<span class="red">All golden cookies are wrath cookies with a greater chance of a negative effect.</span>',
 				desc1:'<span class="green">Wrinklers appear 150% faster and digest 15% more cookies.</span>',
 				desc2:'<span class="green">Wrinklers appear 100% faster and digest 10% more cookies.</span>',
 				desc3:'<span class="green">Wrinklers appear 50% faster and digest 5% more cookies.</span>',
-				quote:'This spirit enjoys poking foul beasts and watching them squirm, but has no love for its own family.',
+				quote:'This spirit enjoys commiting mass genocide and worshipping facism.',
 			},
 			'order':{
 				name:'Rigidel, Spirit of Order',
@@ -116,7 +116,7 @@ M.launch=function()
 				desc2:'<span class="green">Sugar lumps ripen 40 minutes sooner.</span>',
 				desc3:'<span class="green">Sugar lumps ripen 20 minutes sooner.</span>',
 				descAfter:'<span class="red">Effect is only active when your total amount of buildings ends with 0.</span>',
-				quote:'You will find that life gets just a little bit sweeter if you can motivate this spirit with tidy numbers and properly-filled tax returns.',
+				quote:'You will find that life gets just a little bit sweeter if you can motivate this spirit with a beating and properly-filled tax returns.',
 			},
 		};
 		M.godsById=[];var n=0;
