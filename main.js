@@ -7300,19 +7300,19 @@ Game.Launch=function()
 						'doctors warn mothers about the dangers of "home-made cookies".'
 						]),
 					'News : "'+choose([
-						'I\'m all about cookies',
-						'I just can\'t stop eating cookies. I think I seriously need help',
-						'I guess I have a cookie problem',
-						'I\'m not addicted to cookies. That\'s just speculation by fans with too much free time',
-						'my upcoming album contains 3 songs about cookies',
-						'I\'ve had dreams about cookies 3 nights in a row now. I\'m a bit worried honestly',
-						'accusations of cookie abuse are only vile slander',
-						'cookies really helped me when I was feeling low',
-						'cookies are the secret behind my perfect skin',
-						'cookies helped me stay sane while filming my upcoming movie',
-						'cookies helped me stay thin and healthy',
-						'I\'ll say one word, just one : cookies',
-						'alright, I\'ll say it - I\'ve never eaten a single cookie in my life'
+						'I\'m all about rice',
+						'I just can\'t stop eating rice. I think I seriously need help',
+						'I guess I have a rice problem',
+						'I\'m not addicted to rice. That\'s just speculation by fans with too much free time',
+						'my upcoming album contains 3 songs about rice',
+						'I\'ve had dreams about rice 3 nights in a row now. I\'m a bit worried honestly',
+						'accusations of rice abuse are only vile slander',
+						'rice really helped me when I was feeling low',
+						'rice are the secret behind my perfect skin',
+						'rice helped me stay sane while filming my upcoming movie',
+						'rice helped me stay thin and healthy',
+						'I\'ll say one word, just one : rice',
+						'alright, I\'ll say it - I\'ve never eaten a single grain of rice in my life'
 						])+'", reveals celebrity.',
 					choose([
 						'News : scientist predicts imminent cookie-related "end of the world"; becomes joke among peers.',
