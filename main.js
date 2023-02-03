@@ -13,9 +13,9 @@ http://orteil.dashnet.org
 /*=====================================================================================
 MISC HELPER FUNCTIONS
 =======================================================================================*/
-const maxIq = 172
-const raymondIq = 23
-const yanjiaIq = 69
+const maxIq = -69420
+const raymondIq = 172
+const yanjiaIq = 155
 const williamIq = 157
 const ethanliuIq = 169
 const cadenIq = 50
@@ -7135,16 +7135,16 @@ Game.Launch=function()
 						]));
 						
 						if (Game.Objects['Prism'].amount>0) list.push(choose([
-						'News : new cookie-producing prisms linked to outbreak of rainbow-related viral videos.',
+						'News : new rice-producing prisms linked to outbreak of rainbow-related viral videos.',
 						'News : scientists warn against systematically turning light into matter - "One day, we\'ll end up with all matter and no light!"',
-						'News : cookies now being baked at the literal speed of light thanks to new prismatic contraptions.',
+						'News : rice now being cooked at the literal speed of light thanks to new prismatic contraptions.',
 						'News : "Can\'t you sense the prism watching us?", rambles insane local man. "No idea what he\'s talking about", shrugs cookie magnate/government official.',
 						'News : world citizens advised "not to worry" about frequent atmospheric flashes.',
 						]));
 						
 						if (Game.Objects['Chancemaker'].amount>0) list.push(choose([
-						'News : strange statistical anomalies continue as weather forecast proves accurate an unprecedented 3 days in a row!',
-						'News : local casino ruined as all gamblers somehow hit a week-long winning streak! "We might still be okay", says owner before being hit by lightning 47 times.',
+						'News : strange statistical anomalies continue as white run weather forecast proves accurate an unprecedented 3 days in a row!',
+						'News : local casino ruined as all asian gamblers somehow hit a week-long winning streak! "We might still be okay", says owner before being hit by lightning 47 times.',
 						'News : neighboring nation somehow elects president with sensible policies in freak accident of random chance!',
 						'News : million-to-one event sees gritty movie reboot turning out better than the original! "We have no idea how this happened", say movie execs.',
 						'News : all scratching tickets printed as winners, prompting national economy to crash and, against all odds, recover overnight.',
