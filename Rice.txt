@@ -87,30 +87,30 @@ Tofu Cookies = Tofu fried rice
 Gluten-Free Cookies = glutinous rice (still gluten-free)
 Russian Bread Cookies = Alphabet rice
 Lebkuchen = Honey sweetened rice pudding
-Aachener Printen
-Canistrelli
-Nice Biscuits
-French Pure Butter
-Petit Beurre
-Nanaimo Bars
-Berger Cookies
-Chinsuko
-Panda Koala Biscuits
-Putri Saliju
-Milk Cookies
-Kruidnotes
-Mario Biscuits
-Meringue Cookies
-Yogurt Cookies
-Thumbprint
-Pizzelle
-Granola Cookies
-Ricotta Cookies
-Roze Koeken
-Peanut Butter Cup Cookies
-Sesame Cookies
-Tayaki
-Vanillekiferl
+Aachener Printen = Spam Musubi
+Canistrelli = Dirty Rice
+Nice Biscuits = Siopao
+French Pure Butter = Taco Rice
+Petit Beurre = Hoppin John
+Nanaimo Bars = Taco Rice Bowl
+Berger Cookies = Curd Rice
+Chinsuko = Gaifan 
+Panda Koala Biscuits = Horchata
+Putri Saliju = Kongbap
+Milk Cookies = Loco Moco
+Kruidnotes = Puffed Rice Cakes
+Mario Biscuits = Ice Cream Rice
+Meringue Cookies = Steak and Rice
+Yogurt Cookies = Sweet Saffron Rice
+Thumbprint = Yin Yang Fried Rice
+Pizzelle = 100 year old rice
+Granola Cookies = Appam
+Ricotta Cookies = Arroz Con Pollo
+Roze Koeken = Arros Negre
+Peanut Butter Cup Cookies = Bhakari
+Sesame Cookies = Imitation Rice
+Tayaki = Pork Fat Rice
+Vanillekiferl = 
 Battenberg Biscuits
 Rosette Cookies
 Gangmakers
@@ -206,3 +206,53 @@ Butter Croissant = Katsuo Furikake
 legacy cookies = Legacy Rice:
 Cookie Crumbs = Rice off plate
 chocolate Chip Cookie = The heavenly Bowl.
+---------------------------------------------------
+Skull cookies = Skull Rice
+Ghost Cookies = Ghost Rice
+Bat Cookies = Bat Rice
+Slime Cookies = Slime Rice
+Pumpkin Cookies = Pumpkin Rice
+Eyeball Cookies = Eyeball Rice
+Spider cookies = Spider Rice
+------------------------------------------
+Christmas Tree Biscuits = Christas Tree with Rice Ornaments
+Snowflake Biscuits - Snowflake Rice
+Snowman Biscuits = Snowman Rice
+Hollly Biscuits = Holly Rice
+Candy Cane Biscuits = Candy Cane Rice
+Bell Biscuits = Bell Rice
+Present Biscuits = Present Rice
+-------------------------------------------
+Valentine's cookies = National Rainbow Sushi Roll Day
+Pure heart Biscuits = Tuna-Topped Rainbow Roll
+Ardent Heart Biscuits = Salmon-Topped Rainbow Roll
+Sour Heart Biscuits = Egg-Topped Rainbow Roll
+Golden Heart Biscuits = Avocado-Topped Rainbow Roll
+Eternal Heart Biscuits = Tempure-Topped Rainbow Roll
+Prism Heart Biscuits = Eel-Topped Rainbow Roll
+-----------------------------------------
+Garden Cookies = Garden Rice
+
+Elderwort Biscuits = Soil Rice
+Bakeberry Cookies = Dirt Rice
+Duketater Cookies = Gravel Rice
+Green Yeast Digestives = Fertilizer Rice
+Wheat Slims = Wheat Rice
+----------------------------------
+Butter Biscuits = Spam Musubi Collection
+Milk Chocolate Butter Biscuit = Classic Spam Musubi
+Dark Chocolate Butter Biscuit = Egg Spam Musubi
+Whtie Chocolate Butter Biscuit = Cheese Spam Musubi
+Ruby Chocolate Butter Biscuit = Avocado Spam Musubi
+Lavender Chocolate Butter Biscuit = Bacon Spam Musubi
+Synthetic Chocolatze Green Honey Butter Biscuit = Fried Egg Spam Musubi
+Royal Raspberry Chocoalte Butter Biscuit = Sausage Spam Musubi
+Ultra-Concentrated High-Energt Chocolate Butter Biscuit = Tempura Spam Musubi
+Pure Pitch-Black Chocolate-Butter Biscuit = Fried Chicken Spam Musubi
+Cosmic Chocolate Butter Biscuit = Breakfast Musubi
+Butter Biscuit(with butter) = Spam Musubi (with Spam)
+Everybutter Biscuit = 100% Spam Musubi
+-------------------------
+Other
+Dragon Cookie = Dragon Rice
+Birthday Cookie = Birthday Rice
