@@ -2189,7 +2189,7 @@ Game.Launch=function()
 			var str='';
 			if (EN)
 			{
-				return (Math.random()>0.05?(choose(['Magic','Fantastic','Fancy','Sassy','Snazzy','Pretty','Cute','Pirate','Ninja','Zombie','Robot','Radical','Urban','Cool','Hella','Sweet','Awful','Double','Triple','Turbo','Techno','Disco','Electro','Dancing','Wonder','Mutant','Space','Science','Medieval','Future','Captain','Bearded','Lovely','Tiny','Big','Fire','Water','Frozen','Metal','Plastic','Solid','Liquid','Moldy','Shiny','Happy','Happy Little','Slimy','Tasty','Delicious','Hungry','Greedy','Lethal','Professor','Doctor','Power','Chocolate','Crumbly','Choklit','Righteous','Glorious','Mnemonic','Psychic','Frenetic','Hectic','Crazy','Royal','El','Von'])+' '):'Mc')+choose(['Cookie','Biscuit','Muffin','Scone','Cupcake','Pancake','Chip','Sprocket','Gizmo','Puppet','Mitten','Sock','Teapot','Mystery','Baker','Cook','Grandma','Click','Clicker','Spaceship','Factory','Portal','Machine','Experiment','Monster','Panic','Burglar','Bandit','Booty','Potato','Pizza','Burger','Sausage','Meatball','Spaghetti','Macaroni','Kitten','Puppy','Giraffe','Zebra','Parrot','Dolphin','Duckling','Sloth','Turtle','Goblin','Pixie','Gnome','Computer','Pirate','Ninja','Zombie','Robot']);
+				return (Math.random()>0.05?(choose(['A+','4.6 GPA','Cheap','Golden','Chinese','Super Chinese','Humane','Super-Genius','China','Ching','Chong','Logical','Eco-Friendly','Wealthy','Never B','So Tasty','Best Deal','Very Legal','Non-White','Authentic','Traditional','Super-Modern','Ancient','Good Luck','Delicious','Yummy','So Tasty'])+' '):'Mc')+choose(['Business Man','Billionaire','Asian','Chinese','Super-Chinese','Farmer','Lucky','老爷','Panda','Dragon','Gold','Trillionaire','Good Deal','Budget','Exotic','Cook','Grandpa','Dog','Pig','Rat','Ox','Tiger','Rabbit','Snake','Horse','Goat','Monkey','Rooster','True-Asian','Bargain Maker','Piano Master','Doctor','Lawyer','Rice God']);
 			}
 			else
 			{
@@ -2222,18 +2222,18 @@ Game.Launch=function()
 		Game.bakeryNameRefresh=function()
 		{
 			var name=Game.bakeryName;
-			if (EN) {if (name.slice(-1).toLowerCase()=='s') name+='\' bakery'; else name+='\'s bakery';}
-			else name=loc("%1's bakery",name);
+			if (EN) {if (name.slice(-1).toLowerCase()=='s') name+='\' Rice Co.'; else name+='\'s Rice.Co';}
+			else name=loc("%1's Rice.Co",name);
 			Game.bakeryNameL.textContent=name;
 			name=Game.bakeryName.toLowerCase();
 			if (name=='orteil') Game.Win('God complex');
-			if (!App && name.indexOf('saysopensesame',name.length-('saysopensesame').length)>0 && !Game.sesame) Game.OpenSesame();
+			if (!App && name.indexOf('chingchong',name.length-('chingchong').length)>=0 && !Game.sesame) Game.OpenSesame();
 			Game.recalculateGains=1;
 		}
 		Game.bakeryNamePrompt=function()
 		{
 			PlaySound('snd/tick.mp3');
-			Game.Prompt('<id NameBakery><h3>'+loc("Name your bakery")+'</h3><div class="block" style="text-align:center;">'+loc("What should your bakery's name be?")+'</div><div class="block"><input type="text" style="text-align:center;width:100%;" id="bakeryNameInput" value="'+Game.bakeryName+'"/></div>',[[loc("Confirm"),'if (l(\'bakeryNameInput\').value.length>0) {Game.bakeryNameSet(l(\'bakeryNameInput\').value);Game.Win(\'What\\\'s in a name\');Game.ClosePrompt();}'],[loc("Random"),'Game.bakeryNamePromptRandom();'],loc("Cancel")]);
+			Game.Prompt('<id NameBakery><h3>'+loc("Name your Rice Co.")+'</h3><div class="block" style="text-align:center;">'+loc("What should your Rice Co's name be?")+'</div><div class="block"><input type="text" style="text-align:center;width:100%;" id="bakeryNameInput" value="'+Game.bakeryName+'"/></div>',[[loc("Confirm"),'if (l(\'bakeryNameInput\').value.length>0) {Game.bakeryNameSet(l(\'bakeryNameInput\').value);Game.Win(\'What\\\'s in a name\');Game.ClosePrompt();}'],[loc("Random"),'Game.bakeryNamePromptRandom();'],loc("Cancel")]);
 			l('bakeryNameInput').focus();
 			l('bakeryNameInput').select();
 			document.getElementById("bakeryName").innerHTML = Game.bakeryName + " Rice Co."
@@ -5900,7 +5900,7 @@ Game.Launch=function()
 		
 		Game.goldenCookieChoices=[
 			"5.0 GPA","4.9 GPA",
-			"Lucky","multiply cookies",
+			"2% Extra Credit!","multiply cookies",
 			"Ruin","ruin cookies",
 			"Elder frenzy","blood frenzy",
 			"B+","b+",
@@ -6879,24 +6879,24 @@ Game.Launch=function()
 				'<div class="subsection">'+
 				'<div class="title">'+loc("General")+'</div>'+
 				'<div id="statsGeneral">'+
-					'<div class="listing"><b>'+loc("Cookies in bank:")+'</b> <div class="price plain">'+Game.tinyCookie()+Beautify(Game.cookies)+'</div></div>'+
-					'<div class="listing"><b>'+loc("Cookies baked (this ascension):")+'</b> <div class="price plain">'+Game.tinyCookie()+Beautify(Game.cookiesEarned)+'</div></div>'+
-					'<div class="listing"><b>'+loc("Cookies baked (all time):")+'</b> <div class="price plain">'+Game.tinyCookie()+Beautify(Game.cookiesEarned+Game.cookiesReset)+'</div></div>'+
-					(Game.cookiesReset>0?'<div class="listing"><b>'+loc("Cookies forfeited by ascending:")+'</b> <div class="price plain">'+Game.tinyCookie()+Beautify(Game.cookiesReset)+'</div></div>':'')+
+					'<div class="listing"><b>'+loc("Rice in bank:")+'</b> <div class="price plain">'+Game.tinyCookie()+Beautify(Game.cookies)+'</div></div>'+
+					'<div class="listing"><b>'+loc("Rice made (this ascension):")+'</b> <div class="price plain">'+Game.tinyCookie()+Beautify(Game.cookiesEarned)+'</div></div>'+
+					'<div class="listing"><b>'+loc("Rice made (all time):")+'</b> <div class="price plain">'+Game.tinyCookie()+Beautify(Game.cookiesEarned+Game.cookiesReset)+'</div></div>'+
+					(Game.cookiesReset>0?'<div class="listing"><b>'+loc("Rice forfeited by ascending:")+'</b> <div class="price plain">'+Game.tinyCookie()+Beautify(Game.cookiesReset)+'</div></div>':'')+
 					(Game.resets?('<div class="listing"><b>'+loc("Legacy started:")+'</b> '+(fullDate==''?loc("just now"):loc("%1 ago",fullDate))+', '+loc("with %1 ascension",LBeautify(Game.resets))+'</div>'):'')+
 					'<div class="listing"><b>'+loc("Run started:")+'</b> '+(startDate==''?loc("just now"):loc("%1 ago",startDate))+'</div>'+
 					'<div class="listing"><b>'+loc("Buildings owned:")+'</b> '+Beautify(buildingsOwned)+'</div>'+
-					'<div class="listing"><b>'+loc("Cookies per second:")+'</b> '+Beautify(Game.cookiesPs,1)+' <small>'+
+					'<div class="listing"><b>'+loc("Rice per second:")+'</b> '+Beautify(Game.cookiesPs,1)+' <small>'+
 						'('+loc("multiplier:")+' '+Beautify(Math.round(Game.globalCpsMult*100),1)+'%)'+
 						(Game.cpsSucked>0?' <span class="warning">('+loc("withered:")+' '+Beautify(Math.round(Game.cpsSucked*100),1)+'%)</span>':'')+
 						'</small></div>'+
 					'<div class="listing"><b>'+loc("Raw cookies per second:")+'</b> '+Beautify(Game.cookiesPsRaw,1)+' <small>'+
 						'('+loc("highest this ascension:")+' '+Beautify(Game.cookiesPsRawHighest,1)+')'+
 						'</small></div>'+
-					'<div class="listing"><b>'+loc("Cookies per click:")+'</b> '+Beautify(Game.computedMouseCps,1)+'</div>'+
-					'<div class="listing"><b>'+loc("Cookie clicks:")+'</b> '+Beautify(Game.cookieClicks)+'</div>'+
-					'<div class="listing"><b>'+loc("Hand-made cookies:")+'</b> '+Beautify(Game.handmadeCookies)+'</div>'+
-					'<div class="listing"><b>'+loc("Golden cookie clicks:")+'</b> '+Beautify(Game.goldenClicksLocal)+' <small>('+loc("all time:")+' '+Beautify(Game.goldenClicks)+')</small></div>'+//' <span class="hidden">(<b>Missed golden cookies :</b> '+Beautify(Game.missedGoldenClicks)+')</span></div>'+
+					'<div class="listing"><b>'+loc("Roce per click:")+'</b> '+Beautify(Game.computedMouseCps,1)+'</div>'+
+					'<div class="listing"><b>'+loc("Rice clicks:")+'</b> '+Beautify(Game.cookieClicks)+'</div>'+
+					'<div class="listing"><b>'+loc("Hand-made Rice:")+'</b> '+Beautify(Game.handmadeCookies)+'</div>'+
+					'<div class="listing"><b>'+loc("Golden A+++ clicks:")+'</b> '+Beautify(Game.goldenClicksLocal)+' <small>('+loc("all time:")+' '+Beautify(Game.goldenClicks)+')</small></div>'+//' <span class="hidden">(<b>Missed golden cookies :</b> '+Beautify(Game.missedGoldenClicks)+')</span></div>'+
 					(dropMult!=1?'<div class="listing"><b>'+loc("Random drop multiplier:")+'</b> <small>x</small>'+Beautify(dropMult,2)+'</div>':'')+
 				'</div>'+
 				'<br><div class="listing"><b>'+loc("Running version:")+'</b> '+Game.version+'</div>'+
@@ -8636,7 +8636,7 @@ Game.Launch=function()
 		}
 		
 		//define objects
-		new Game.Object('Cursor','cursor|cursors|clicked|[X] extra finger|[X] extra fingers','Autoclicks once every 10 seconds.',0,0,{},15,function(me){
+		new Game.Object('Cursor','cursor|chopstics|clicked|[X] extra finger|[X] extra fingers','Autoclicks once every 10 seconds.',0,0,{},15,function(me){
 			var add=0;
 			if (Game.Has('Thousand fingers')) add+=		0.1;
 			if (Game.Has('Million fingers')) add*=		5;
@@ -9598,7 +9598,7 @@ Game.Launch=function()
 		var order=100;//this is used to set the order in which the items are listed
 		new Game.Upgrade('Reinforced grip',loc("You are not sucky anymore and are now <b>twice</b> as efficient at chopsticks.")+'<q>prod prod</q>',100,[0,0]);Game.MakeTiered(Game.last,1,0);
 		new Game.Upgrade('Asian skills unlocked',loc("You are now like a true Asian and are <b>twice</b> as efficient at chopsticks.")+'<q>it... it hurts to click...</q>',500,[0,1]);Game.MakeTiered(Game.last,2,0);
-		new Game.Upgrade('Ambidextrous',loc("You're kind of flexing, but are <b>twice</b> as efficient at chopsticks.")+'<q>Look ma, both hands!</q>',10000,[0,2]);Game.MakeTiered(Game.last,3,0);
+		new Game.Upgrade('Ambidextrous',loc("You refuse to actually get better at chopsticks, so you practice until you're finally ambidextrous. But, in the end, you are still <b>twice</b> as efficient at chopsticks.")+'<q>Look ma, both hands!</q>',10000,[0,2]);Game.MakeTiered(Game.last,3,0);
 		new Game.Upgrade('Thousand fingers',loc("The mouse and cursors gain <b>+%1</b> cookies for each non-cursor building owned.",0.1)+'<q>clickity</q>',100000,[0,13]);Game.MakeTiered(Game.last,4,0);
 		
 		new Game.Upgrade('Million fingers',getStrThousandFingersGain(5)+'<q>clickityclickity</q>',10000000,[0,14]);Game.MakeTiered(Game.last,5,0);
@@ -13004,7 +13004,7 @@ Game.Launch=function()
 		{
 			return {
 				name:'5.0 GPA',
-				desc:loc("Cookie production x%1 for %2!",[pow,Game.sayTime(time*Game.fps,-1)]),
+				desc:loc("Rice production x%1 for %2!",[pow,Game.sayTime(time*Game.fps,-1)]),
 				icon:[10,14],
 				time:time*Game.fps,
 				add:true,
@@ -15606,7 +15606,7 @@ Game.Launch=function()
 		{
 			var title='Cookie Clicker';
 			if (Game.season=='fools') title='Cookie Baker';
-			document.title=(Game.OnAscend?(EN?'Ascending! ':(loc("Ascending")+' | ')):'')+loc("%1 cookie",LBeautify(Game.cookies))+'(rice) - '+"Rice Clicker";
+			document.title=(Game.OnAscend?(EN?'Ascending! ':(loc("Ascending")+' | ')):'')+loc("%1 cookie",LBeautify(Game.cookies))+' - '+"Rice Clicker";
 		}
 		if (Game.T%15==0)
 		{
