@@ -110,26 +110,26 @@ Roze Koeken = Arros Negre
 Peanut Butter Cup Cookies = Bhakari
 Sesame Cookies = Imitation Rice
 Tayaki = Pork Fat Rice
-Vanillekiferl = 
-Battenberg Biscuits
-Rosette Cookies
-Gangmakers
-Welsh Cookies
-Raspberry Cheesecake Cookies
-Bakkenpootjes
-Fat Fascals
-Ischler Cookies
-Matcha Cookies
-Dalgona Cookies
-Spicy Cookies
-Smile Cookies
-Kolachy Cookies
-Gomma Cookies
-Vegan Cookies = green rice
-Coyotas
-Frosted Sugar Cookies
-Marshmallow Sandwich Cookies
-Web Cookies
+Vanillekiferl = Rice with too much truffle
+Battenberg Biscuits = Rice that you swear isn't Rice
+Rosette Cookies = Rice Cookie
+Gangmakers = 元宵
+Welsh Cookies = Bánh chưng
+Raspberry Cheesecake Cookies = Rice with pickled Vegetables 
+Bakkenpootjes = Soy sauce rice
+Fat Fascals = Plasma rice
+Ischler Cookies = Italian rice pie
+Matcha Cookies = 芝麻球
+Dalgona Cookies = Pink rice
+Spicy Cookies = Scientifically perfect rice
+Smile Cookies = Theoretical Rice that doesn't stick
+Kolachy Cookies = Cilantro Lime rice.
+Gomma Cookies = Overly healthy rice
+Vegan Cookies = Bronze Rice
+Coyotas = Silver Rice
+Frosted Sugar Cookies = Gold Rice
+Marshmallow Sandwich Cookies = Platinum Rice
+Web Cookies = Vibranium Rice
 -----------------------------------
 Tin of British Tea Biscuits = Bimbimbap ingredients:
 British Tea Biscuits = rice and carrots
