@@ -167,7 +167,7 @@ AddLanguage('EN','english',{
 	"Run started:": "/",
 	"Buildings owned:": "/",
 	"Cookies per second:": "/",
-	"Raw cookies per second:": "/",
+	"Raw rice per second:": "/",
 	"highest this ascension:": "/",
 	"multiplier:": "/",
 	"withered:": "/",

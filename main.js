@@ -13,7 +13,7 @@ http://orteil.dashnet.org
 /*=====================================================================================
 MISC HELPER FUNCTIONS
 =======================================================================================*/
-const maxIq = -69420
+const maxIq = 190
 const raymondIq = 172
 const yanjiaIq = 155
 const williamIq = 157
