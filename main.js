@@ -7063,10 +7063,10 @@ Game.Launch=function()
 						]));
 						
 						if (Game.Objects['Factory'].amount>0) list.push(choose([
-						'News : rice cooker factories linked to global warming!',
-						'News : rice cooker factories involved in chocolate weather controversy!',
-						'News : rice cooker factories on strike, robotic asians employed to replace workforce!',
-						'News : rice cooker factories on strike - workers demand to stop being paid in rice!',
+						'News : rice factories linked to global warming!',
+						'News : rice factories involved in chocolate weather controversy!',
+						'News : rice factories on strike, robotic asians employed to replace workforce!',
+						'News : rice factories on strike - workers demand to stop being paid in rice!',
 						'News : factory-made rice crackers linked to obesity, says study.'
 						]));
 						
@@ -7183,19 +7183,19 @@ Game.Launch=function()
 						]));
 						
 						if (Game.season=='halloween' && Game.cookiesEarned>=1000) list.push(choose([
-						'News : strange twisting creatures amass around cookie factories, nibble at assembly lines.',
-						'News : ominous wrinkly monsters take massive bites out of cookie production; "this can\'t be hygienic", worries worker.',
-						'News : pagan rituals on the rise as children around the world dress up in strange costumes and blackmail homeowners for candy.',
-						'News : new-age terrorism strikes suburbs as houses find themselves covered in eggs and toilet paper.',
-						'News : children around the world "lost and confused" as any and all Halloween treats have been replaced by cookies.'
+						'News : strange twisting creatures amass around rice factories, nibble at assembly lines.',
+						'News : ominous wrinkly monsters take massive bites out of rice production; "this can\'t be hygienic", worries worker.',
+						'News : pagan rituals on the rise as children around the world dress up in strange costumes and blackmail homeowners for rice instead of candy.',
+						'News : new-age terrorism strikes suburbs as houses find themselves covered in eggs and wet rice paper.',
+						'News : children around the world "lost and confused" as any and all rice have been replaced by Halloween candy.'
 						]));
 						
 						if (Game.season=='christmas' && Game.cookiesEarned>=1000) list.push(choose([
-						'News : bearded maniac spotted speeding on flying sleigh! Investigation pending.',
-						'News : Santa Claus announces new brand of breakfast treats to compete with cookie-flavored cereals! "They\'re ho-ho-horrible!" says Santa.',
-						'News : "You mean he just gives stuff away for free?!", concerned moms ask. "Personally, I don\'t trust his beard."',
+						'News : bearded maniac spotted speeding on flying sleigh! Investigation pending. \"Probably just another Fat American\" comments Asian parents.',
+						'News : Santa Claus announces new brand of breakfast treats to compete with rice-flavored cereals! "They\'re ho-ho-horrible!" says Santa.',
+						'News : "You mean he just gives stuff away for free?!", confused Asian parents ask. "All those damn brats just get things they don\'t deserve."',
 						'News : obese jolly lunatic still on the loose, warn officials. "Keep your kids safe and board up your chimneys. We mean it."',
-						'News : children shocked as they discover Santa Claus isn\'t just their dad in a costume after all!<br>"I\'m reassessing my life right now", confides Laura, aged 6.',
+						'News : children shocked as they discover Santa Claus isn\'t just their dad in a costume after all!<br>"I\'m reassessing my life right now", confides Laura, aged 6. \"That\'s what they want you to think.\" adds a troll.',
 						'News : mysterious festive entity with quantum powers still wrecking havoc with army of reindeer, officials say.',
 						'News : elves on strike at toy factory! "We will not be accepting reindeer chow as payment anymore. And stop calling us elves!"',
 						'News : elves protest around the nation; wee little folks in silly little outfits spread mayhem, destruction; rabid reindeer running rampant through streets.',
@@ -9447,12 +9447,12 @@ Game.Launch=function()
 		Game.UnlockAt=[];//this contains an array of every upgrade with a cookie requirement in the form of {cookies:(amount of cookies earned required),name:(name of upgrade or achievement to unlock)} (and possibly require:(name of upgrade of achievement to own))
 		//note : the cookie will not be added to the list if it contains locked:1 (use for seasonal cookies and such)
 		
-		var strCookieProductionMultiplierPlus=loc("Cookie production multiplier <b>+%1%</b>.",'[x]');
+		var strCookieProductionMultiplierPlus=loc("Rice production multiplier <b>+%1%</b>.",'[x]');
 		var getStrCookieProductionMultiplierPlus=function(x)
 		{return strCookieProductionMultiplierPlus.replace('[x]',x);}
 		var getStrThousandFingersGain=function(x)
 		{return loc("Multiplies the gain from %1 by <b>%2</b>.",[getUpgradeName("Thousand fingers"),x]);}
-		var strKittenDesc=loc("You gain <b>more CpS</b> the more milk you have.");
+		var strKittenDesc=loc("You gain <b>more Rps</b> the more sauce and curry you have.");
 		var getStrClickingGains=function(x)
 		{return loc("Clicking gains <b>+%1% of your CpS</b>.",x);}
 		
@@ -13004,7 +13004,7 @@ Game.Launch=function()
 		{
 			return {
 				name:'5.0 GPA',
-				desc:loc("Rice production x%1 for %2!",[pow,Game.sayTime(time*Game.fps,-1)]),
+				desc:loc("Cookie production x%1 for %2!",[pow,Game.sayTime(time*Game.fps,-1)]),
 				icon:[10,14],
 				time:time*Game.fps,
 				add:true,
