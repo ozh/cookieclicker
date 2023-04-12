@@ -6,6 +6,12 @@ The original game can be found at http://orteil.dashnet.org/cookieclicker/
 
 This mirror for, errrr, like, educational purpose, either to download for your own offline education or to be played online from http://ozh.github.io/cookieclicker/ if you cannot "educate" yourself on the original URL
 
+### How to play offline
+
+Download the source code
+Unzip to a folder
+Open index.html
+
 ### How to update
 
 If the original game updates, here is how you can update the mirror:
