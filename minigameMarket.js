@@ -8,7 +8,7 @@ M.launch=function()
 	M.init=function(div)
 	{
 		//populate div with html and initialize values
-				
+		
 		M.goods={
 			'Farm':{
 				name:'Cereals',
@@ -106,9 +106,21 @@ M.launch=function()
 				company:'Polyvalent Acquisitions',
 				desc:'Avoid the uncouth nastiness of mass layoffs and hostile takeovers by delegating the purchase, management, and eventual dissolution of other companies to the boys at <b>Polyvalent Acquisitions</b>. Let \'em deal with it!',
 			},
+			'Cortex baker':{
+				name:'Publicists',
+				symbol:'PBL',
+				company:'Great Minds',
+				desc:'Get those juices flowing: from market research to advertising, the think tanks at <b>Great Minds</b> will lend their talents to the highest bidder. It\'s intellectual property on tap.',
+			},
+			'You':{
+				name:'%1',
+				symbol:'YOU',
+				company:'%1\'s Bakery',
+				desc:'That\'s right! Your transcendental business skills are so influential, so universally resounding, that you\'ve become a publicly traded good yourself - you\'re the best <b>%1\'s Bakery</b> has to offer. Don\'t disappoint your shareholders, there\'s a price on your head! Invest in yourself NOW!',
+			},
 		};
 		M.goodsById=[];var n=0;
-		for (var i in M.goods){var it=M.goods[i];it.id=n;it.hidden=false;it.active=false;it.last=0;it.building=Game.Objects[i];it.stock=0;it.mode=0;it.dur=0;it.val=1;it.vals=[it.val];it.d=0;M.goodsById[n]=it;it.icon=[it.building.iconColumn,33];n++;}
+		for (var i in M.goods){var it=M.goods[i];it.id=n;it.hidden=false;it.active=false;it.last=0;it.building=Game.Objects[i];it.stock=0;it.mode=0;it.dur=0;it.prev=0;it.val=1;it.vals=[it.val];it.d=0;M.goodsById[n]=it;it.icon=[it.building.iconColumn,33];it.name=loc(FindLocStringByPart('STOCK '+(it.id+1)+' TYPE'));it.company=loc(FindLocStringByPart('STOCK '+(it.id+1)+' NAME'));it.symbol=loc(FindLocStringByPart('STOCK '+(it.id+1)+' LOGO'));n++;}
 		
 		M.goodTooltip=function(id)
 		{
@@ -117,13 +129,14 @@ M.launch=function()
 				var delta=M.goodDelta(id);
 				var val=M.getGoodPrice(me)
 				icon=me.icon||[0,0];
-				var str='<div style="padding:8px 4px;min-width:350px;">'+
+				var name=me.name.replace('%1',Game.bakeryName);
+				var str='<div style="padding:8px 4px;min-width:350px;" id="tooltipMarketGood">'+
 				'<div class="icon" style="float:left;margin-left:-8px;margin-top:-8px;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div>'+
-				'<div class="name">'+me.name+' <span style="font-size:12px;opacity:0.8;">(from <span style="font-variant:small-caps;">'+me.company+'</span>)</span> <span class="bankSymbol">'+me.symbol+' <span class="bankSymbolNum'+(delta>=0?' bankSymbolUp':delta<0?' bankSymbolDown':'')+'">'+(delta+''+(delta==Math.floor(delta)?'.00':(delta*10)==Math.floor(delta*10)?'0':'')+'%')+'</span></span></div>'+
-				'<div class="line"></div><div class="description">'+
-					'<q>'+me.desc+'</q>'+
-					'<div class="line"></div><div style="font-size:11px;">&bull; <div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div> '+me.name+': currently worth <b>$'+Beautify(val,2)+'</b> per unit.<br>&bull; You currently own <div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div> <b>'+Beautify(me.stock)+'</b>x '+me.name+' (worth <b>$'+Beautify(val*me.stock,2)+'</b>).<br>&bull; Your warehouses can store up to <div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div> <b>'+Beautify(M.getGoodMaxStock(me))+'</b>x '+me.name+'.<br>&bull; You may increase your storage space by upgrading your offices and by buying more <div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-me.building.iconColumn*48)+'px '+(0*48)+'px;"></div> '+me.building.plural+'. You also get 10 extra storage space per '+me.building.single+' level (currently: <b>+'+(me.building.level*10)+'</b>).<br>&bull; The average worth of this stock and how high it can peak depends on the building it is tied to, along with the level of your <div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-15*48)+'px '+(0*48)+'px;"></div> banks.</div>'+
-					'<div style="font-size:11px;opacity:0.5;margin-top:3px;">Shift-click the hide button to toggle all other stocks.</div>'+
+				'<div class="name">'+name+' <span style="font-size:12px;opacity:0.8;">('+loc("from %1",'<span style="font-variant:small-caps;">'+me.company.replace('%1',Game.bakeryName)+'</span>')+')</span> <span class="bankSymbol">'+me.symbol+' <span class="bankSymbolNum'+(delta>=0?' bankSymbolUp':delta<0?' bankSymbolDown':'')+'">'+(delta+''+(delta==Math.floor(delta)?'.00':(delta*10)==Math.floor(delta*10)?'0':'')+'%')+'</span></span></div>'+
+				'<div class="line"></div>'+(EN?'<div class="description">'+
+					'<q>'+me.desc.replace('%1',Game.bakeryName)+'</q>'+
+					'<div class="line">':'')+'</div><div style="font-size:11px;">&bull; <div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div> '+loc("%1: currently worth <b>$%2</b> per unit.",[name,Beautify(val,2)])+'<br>&bull; '+loc("You currently own %1 (worth <b>$%2</b>).",['<div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div> <b>'+Beautify(me.stock)+'</b>x '+name,Beautify(val*me.stock,2)])+'<br>&bull; '+loc("Your warehouses can store up to %1.",'<div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div> <b>'+Beautify(M.getGoodMaxStock(me))+'</b>x '+name)+'<br>&bull; '+loc("You may increase your storage space by upgrading your offices and by buying more %1. You also get %2 extra storage space per %3 level (currently: <b>+%4</b>).",['<div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-me.building.iconColumn*48)+'px '+(0*48)+'px;"></div> '+me.building.plural,10,me.building.single,(me.building.level*10)])+'<br>&bull; '+loc("The average worth of this stock and how high it can peak depends on the building it is tied to, along with the level of your %1.",'<div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-15*48)+'px '+(0*48)+'px;"></div> '+Game.Objects['Bank'].plural)+'</div>'+
+					'<div style="font-size:11px;opacity:0.5;margin-top:3px;">'+loc("%1 the hide button to toggle all other stocks.",loc("Shift-click"))+'</div>'+
 				'</div></div>';
 				return str;
 			};
@@ -146,18 +159,20 @@ M.launch=function()
 				n=Math.abs(n);
 				if (buyOrSell) n=Math.min(n,maxStock-stock);
 				if (!buyOrSell) n=Math.min(n,stock);
-				var str='<div style="padding:8px 4px;min-width:128px;text-align:center;font-size:11px;">'+
-					'<div style="font-size:9px;opacity:0.6;">Stock: <b'+((!buyOrSell && stock==0)?' class="red"':'')+'>'+Beautify(stock)+'</b>/<b'+((buyOrSell && stock>=maxStock)?' class="red"':'')+'>'+Beautify(maxStock)+'</b></div>'+
+				var str='<div style="padding:8px 4px;min-width:128px;text-align:center;font-size:11px;" id="tooltipMarketTrade">'+
+					'<div style="font-size:9px;opacity:0.6;">'+cap(loc("stock:"))+' <b'+((!buyOrSell && stock==0)?' class="red"':'')+'>'+Beautify(stock)+'</b>/<b'+((buyOrSell && stock>=maxStock)?' class="red"':'')+'>'+Beautify(maxStock)+'</b></div>'+
+					(me.prev?('<div class="line"></div>'+
+					'<div style="font-size:9px;opacity:0.6;font-weight:bold;">'+loc("last bought at<br>$%1 each",Beautify(me.prev,2))+'</div>'):'')+
 					'<div class="line"></div>'+
-					'<div>'+(buyOrSell?'Buy':'Sell')+' <b>'+Beautify(n)+'</b>x <div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-me.icon[0]*48)+'px '+(-me.icon[1]*48)+'px;"></div> '+me.name+'</div>'+
-					'<div>for <b>$'+Beautify(val,2)+'</b> each</div>'+
-					(overhead>1?('<div style="font-size:9px;opacity:0.6;">(+<b>'+Beautify((overhead-1)*100,2)+'%</b> overhead)</div>'):'')+
+					'<div>'+(buyOrSell?loc("Buy"):loc("Sell"))+' <b>'+Beautify(n)+'</b>x <div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-me.icon[0]*48)+'px '+(-me.icon[1]*48)+'px;"></div> '+me.name.replace('%1',Game.bakeryName)+'</div>'+
+					'<div>'+loc("for $%1 each",Beautify(val,2))+'</div>'+
+					(overhead>1?('<div style="font-size:9px;opacity:0.6;">('+loc("+<b>%1%</b> overhead",Beautify((overhead-1)*100,2))+')</div>'):'')+
 					'<div class="line"></div>'+
-					'<div style="font-size:9px;opacity:0.6;font-weight:bold;">'+(buyOrSell?'you spend':'you earn')+':</div>'+
+					'<div style="font-size:9px;opacity:0.6;font-weight:bold;">'+(buyOrSell?loc("you spend:"):loc("you earn:"))+'</div>'+
 					'<div><b class="hasTinyCookie '+(n<=0?'gray':(Game.cookies>=cost*n || !buyOrSell)?'green':'red')+'">'+Beautify(cost*n)+'</b></div>'+
 					(n>0?('<div style="font-size:9px;opacity:0.6;font-weight:bold;">($'+Beautify(val*overhead*n,2)+')</div>'+
-					'<div style="font-size:9px;opacity:0.6;font-weight:bold;">('+Game.sayTime(val*overhead*n*Game.fps,-1)+' of CpS)</div>'):'')+
-					(((me.last==1 && !buyOrSell) || (me.last==2 && buyOrSell))?'<div class="line"></div><div class="red">You cannot buy and sell this stock in the same tick.</div>':'')+
+					'<div style="font-size:9px;opacity:0.6;font-weight:bold;">('+loc("%1 of CpS",Game.sayTime(val*overhead*n*Game.fps,-1))+')</div>'):'')+
+					(((me.last==1 && !buyOrSell) || (me.last==2 && buyOrSell))?'<div class="line"></div><div class="red">'+loc("You cannot buy and sell this stock in the same tick.")+'</div>':'')+
 				'</div>';
 				return str;
 			};
@@ -214,6 +229,7 @@ M.launch=function()
 				if (min>=100) Game.Win('Rookie numbers');
 				if (min>=500) Game.Win('No nobility in poverty');
 				me.last=1;
+				me.prev=costInS;
 				PlaySound('snd/cashOut.mp3',0.4);
 				return true;
 			}
@@ -255,13 +271,11 @@ M.launch=function()
 				me.l.style.display='inline-block';
 				if (!me.hidden)
 				{
-					me.viewHideL.innerHTML='Hide';
 					me.l.classList.remove('bankHidden');
 					me.graphIconL.style.display='block';
 				}
 				else
 				{
-					me.viewHideL.innerHTML='View';
 					me.l.classList.add('bankHidden');
 					me.graphIconL.style.display='none';
 				}
@@ -275,12 +289,12 @@ M.launch=function()
 		
 		M.officeLevel=0;
 		M.offices=[
-			{name:'Credit garage',icon:[0,33],cost:[100,2],desc:'This is your starting office.<br>Upgrading will grant you:<br><b><!--&bull; +1 opportunity slot<br>-->&bull; +25 warehouse space for all goods</b>'},
-			{name:'Tiny bank',icon:[9,33],cost:[200,4],desc:'This is your office.<br>Upgrading will grant you:<br><b>&bull; +1 loan slot<br>&bull; +50 warehouse space for all goods</b>'},
-			{name:'Loaning company',icon:[10,33],cost:[350,8],desc:'This is your office.<br>Upgrading will grant you:<br><!--<b>&bull; +1 opportunity slot<br>-->&bull; +75 warehouse space for all goods</b>'},
-			{name:'Finance headquarters',icon:[11,33],cost:[500,10],desc:'This is your office.<br>Upgrading will grant you:<br><b>&bull; +1 loan slot<br>&bull; +100 warehouse space for all goods</b>'},
-			{name:'International exchange',icon:[12,33],cost:[700,12],desc:'This is your office.<br>Upgrading will grant you:<br><b>&bull; +1 loan slot<br><!--&bull; +1 opportunity slot<br>-->&bull; +50% base warehouse space for all goods</b>'},
-			{name:'Palace of Greed',icon:[18,33],cost:0,desc:'This is your office.<br>It is fully upgraded. Its lavish interiors, spanning across innumerable floors, are host to many a decadent party, owing to your nigh-unfathomable wealth.'},
+			{name:loc("Credit garage"),icon:[0,33],cost:[100,2],desc:EN?"This is your starting office.":loc("This is your office.")+'<br>'+loc("Upgrading will grant you:")+'<br><b><!--&bull; '+loc("+1 opportunity slot")+'<br>-->&bull; '+loc("+%1 warehouse space for all goods",25)+'</b>'},
+			{name:loc("Tiny bank"),icon:[9,33],cost:[200,4],desc:loc("This is your office.")+'<br>'+loc("Upgrading will grant you:")+'<br><b>&bull; '+loc("+1 loan slot")+'<br>&bull; '+loc("+%1 warehouse space for all goods",50)+'</b>'},
+			{name:loc("Loaning company"),icon:[10,33],cost:[350,8],desc:loc("This is your office.")+'<br>'+loc("Upgrading will grant you:")+'<br><!--<b>&bull; '+loc("+1 opportunity slot")+'<br>-->&bull; '+loc("+%1 warehouse space for all goods",75)+'</b>'},
+			{name:loc("Finance headquarters"),icon:[11,33],cost:[500,10],desc:loc("This is your office.")+'<br>'+loc("Upgrading will grant you:")+'<br><b>&bull; '+loc("+1 loan slot")+'<br>&bull; '+loc("+%1 warehouse space for all goods",100)+'</b>'},
+			{name:loc("International exchange"),icon:[12,33],cost:[700,12],desc:loc("This is your office.")+'<br>'+loc("Upgrading will grant you:")+'<br><b>&bull; '+loc("+1 loan slot")+'<br><!--&bull; '+loc("+1 opportunity slot")+'<br>-->&bull; '+loc("+%1% base warehouse space for all goods",50)+'</b>'},
+			{name:loc("Palace of Greed"),icon:[18,33],cost:0,desc:loc("This is your office.")+'<br>'+loc("It is fully upgraded. Its lavish interiors, spanning across innumerable floors, are host to many a decadent party, owing to your nigh-unfathomable wealth.")},
 		];
 		
 		M.officeTooltip=function()
@@ -288,16 +302,16 @@ M.launch=function()
 			return function(){
 				var me=M.offices[M.officeLevel];
 				var icon=me.icon||[0,0];
-				var str='<div style="padding:8px 4px;min-width:350px;">'+
+				var str='<div style="padding:8px 4px;min-width:350px;" id="tooltipMarketOffice">'+
 				'<div class="icon" style="float:left;margin-left:-8px;margin-top:-8px;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div>'+
-				'<div class="name">'+me.name+' <span style="font-size:11px;opacity:0.6;">[Level '+(M.officeLevel+1)+' offices]</span></div>'+
+				'<div class="name">'+me.name+' <span style="font-size:11px;opacity:0.6;">['+loc("Level %1 offices",M.officeLevel+1)+']</span></div>'+
 				'<div class="line"></div><div class="description" style="font-size:11px;">'+
 					me.desc+
 				'</div>'+
 				(me.cost?('<div class="line"></div><div style="font-size:11px;padding-left:24px;position:relative;">'+
 					'<div id="bankOfficeIcon" class="icon" style="position:absolute;left:0px;top:6px;pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-11*48)+'px '+(-0*48)+'px;"></div>'+
-					'Upgrading will cost you <b class="'+(Game.Objects['Cursor'].amount>=me.cost[0]?'green':'red')+'">'+me.cost[0]+' cursors</b>.<br>'+
-					'Upgrading requires <b class="'+(Game.Objects['Cursor'].level>=me.cost[1]?'green':'red')+'">level '+me.cost[1]+' cursors</b>.'+
+					loc("Upgrading will cost you %1.",'<b class="'+(Game.Objects['Cursor'].amount>=me.cost[0]?'green':'red')+'">'+me.cost[0]+' '+Game.Objects['Cursor'].plural+'</b>')+'<br>'+
+					loc("Upgrading requires %1.",'<b class="'+(Game.Objects['Cursor'].level>=me.cost[1]?'green':'red')+'">'+loc("Level %1 %2",[me.cost[1],Game.Objects['Cursor'].plural])+'</b>')+
 				'</div>'):'')+
 				'</div>';
 				return str;
@@ -312,18 +326,18 @@ M.launch=function()
 		{
 			return function(){
 				var icon=[1,33];
-				var str='<div style="padding:8px 4px;min-width:350px;">'+
+				var str='<div style="padding:8px 4px;min-width:350px;" id="tooltipMarketBrokers">'+
 				'<div class="icon" style="float:left;margin-left:-8px;margin-top:-8px;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div>'+
-				'<div class="name">Stockbrokers <span style="font-size:11px;opacity:0.6;">(you have '+Beautify(M.brokers)+')</span></div>'+
+				'<div class="name">'+(EN?('Stockbrokers <span style="font-size:11px;opacity:0.6;">(you have '+Beautify(M.brokers)+')</span>'):(loc("Brokers:")+' '+Beautify(M.brokers)))+'</div>'+
 				'<div class="line"></div><div class="description" style="font-size:11px;">'+
-					'A nice broker to trade more cookies.<br>'+
-					'&bull; Buying goods normally incurs overhead costs of <b>20% extra</b>. Each broker you hire reduces that cost by <b>5%</b>.<br>'+
-					'&bull; Current overhead costs thanks to your '+Beautify(M.brokers)+' broker'+(M.brokers==1?'':'s')+': <b>+'+Beautify(20*Math.pow(0.95,M.brokers),2)+'%</b><br>'+
-					'&bull; Buying a broker costs <b class="hasTinyCookie '+(Game.cookies>=M.getBrokerPrice()?'green':'red')+'">20 minutes</b> of CpS (that\'s $1200).<br>'+
-					'&bull; Maximum number of brokers you can own: <b class="'+(M.brokers<M.getMaxBrokers()?'green':'red')+'">'+Beautify(M.getMaxBrokers())+'</b> (the highest amount of grandmas you\'ve owned this run, divided by 10, plus your grandma level)<br>'+
-					'<q>Brokers are Wall Street-class grandmas versed in the ways of finance. Stockbroker grandmas work hard and play hard, and will fight telephone in hand to get your clients the best possible deals - with a sizeable profit margin for you, of course.</q>'+
+					loc("A nice broker to trade more cookies.")+'<br>'+
+					'&bull; '+loc("Buying goods normally incurs overhead costs of <b>%1% extra</b>. Each broker you hire reduces that cost by <b>%2%</b>.",[20,5])+'<br>'+
+					'&bull; '+loc("Current overhead costs thanks to your brokers: <b>+%1%</b>",Beautify(20*Math.pow(0.95,M.brokers),2))+'<br>'+
+					'&bull; '+loc("Buying a broker costs %1 of CpS (that's $%2).",['<b class="hasTinyCookie '+(Game.cookies>=M.getBrokerPrice()?'green':'red')+'">'+loc("%1 minute",LBeautify(20))+'</b>',1200])+'<br>'+
+					'&bull; '+loc("Maximum number of brokers you can own: %1 (the highest amount of grandmas you've owned this run, divided by 10, plus your grandma level)",'<b class="'+(M.brokers<M.getMaxBrokers()?'green':'red')+'">'+Beautify(M.getMaxBrokers())+'</b>')+'<br>'+
+					'<q>'+loc("Brokers are Wall Street-class grandmas versed in the ways of finance. Stockbroker grandmas work hard and play hard, and will fight telephone in hand to get your clients the best possible deals - with a sizeable profit margin for you, of course.")+'</q>'+
 					'<div class="line"></div><div style="font-size:11px;text-align:center;">'+
-						'Hiring a new broker will cost you <b class="hasTinyCookie '+(Game.cookies>=M.getBrokerPrice()?'green':'red')+'">'+Beautify(M.getBrokerPrice())+' cookies</b>.'+
+						loc("Hiring a new broker will cost you %1.",'<b class="hasTinyCookie '+(Game.cookies>=M.getBrokerPrice()?'green':'red')+'">'+loc("%1 cookie",LBeautify(M.getBrokerPrice()))+'</b>')+
 					'</div>'+
 				'</div>'+
 				'</div>';
@@ -333,20 +347,20 @@ M.launch=function()
 		
 		M.loanTypes=[
 			//name, mult, duration, payback mult, duration, downpayment (as % of bank), quote
-			['a modest loan',1.5,60*2,0.25,60*4,0.2,'Buy that vintage car you\'ve always wanted. Just pay us back.'],
-			['a pawnshop loan',2,0.67,0.1,40,0.4,'Bad credit? No problem. It\'s your money, and you need it now.'],
-			['a retirement loan',1.2,60*24*2,0.8,60*24*5,0.5,'Finance your next house, boat, spouse, etc. You\'ve earned it.'],
+			[loc("a modest loan"),1.5,60*2,0.25,60*4,0.2,loc("Buy that vintage car you've always wanted. Just pay us back.")],
+			[loc("a pawnshop loan"),2,0.67,0.1,40,0.4,loc("Bad credit? No problem. It's your money, and you need it now.")],
+			[loc("a retirement loan"),1.2,60*24*2,0.8,60*24*5,0.5,loc("Finance your next house, boat, spouse, etc. You've earned it.")],
 		];
 		M.loanTooltip=function(id)
 		{
 			return function(){
 				var loan=M.loanTypes[id-1];
-				var str='<div style="padding:8px 4px;min-width:350px;">'+
-				'<div class="name">Take out '+loan[0]+'</div>'+
+				var str='<div style="padding:8px 4px;min-width:350px;" id="tooltipMarketLoan">'+
+				'<div class="name">'+loc("Take out %1",loan[0])+'</div>'+
 				'<div class="line"></div><div class="description" style="font-size:11px;">'+
-					'By taking this loan, you will get <b class="green">+'+Math.round((loan[1]-1)*100)+'%</b> CpS for the next <b>'+Game.sayTime(60*loan[2]*Game.fps)+'</b>.<br>'+
-					'However, you will get <b class="red">'+Math.round((loan[3]-1)*100)+'%</b> CpS for the next <b>'+Game.sayTime(60*loan[4]*Game.fps)+'</b> after that.<br>'+
-					'You must also pay an immediate downpayment of <b class="hasTinyCookie red">'+Beautify(Game.cookies*loan[5])+'</b> (<b>'+(loan[5]*100)+'%</b> of your current bank).<br>'+
+					loc("By taking this loan, you will get %1 CpS for the next %2.",['<b class="green">+'+Math.round((loan[1]-1)*100)+'%</b>','<b>'+Game.sayTime(60*loan[2]*Game.fps)+'</b>'])+'<br>'+
+					loc("However, you will get %1 CpS for the next %2 after that.",['<b class="red">'+Math.round((loan[3]-1)*100)+'%</b>','<b>'+Game.sayTime(60*loan[4]*Game.fps)+'</b>'])+
+					loc("You must also pay an immediate downpayment of %1 (<b>%2%</b> of your current bank).",['<b class="hasTinyCookie red">'+Beautify(Game.cookies*loan[5])+'</b>',(loan[5]*100)])+
 					'<q>'+loan[6]+'</q>'+
 				'</div>';
 				return str;
@@ -364,7 +378,7 @@ M.launch=function()
 			else
 			{
 				Game.gainBuff('loan '+id+' interest',loan[4]*60,loan[3]);
-				Game.Notify('Loan over','Your loan has expired, and you must now repay the interest.',[1,33]);
+				Game.Notify(loc("Loan over"),loc("Your loan has expired, and you must now repay the interest."),[1,33]);
 			}
 			return true;
 		}
@@ -379,12 +393,12 @@ M.launch=function()
 			return slots;
 		}
 		
-		//note : opportunity system to be added later maybe
+		//note: opportunity system to be added later maybe
 		
 		M.oppTooltip=function()
 		{
 			return function(){
-				var str='<div style="padding:8px 4px;min-width:350px;">'+
+				var str='<div style="padding:8px 4px;min-width:350px;" id="tooltipMarketOpp">'+
 				'<div class="name">Generate opportunity</div>'+
 				'<div class="line"></div><div class="description" style="font-size:11px;">'+
 					'Pressing this button gives you up to 3 possible actions to choose from, depending on your office level.<br>These actions will let you manipulate the stock market to some degree, though some are riskier than others.<br>You may only generate an opportunity once an hour, though this can be refreshed with a sugar lump.'+
@@ -394,15 +408,15 @@ M.launch=function()
 		}
 		
 		M.refillTooltip=function(){
-			return '<div style="padding:8px;width:300px;font-size:11px;text-align:center;">Click to refill your opportunity timer (and give a quick burst to your economy) for <span class="price lump">1 sugar lump</span>.'+
-				(Game.canRefillLump()?'<br><small>(can be done once every '+Game.sayTime(Game.getLumpRefillMax(),-1)+')</small>':('<br><small class="red">(usable again in '+Game.sayTime(Game.getLumpRefillRemaining()+Game.fps,-1)+')</small>'))+
+			return '<div style="padding:8px;width:300px;font-size:11px;text-align:center;" id="tooltipRefill">'+loc("Click to refill your opportunity timer (and give a quick burst to your economy) for %1.",'<span class="price lump">'+loc("%1 sugar lump",LBeautify(1))+'</span>')+
+				(Game.canRefillLump()?'<br><small>('+loc("can be done once every %1",Game.sayTime(Game.getLumpRefillMax(),-1))+')</small>':('<br><small class="red">('+loc("usable again in %1",Game.sayTime(Game.getLumpRefillRemaining()+Game.fps,-1))+')</small>'))+
 			'</div>';
 		};
 		
 		
 		var str='';
 		str+='<style>'+
-		'#bankBG{background:url(img/shadedBorders.png),url(img/BGmarket.jpg);background-size:100% 100%,auto;position:absolute;left:0px;right:0px;top:0px;bottom:16px;}'+
+		'#bankBG{background:url('+Game.resPath+'img/shadedBorders.png),url('+Game.resPath+'img/BGmarket.jpg);background-size:100% 100%,auto;position:absolute;left:0px;right:0px;top:0px;bottom:16px;}'+
 		'#bankContent{position:relative;box-sizing:border-box;padding:4px;text-align:center;}'+
 		
 		'.bankGood{margin:2px;display:inline-block;width:156px;text-align:center;position:relative;left:0px;top:0px;right:0px;box-sizing:border-box;box-shadow:0px 0px 0px 1px rgba(255,255,255,0.1), 2px 2px 4px rgba(0,0,0,0.5) inset;background:rgba(0,0,0,0.9);color:rgba(255,255,255,0.7);}'+
@@ -423,10 +437,12 @@ M.launch=function()
 		'.bankSymbolDown:after{content:\'\u25bc\';}'+
 		'#bankGraphBox{background:#fff;position:relative;z-index:5;overflow:hidden;height:300px;}'+
 		'.bankGraphIcon{position:absolute;right:-24px;top:-24px;z-index:10;transform:scale(0);transition:transform 0.3s;}'+
-		'.bankViewHide{position:absolute;z-index:10;padding:4px;top:-2px;right:0px;}'+
+		//'.bankViewHide{position:absolute;z-index:10;padding:4px;top:-2px;right:0px;}'+
+		'.bankViewHide{position:absolute;z-index:10;width:14px;height:14px;background:url('+Game.resPath+'img/tinyEyeOn.png);top:1px;right:4px;opacity:0.8;}'+
+		'.bankHidden .bankViewHide{background:url('+Game.resPath+'img/tinyEyeOff.png);}'+
 		'.bankSimpleButton{font-weight:bold;font-size:10px;cursor:pointer;text-decoration:underline;color:rgba(255,255,255,0.9);text-shadow:0px 1px #000;}'+
+		'.bankSimpleButton:hover{color:#fff;opacity:1;}'+
 		'.bankSimpleButton:active{opacity:0.5;}'+
-		'.bankSimpleButton:hover{color:#fff;}'+
 		'</style>';
 		
 		str+='<div id="bankBG"></div>';
@@ -434,13 +450,15 @@ M.launch=function()
 			
 			str+='<div id="bankHeader" style="z-index:10;position:relative;">'+
 				'<div>'+
-					'<div style="padding:1px 4px;font-size:10px;color:rgba(255,255,255,0.5);">Profits: <span id="bankBalance">$0</span>. All prices are in <b style="color:#fff;">$</b>econds of your highest raw cookies per second. <span id="bankNextTick"></span></div>'+
+					'<div style="padding:1px 4px;font-size:10px;color:rgba(255,255,255,0.5);">'+(EN?'Profits: <span id="bankBalance">$0</span>. All prices are in <b style="color:#fff;">$</b>econds of your highest raw cookies per second.':loc("Profits: %1. All prices are in $econds of your highest raw cookies per second.",'<span id="bankBalance">$0</span>'))+' <span id="bankNextTick"></span></div>'+
 					'<div id="bankOffice" style="display:inline-block;padding:0px 4px;" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.officeTooltip()','this')+'><div id="bankOfficeIcon" class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -12px -14px;vertical-align:middle;background-position:'+(-0*48)+'px '+(-33*48)+'px;"></div><span id="bankOfficeName" class="bankSymbol" style="width:128px;"></span><div class="bankButton bankButtonBuy bankButtonOff" id="bankOfficeUpgrade">-</div></div>'+
-					'<div id="bankBrokers" style="display:inline-block;padding:0px 4px;" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.brokersTooltip()','this')+'><div id="bankBrokersIcon" class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -12px -14px;vertical-align:middle;background-position:'+(-1*48)+'px '+(-33*48)+'px;"></div><span id="bankBrokersText" class="bankSymbol" style="width:96px;">no brokers</span><div class="bankButton bankButtonBuy bankButtonOff" id="bankBrokersBuy">Hire</div></div>'+
-					'<div style="display:inline-block;padding:0px 4px;"><div id="bankLoan1" style="display:none;" class="bankButton bankButtonSell bankButtonOff" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.loanTooltip(1)','this')+'>1st loan</div><div id="bankLoan2" style="display:none;" class="bankButton bankButtonSell bankButtonOff" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.loanTooltip(2)','this')+'>2nd loan</div><div id="bankLoan3" style="display:none;" class="bankButton bankButtonSell bankButtonOff" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.loanTooltip(3)','this')+'>3rd loan</div></div>'+
+					'<div id="bankBrokers" style="display:inline-block;padding:0px 4px;" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.brokersTooltip()','this')+'><div id="bankBrokersIcon" class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -12px -14px;vertical-align:middle;background-position:'+(-1*48)+'px '+(-33*48)+'px;"></div><span id="bankBrokersText" class="bankSymbol" style="width:96px;">'+(EN?'no brokers':loc("Brokers:")+' 0')+'</span><div class="bankButton bankButtonBuy bankButtonOff" id="bankBrokersBuy">'+loc("Hire")+'</div></div>'+
+					'<div style="display:inline-block;padding:0px 4px;"><div id="bankLoan1" style="display:none;" class="bankButton bankButtonSell bankButtonOff" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.loanTooltip(1)','this')+'>'+(EN?'1st loan':loc("Loan #%1",1))+'</div><div id="bankLoan2" style="display:none;" class="bankButton bankButtonSell bankButtonOff" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.loanTooltip(2)','this')+'>'+(EN?'2nd loan':loc("Loan #%1",2))+'</div><div id="bankLoan3" style="display:none;" class="bankButton bankButtonSell bankButtonOff" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.loanTooltip(3)','this')+'>'+(EN?'3rd loan':loc("Loan #%1",3))+'</div></div>'+
 					/*'<div style="display:inline-block;padding:0px 4px;"><div id="bankOpp" class="bankButton bankButtonBuy bankButtonOff" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.oppTooltip()','this')+'>Generate opportunity</div> <div class="bankSymbol" style="position:relative;font-size:10px;color:rgba(255,255,255,0.6);padding-left:16px;"><div '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.refillTooltip','this')+' id="bankLumpRefill" class="usesIcon shadowFilter lumpRefill" style="left:-18px;top:-18px;background-position:'+(-29*48)+'px '+(-14*48)+'px;"></div>refresh</div></div>'+*/
 				'</div>';
 			
+			var buyStr=loc("Buy");
+			var sellStr=loc("Sell");
 			for (var i=0;i<M.goodsById.length;i++)
 			{
 				var me=M.goodsById[i];
@@ -448,22 +466,22 @@ M.launch=function()
 					'<div '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.goodTooltip('+me.id+')','this')+'>'+
 						'<div class="icon" style="z-index:20;pointer-events:none;position:absolute;left:0px;top:0px;transform:scale(0.5);margin:-16px -16px;background-position:'+(-me.icon[0]*48)+'px '+(-me.icon[1]*48)+'px;"></div>'+
 						'<div class="bankSymbol" style="margin:1px 0px;display:block;padding:2px 0px;width:100%;overflow:hidden;white-space:nowrap;">'+me.symbol+' <span id="bankGood-'+me.id+'-sym" class="bankSymbolNum">-.--%</span></div>'+
-						'<div class="bankViewHide bankSimpleButton" id="bankGood-'+me.id+'-viewHide">Hide</div>'+
-						'<div class="bankSymbol" style="margin:1px 0px;display:block;font-size:10px;width:100%;background:linear-gradient(to right,transparent,#333,#333,transparent);padding:2px 0px;overflow:hidden;white-space:nowrap;">value: <span style="font-weight:bold;color:#fff;" id="bankGood-'+me.id+'-val">-</span></div>'+
-						'<div class="bankSymbol" style="margin:1px 0px;display:block;font-size:10px;width:100%;background:linear-gradient(to right,transparent,#333,#333,transparent);padding:2px 0px;overflow:hidden;white-space:nowrap;" id="bankGood-'+me.id+'-stockBox">stock: <span style="font-weight:bold;" id="bankGood-'+me.id+'-stock">-</span><span style="font-weight:bold;" id="bankGood-'+me.id+'-stockMax">/-</span></div>'+
+						'<div class="bankViewHide bankSimpleButton" id="bankGood-'+me.id+'-viewHide"></div>'+
+						'<div class="bankSymbol" style="margin:1px 0px;display:block;font-size:10px;width:100%;background:linear-gradient(to right,transparent,#333,#333,transparent);padding:2px 0px;overflow:hidden;white-space:nowrap;">'+loc("value:")+' <span style="font-weight:bold;color:#fff;" id="bankGood-'+me.id+'-val">-</span></div>'+
+						'<div class="bankSymbol" style="margin:1px 0px;display:block;font-size:10px;width:100%;background:linear-gradient(to right,transparent,#333,#333,transparent);padding:2px 0px;overflow:hidden;white-space:nowrap;" id="bankGood-'+me.id+'-stockBox">'+loc("stock:")+' <span style="font-weight:bold;" id="bankGood-'+me.id+'-stock">-</span><span style="font-weight:bold;" id="bankGood-'+me.id+'-stockMax">/-</span></div>'+
 					'</div>'+
 					'<div style="position:relative;white-space:nowrap;">'+
-						'<div style="padding:3px 2px;width:22px;" class="bankSymbol">Buy</div>'+
+						'<div style="padding:3px 2px;width:22px;'+((buyStr.length>4 || sellStr.length>4)?'display:block;padding:0px;width:100%;':'')+'" class="bankSymbol">'+buyStr+'</div>'+
 						'<div class="bankButton bankButtonBuy" id="bankGood-'+me.id+'_1" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.tradeTooltip('+me.id+',1)','this')+'>1</div>'+
 						'<div class="bankButton bankButtonBuy" id="bankGood-'+me.id+'_10" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.tradeTooltip('+me.id+',10)','this')+'>10</div>'+
 						'<div class="bankButton bankButtonBuy" id="bankGood-'+me.id+'_100" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.tradeTooltip('+me.id+',100)','this')+'>100</div>'+
-						'<div style="width:28px;" class="bankButton bankButtonBuy" id="bankGood-'+me.id+'_Max" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.tradeTooltip('+me.id+',10000)','this')+'>Max</div>'+
+						'<div style="min-width:28px;" class="bankButton bankButtonBuy" id="bankGood-'+me.id+'_Max" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.tradeTooltip('+me.id+',10000)','this')+'>'+cap(loc("max"))+'</div>'+
 						'<br>'+
-						'<div style="padding:3px 2px;width:22px;" class="bankSymbol">Sell</div>'+
+						'<div style="padding:3px 2px;width:22px;'+((buyStr.length>4 || sellStr.length>4)?'display:block;padding:0px;width:100%;':'')+'" class="bankSymbol">'+sellStr+'</div>'+
 						'<div class="bankButton bankButtonSell" id="bankGood-'+me.id+'_-1" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.tradeTooltip('+me.id+',-1)','this')+'>1</div>'+
 						'<div class="bankButton bankButtonSell" id="bankGood-'+me.id+'_-10" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.tradeTooltip('+me.id+',-10)','this')+'>10</div>'+
 						'<div class="bankButton bankButtonSell" id="bankGood-'+me.id+'_-100" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.tradeTooltip('+me.id+',-100)','this')+'>100</div>'+
-						'<div style="width:28px;" class="bankButton bankButtonSell" id="bankGood-'+me.id+'_-All" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.tradeTooltip('+me.id+',-10000)','this')+'>All</div>'+
+						'<div style="min-width:28px;" class="bankButton bankButtonSell" id="bankGood-'+me.id+'_-All" '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.tradeTooltip('+me.id+',-10000)','this')+'>'+cap(loc("all"))+'</div>'+
 					'</div>'+
 				'</div>';
 			}
@@ -477,9 +495,9 @@ M.launch=function()
 		
 		var str='';
 		str+='<div style="position:absolute;left:2px;top:2px;z-index:10;">'+
-			'<div id="bankGraphLines" class="bankSimpleButton" style="background:rgba(0,0,0,0.5);padding:2px;border-radius:4px;">Line style</div>'+
-			'<div id="bankGraphCols" class="bankSimpleButton" style="background:rgba(0,0,0,0.5);padding:2px;border-radius:4px;">Color mode</div>'+
-			(Game.sesame?'<div id="bankCheatSpeed" class="bankSimpleButton" style="background:rgba(0,0,0,0.5);padding:2px;border-radius:4px;">Toggle speed</div>':'')+
+			'<div id="bankGraphLines" class="bankSimpleButton" style="background:rgba(0,0,0,0.5);padding:2px;border-radius:4px;">'+loc("Line style")+'</div>'+
+			'<div id="bankGraphCols" class="bankSimpleButton" style="background:rgba(0,0,0,0.5);padding:2px;border-radius:4px;">'+loc("Color mode")+'</div>'+
+			(Game.sesame?'<div id="bankCheatSpeed" class="bankSimpleButton" style="background:rgba(0,0,0,0.5);padding:2px;border-radius:4px;">'+loc("Toggle speed")+'</div>':'')+
 		'</div>'+
 		'<div style="font-family:Arial Black;font-weight:40px;letter-spacing:2px;opacity:0.15;font-weight:bold;position:absolute;left:6px;bottom:6px;z-index:10;pointer-events:none;">DOUGH JONES INDEX</div>';
 		for (var i=0;i<M.goodsById.length;i++)
@@ -646,7 +664,7 @@ M.launch=function()
 						if (x>=width-span*iR-span-2 && x<=width-span*iR+2 && y>=height-min*M.graphScale-6 && y<=height-min*M.graphScale+Math.max(3,max*M.graphScale)+6)
 						{
 							isOnLine=i;
-							Game.tooltip.draw(0,'<div style="width:128px;font-size:10px;text-align:center;"><div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-me.icon[0]*48)+'px '+(-me.icon[1]*48)+'px;"></div> <b>'+me.name+'</b><br>valued at <b>$'+Beautify(me.vals[0+iR],2)+'</b><br>'+Game.sayTime((iR+1)*M.secondsPerTick*Game.fps)+' ago</div>','top');
+							Game.tooltip.draw(0,'<div style="width:128px;font-size:10px;text-align:center;" id="tooltipMarketLine"><div class="icon" style="pointer-events:none;display:inline-block;transform:scale(0.5);margin:-16px -18px -16px -14px;vertical-align:middle;background-position:'+(-me.icon[0]*48)+'px '+(-me.icon[1]*48)+'px;"></div> <b>'+me.name.replace('%1',Game.bakeryName)+'</b><br>'+loc("valued at %1",'<b>$'+Beautify(me.vals[0+iR],2)+'</b>')+'<br>'+loc("%1 ago",Game.sayTime((iR+1)*M.secondsPerTick*Game.fps))+'</div>','top');
 							break bankGraphMouseDetect;
 						}
 					}
@@ -698,7 +716,7 @@ M.launch=function()
 		for (var iG=0;iG<M.goodsById.length;iG++)
 		{
 			var it=M.goodsById[iG];
-			str+=parseInt(it.val*100)+':'+parseInt(it.mode)+':'+parseInt(it.d*100)+':'+parseInt(it.dur)+':'+parseInt(it.stock)+':'+parseInt(it.hidden?1:0)+':'+parseInt(it.last)+'!';
+			str+=parseInt(it.val*100)+':'+parseInt(it.mode)+':'+parseInt(it.d*100)+':'+parseInt(it.dur)+':'+parseInt(it.stock)+':'+parseInt(it.hidden?1:0)+':'+parseInt(it.last)+':'+parseInt(it.prev*100)+'!';
 		}
 		str+=' '+parseInt(M.parent.onMinigame?'1':'0');
 		return str;
@@ -706,13 +724,13 @@ M.launch=function()
 	M.load=function(str)
 	{
 		//interpret str; called after .init
-		//note : not actually called in the Game's load; see "minigameSave" in main.js
+		//note: not actually called in the Game's load; see "minigameSave" in main.js
 		if (!str) return false;
 		var i=0;
 		var spl=str.split(' ');
 		var spl2=spl[i++].split(':');
 		var i2=0;
-		M.officeLevel=parseInt(spl2[i2++]||M.officeLevel);
+		M.officeLevel=Math.max(0,Math.min(parseInt(spl2[i2++]||M.officeLevel),M.offices.length-1));
 		M.brokers=parseInt(spl2[i2++]||M.brokers);
 		M.graphLines=parseInt(spl2[i2++]||M.graphLines);
 		M.profit=parseFloat(spl2[i2++]||0);
@@ -734,6 +752,7 @@ M.launch=function()
 			it.hidden=parseInt(itData[5])?true:false;
 			it.active=false;
 			it.last=parseInt(itData[6]||0);
+			it.prev=parseInt(itData[7]||0)/100;
 			if (it.building.highest>0) it.active=true;
 			if (it.l) M.updateGoodStyle(it.id);
 		}
@@ -759,13 +778,14 @@ M.launch=function()
 			var it=M.goodsById[i];
 			it.stock=0;
 			it.mode=choose([0,1,1,2,2,3,4,5]);
-			it.dur=Math.floor(10+Math.random()*990);
+			it.dur=Math.floor(10+Math.random()*690);
 			it.val=M.getRestingVal(it.id);
 			it.d=Math.random()*0.2-0.1;
 			it.vals=[it.val,it.val-it.d];
 			it.hidden=true;
 			it.active=false;
-			it.last=0;//0 : didn't buy or sell this tick; 1 : bought this tick; 2 : sold this tick
+			it.last=0;//0: didn't buy or sell this tick; 1: bought this tick; 2: sold this tick
+			it.prev=0;//value during previous purchase of this stock
 			if (it.l) M.updateGoodStyle(it.id);
 		}
 		M.onResize();
@@ -782,29 +802,36 @@ M.launch=function()
 	M.secondsPerTick=60;//1 tick every minute
 	M.tick=function()
 	{
+		var dragonBoost=Game.auraMult('Supreme Intellect');
+		var globD=0;var globP=Math.random();
+		if (Math.random()<0.1+0.1*dragonBoost) globD=(Math.random()-0.5)*2;
 		for (var i=0;i<M.goodsById.length;i++)
 		{
 			var me=M.goodsById[i];
 			me.last=0;
 			
-			me.d*=0.97;
+			me.d*=0.97+0.01*dragonBoost;
 			
 			if (me.mode==0) {me.d*=0.95;me.d+=0.05*(Math.random()-0.5);}
 			else if (me.mode==1) {me.d*=0.99;me.d+=0.05*(Math.random()-0.1);}
 			else if (me.mode==2) {me.d*=0.99;me.d-=0.05*(Math.random()-0.1);}
-			else if (me.mode==3) {me.d+=0.15*(Math.random()-0.1);me.val+=Math.random();}
-			else if (me.mode==4) {me.d-=0.15*(Math.random()-0.1);me.val-=Math.random();}
+			else if (me.mode==3) {me.d+=0.15*(Math.random()-0.1);me.val+=Math.random()*5;}
+			else if (me.mode==4) {me.d-=0.15*(Math.random()-0.1);me.val-=Math.random()*5;}
 			else if (me.mode==5) me.d+=0.3*(Math.random()-0.5);
 			
-			me.val+=(M.getRestingVal(me.id)-me.val)*0.02;
-			me.val+=(Math.random()-0.5)*0.4;
+			me.val+=(M.getRestingVal(me.id)-me.val)*0.01;
+			
+			if (globD!=0 && Math.random()<globP) {me.val-=(1+me.d*Math.pow(Math.random(),3)*7)*globD;me.val-=globD*(1+Math.pow(Math.random(),3)*7);me.d+=globD*(1+Math.random()*4);me.dur=0;}
+			
+			me.val+=Math.pow((Math.random()-0.5)*2,11)*3;
 			me.d+=0.1*(Math.random()-0.5);
-			if (Math.random()<0.1) me.val+=(Math.random()-0.5)*3;
-			if (Math.random()<0.1) me.d+=(Math.random()-0.5)*0.3;
+			if (Math.random()<0.15) me.val+=(Math.random()-0.5)*3;
+			if (Math.random()<0.03) me.val+=(Math.random()-0.5)*(10+10*dragonBoost);
+			if (Math.random()<0.1) me.d+=(Math.random()-0.5)*(0.3+0.2*dragonBoost);
 			if (me.mode==5)
 			{
 				if (Math.random()<0.5) me.val+=(Math.random()-0.5)*10;
-				if (Math.random()<0.2) me.d=(Math.random()-0.5)*2;
+				if (Math.random()<0.2) me.d=(Math.random()-0.5)*(2+6*dragonBoost);
 			}
 			if (me.mode==3 && Math.random()<0.3) {me.d+=(Math.random()-0.5)*0.1;me.val+=(Math.random()-0.7)*10;}
 			if (me.mode==3 && Math.random()<0.03) {me.mode=4;}
@@ -838,14 +865,20 @@ M.launch=function()
 			//if (Math.random()<1/me.dur)
 			if (me.dur<=0)
 			{
-				me.dur=Math.floor(10+Math.random()*990);
-				if (Math.random()<0.7 && (me.mode==3 || me.mode==4)) me.mode=5;
+				me.dur=Math.floor(10+Math.random()*(690-200*dragonBoost));
+				if (Math.random()<dragonBoost && Math.random()<0.5) me.mode=5;
+				else if (Math.random()<0.7 && (me.mode==3 || me.mode==4)) me.mode=5;
 				else me.mode=choose([0,1,1,2,2,3,4,5]);
 			}
 		}
 		M.checkGraphScale();
 		M.toRedraw=Math.max(M.toRedraw,1);
 		M.ticks++;
+	}
+	
+	M.dragonBoostTooltip=function()
+	{
+		return '<div style="width:280px;padding:8px;text-align:center;" id="tooltipDragonBoost"><b>'+loc("Supreme Intellect")+'</b><div class="line"></div>'+loc("The stock market is more chaotic.")+'</div>';
 	}
 	
 	M.tickT=0;
@@ -924,7 +957,7 @@ M.launch=function()
 	M.drawGraph=function(full)
 	{
 		/*
-			what this does :
+			what this does:
 			scroll the graph left by (span)
 			draw more graph data to the right
 			if (full), do a full redraw instead
@@ -1042,7 +1075,7 @@ M.launch=function()
 			var office=M.offices[M.officeLevel];
 			l('bankOfficeIcon').style.backgroundPosition=(-office.icon[0]*48)+'px '+(-office.icon[1]*48)+'px';
 			l('bankOfficeName').innerHTML=office.name;
-			l('bankOfficeUpgrade').innerHTML='Upgrade ('+office.cost[0]+' cursors)';
+			l('bankOfficeUpgrade').innerHTML=EN?'Upgrade ('+office.cost[0]+' cursors)':loc("Upgrade for %1",office.cost[0]+' '+Game.Objects['Cursor'].plural);
 			if (!office.cost) l('bankOfficeUpgrade').style.display='none';
 			else
 			{
@@ -1050,7 +1083,7 @@ M.launch=function()
 				if (Game.Objects['Cursor'].amount>=office.cost[0] && Game.Objects['Cursor'].level>=office.cost[1]) l('bankOfficeUpgrade').classList.remove('bankButtonOff');
 				else l('bankOfficeUpgrade').classList.add('bankButtonOff');
 			}
-			l('bankBrokersText').innerHTML=M.brokers==0?'no brokers':M.brokers==1?'1 broker':(M.brokers+' brokers');
+			l('bankBrokersText').innerHTML=EN?(M.brokers==0?'no brokers':M.brokers==1?'1 broker':(M.brokers+' brokers')):(loc("Brokers:")+' '+M.brokers);
 			if (M.brokers<M.getMaxBrokers() && Game.cookies>=M.getBrokerPrice()) l('bankBrokersBuy').classList.remove('bankButtonOff');
 			else l('bankBrokersBuy').classList.add('bankButtonOff');
 			
@@ -1072,7 +1105,7 @@ M.launch=function()
 			if (M.profit>0) {it.classList.add('bankSymbolUp');it.classList.remove('bankSymbolDown');}
 			else if (M.profit<0) {it.classList.add('bankSymbolDown');it.classList.remove('bankSymbolUp');}
 			
-			l('bankNextTick').innerHTML='Next tick in '+Game.sayTime((Game.fps*M.secondsPerTick)-M.tickT+30,-1)+'.';
+			l('bankNextTick').innerHTML=loc("Next tick in %1.",Game.sayTime((Game.fps*M.secondsPerTick)-M.tickT+30,-1));
 		}
 	}
 	M.init(l('rowSpecial'+M.parent.id));

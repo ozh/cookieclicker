@@ -324,6 +324,7 @@ a.option,.info a,a.smallFancyButton
 	text-decoration:none;
 }
 a.option.off {opacity:0.5;}
+a.option.disabled {pointer-events:none;filter:grayscale(100%);opacity:0.5;}
 a.option:hover,.info a:hover,a.smallFancyButton:hover
 {
 	border-color:#fff;
@@ -733,6 +734,20 @@ a.orangeLink:hover,#topBar a.orangeLink:hover
 	filter:brightness(75%);
 	background:rgba(0,0,0,0.07);
 }
+.mouseOverScale
+{
+	cursor:pointer;
+	transition:transform 0.1s;
+}
+.mouseOverScale:hover
+{
+	transform:scale(1.1);
+	color:#fff;
+}
+.mouseOverScale:active
+{
+	transform:scale(1);
+}
 
 /* this is a mess */
 .framed,a.option,.sliderBox,.smallFramed
@@ -845,7 +860,7 @@ a.option.smallFancyButton
 .sliderBox
 {
 	padding:4px 8px;
-	width:200px;
+	width:200px;max-width:100%;
 	display:inline-block;
 	margin-bottom:2px;
 	margin-right:2px;
@@ -1973,7 +1988,7 @@ from {top:20px;opacity:0;}
 	background:#000 url(img/mapBG.jpg) fixed;
 	display:none;
 }
-.row.onMinigame .rowCanvas{display:none;}
+.row.onMinigame .rowCanvas,.row.onMinigame .onlyOnCanvas{display:none;}
 .row.onMinigame .rowSpecial{display:block;}
 /*.row.muted .rowCanvas,.row.muted .rowSpecial{display:none;}*/
 /*.row.muted .separatorBottom{background:rgba(0,0,0,0.75);box-shadow:1px 1px 0px rgba(255,255,255,0.1) inset,-1px -1px 0px rgba(0,0,0,0.5) inset;}*/
@@ -2273,7 +2288,7 @@ from {top:20px;opacity:0;}
 	opacity:0.5;
 }
 
-.crate.heavenly{opacity:0.8;}
+.crate.heavenly{opacity:0.8;z-index:10;}
 .crate.heavenly:before
 {
 	left:-20px;
@@ -2361,11 +2376,6 @@ from {top:20px;opacity:0;}
 	/* for some reason having a filter update on hover makes the cursor confused about which icon it's hovering */
 	/*filter:brightness(115%);
 	-webkit-filter:brightness(115%);*/
-}
-.crate.heavenly
-{
-	transition:left 0.2s ease-out,top 0.2s ease-out;
-	z-index:10;
 }
 .crate.ghosted
 {
@@ -2469,7 +2479,6 @@ from {background-position:0px 0px;}
 	position:absolute;
 	left:0px;
 	top:0px;
-	background:url(img/buildings.png?v=6);
 	background-repeat:no-repeat;
 	margin:0px;
 }
@@ -2490,7 +2499,6 @@ from {background-position:0px 0px;}
 	height:64px;
 	left:0px;
 	top:0px;
-	background:url(img/buildings.png?v=6);
 	background-repeat:no-repeat;
 	margin:-16px;
 	transform:scale(0.5);
@@ -2531,7 +2539,6 @@ from {background-position:0px 0px;}
 {
 	z-index:100;
 	opacity:1;
-	background:url(img/buildings.png?v=6);
 	background-repeat:no-repeat;
 	-webkit-transition: opacity 2s ease-out;
 	-moz-transition: opacity 2s ease-out;
