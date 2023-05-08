@@ -12,7 +12,7 @@ M.launch=function()
 		/*
 			plants age from 0 to 100
 			at one point in its lifespan, the plant becomes mature
-			plants have 4 life stages once planted : bud, sprout, bloom, mature
+			plants have 4 life stages once planted: bud, sprout, bloom, mature
 			a plant may age faster by having a higher .ageTick
 			if a plant has .ageTickR, a random number between 0 and that amount is added to .ageTick
 			a plant may mature faster by having a lower .mature
@@ -29,7 +29,7 @@ M.launch=function()
 				ageTickR:2,
 				mature:35,
 				children:['bakerWheat','thumbcorn','cronerice','bakeberry','clover','goldenClover','chocoroot','tidygrass'],
-				effsStr:'<div class="green">&bull; +1% CpS</div>',
+				effsStr:'<div class="green">&bull; '+loc("CpS")+' +1%</div>',
 				q:'A plentiful crop whose hardy grain is used to make flour for pastries.',
 				onHarvest:function(x,y,age)
 				{
@@ -45,7 +45,7 @@ M.launch=function()
 				ageTickR:2,
 				mature:20,
 				children:['bakerWheat','thumbcorn','cronerice','gildmillet','glovemorel'],
-				effsStr:'<div class="green">&bull; +2% cookies per click</div>',
+				effsStr:'<div class="green">&bull; '+loc("cookies/click")+' +2%</div>',
 				q:'A strangely-shaped variant of corn. The amount of strands that can sprout from one seed is usually in the single digits.',
 			},
 			'cronerice':{
@@ -57,7 +57,7 @@ M.launch=function()
 				ageTickR:0.7,
 				mature:55,
 				children:['thumbcorn','gildmillet','elderwort','wardlichen'],
-				effsStr:'<div class="green">&bull; +3% grandma CpS</div>',
+				effsStr:'<div class="green">&bull; '+loc("%1 CpS",Game.Objects['Grandma'].single)+' +3%</div>',
 				q:'Not only does this wrinkly bulb look nothing like rice, it\'s not even related to it either; its closest extant relative is the weeping willow.',
 			},
 			'gildmillet':{
@@ -69,7 +69,7 @@ M.launch=function()
 				ageTickR:1.5,
 				mature:40,
 				children:['clover','goldenClover','shimmerlily'],
-				effsStr:'<div class="green">&bull; +1% golden cookie gains</div><div class="green">&bull; +0.1% golden cookie effect duration</div>',
+				effsStr:'<div class="green">&bull; '+loc("golden cookie gains")+' +1%</div><div class="green">&bull; '+loc("golden cookie effect duration")+' +0.1%</div>',
 				q:'An ancient staple crop, famed for its golden sheen. Was once used to bake birthday cakes for kings and queens of old.',
 			},
 			'clover':{
@@ -81,7 +81,7 @@ M.launch=function()
 				ageTickR:1.5,
 				mature:35,
 				children:['goldenClover','greenRot','shimmerlily'],
-				effsStr:'<div class="green">&bull; +1% golden cookie frequency</div>',
+				effsStr:'<div class="green">&bull; '+loc("golden cookie frequency")+' +1%</div>',
 				q:'<i>Trifolium repens</i>, a fairly mundane variety of clover with a tendency to produce four leaves. Such instances are considered lucky by some.',
 			},
 			'goldenClover':{
@@ -93,7 +93,7 @@ M.launch=function()
 				ageTickR:12,
 				mature:50,
 				children:[],
-				effsStr:'<div class="green">&bull; +3% golden cookie frequency</div>',
+				effsStr:'<div class="green">&bull; '+loc("golden cookie frequency")+' +3%</div>',
 				q:'A variant of the ordinary clover that traded its chlorophyll for pure organic gold. Tragically short-lived, this herb is an evolutionary dead-end - but at least it looks pretty.',
 			},
 			'shimmerlily':{
@@ -105,7 +105,7 @@ M.launch=function()
 				ageTickR:6,
 				mature:70,
 				children:['elderwort','whiskerbloom','chimerose','cheapcap'],
-				effsStr:'<div class="green">&bull; +1% golden cookie gains</div><div class="green">&bull; +1% golden cookie frequency</div><div class="green">&bull; +1% random drops</div>',
+				effsStr:'<div class="green">&bull; '+loc("golden cookie gains")+' +1%</div><div class="green">&bull; '+loc("golden cookie frequency")+' +1%</div><div class="green">&bull; '+loc("random drops")+' +1%</div>',
 				q:'These little flowers are easiest to find at dawn, as the sunlight refracting in dew drops draws attention to their pure-white petals.',
 			},
 			'elderwort':{
@@ -118,9 +118,9 @@ M.launch=function()
 				mature:90,
 				immortal:1,
 				noContam:true,
-				detailsStr:'Immortal',
+				detailsStr:cap(loc("immortal")),
 				children:['everdaisy','ichorpuff','shriekbulb'],
-				effsStr:'<div class="green">&bull; +1% wrath cookie gains</div><div class="green">&bull; +1% wrath cookie frequency</div><div class="green">&bull; +1% grandma CpS</div><div class="green">&bull; immortal</div><div class="gray">&bull; surrounding plants (3x3) age 3% faster</div>',
+				effsStr:'<div class="green">&bull; '+loc("wrath cookie gains")+' +1%</div><div class="green">&bull; '+loc("wrath cookie frequency")+' +1%</div><div class="green">&bull; '+loc("%1 CpS",Game.Objects['Grandma'].single)+' +1%</div><div class="green">&bull; '+loc("immortal")+'</div><div class="gray">&bull; '+loc("surrounding plants (%1x%1) age %2% faster",[3,3])+'</div>',
 				q:'A very old, long-forgotten subspecies of edelweiss that emits a strange, heady scent. There is some anecdotal evidence that these do not undergo molecular aging.',
 				onHarvest:function(x,y,age)
 				{
@@ -136,7 +136,7 @@ M.launch=function()
 				ageTickR:1,
 				mature:50,
 				children:['queenbeet'],
-				effsStr:'<div class="green">&bull; +1% CpS</div><div class="green">&bull; harvest when mature for +30 minutes of CpS (max. 3% of bank)</div>',
+				effsStr:'<div class="green">&bull; '+loc("CpS")+' +1%</div><div class="green">&bull; '+loc("harvest when mature for +%1 of CpS (max. %2% of bank)",[Game.sayTime(30*60*Game.fps),3])+'</div>',
 				q:'A favorite among cooks, this large berry has a crunchy brown exterior and a creamy red center. Excellent in pies or chicken stews.',
 				onHarvest:function(x,y,age)
 				{
@@ -160,9 +160,9 @@ M.launch=function()
 				ageTick:4,
 				ageTickR:0,
 				mature:25,
-				detailsStr:'Predictable growth',
+				detailsStr:cap(loc("predictable growth")),
 				children:['whiteChocoroot','drowsyfern','queenbeet'],
-				effsStr:'<div class="green">&bull; +1% CpS</div><div class="green">&bull; harvest when mature for +3 minutes of CpS (max. 3% of bank)</div><div class="green">&bull; predictable growth</div>',
+				effsStr:'<div class="green">&bull; '+loc("CpS")+' +1%</div><div class="green">&bull; '+loc("harvest when mature for +%1 of CpS (max. %2% of bank)",[Game.sayTime(3*60*Game.fps),3])+'</div><div class="green">&bull; '+loc("predictable growth")+'</div>',
 				q:'A tangly bramble coated in a sticky, sweet substance. Unknown genetic ancestry. Children often pick these from fields as-is as a snack.',
 				onHarvest:function(x,y,age)
 				{
@@ -185,9 +185,9 @@ M.launch=function()
 				ageTick:4,
 				ageTickR:0,
 				mature:25,
-				detailsStr:'Predictable growth',
+				detailsStr:cap(loc("predictable growth")),
 				children:['whiskerbloom','tidygrass'],
-				effsStr:'<div class="green">&bull; +1% golden cookie gains</div><div class="green">&bull; harvest when mature for +3 minutes of CpS (max. 3% of bank)</div><div class="green">&bull; predictable growth</div>',
+				effsStr:'<div class="green">&bull; '+loc("golden cookie gains")+' +1%</div><div class="green">&bull; '+loc("harvest when mature for +%1 of CpS (max. %2% of bank)",[Game.sayTime(3*60*Game.fps),3])+'</div><div class="green">&bull; '+loc("predictable growth")+'</div>',
 				q:'A pale, even sweeter variant of the chocoroot. Often impedes travelers with its twisty branches.',
 				onHarvest:function(x,y,age)
 				{
@@ -212,9 +212,9 @@ M.launch=function()
 				ageTick:8,
 				ageTickR:12,
 				mature:70,
-				detailsStr:'Spreads easily',
+				detailsStr:cap(loc("spreads easily")),
 				children:['brownMold','whiteChocoroot','wardlichen','greenRot'],
-				effsStr:'<div class="green">&bull; +1% CpS</div><div class="gray">&bull; may spread as brown mold</div>',
+				effsStr:'<div class="green">&bull; '+loc("CpS")+' +1%</div><div class="gray">&bull; '+loc("may spread as %1",loc("Brown mold"))+'</div>',
 				q:'A common rot that infests shady plots of earth. Grows in little creamy capsules. Smells sweet, but sadly wilts quickly.',
 			},
 			'brownMold':{
@@ -226,9 +226,9 @@ M.launch=function()
 				ageTick:8,
 				ageTickR:12,
 				mature:70,
-				detailsStr:'Spreads easily',
+				detailsStr:cap(loc("spreads easily")),
 				children:['whiteMildew','chocoroot','keenmoss','wrinklegill'],
-				effsStr:'<div class="red">&bull; -1% CpS</div><div class="gray">&bull; may spread as white mildew</div>',
+				effsStr:'<div class="red">&bull; '+loc("CpS")+' -1%</div><div class="gray">&bull; '+loc("may spread as %1",loc("White mildew"))+'</div>',
 				q:'A common rot that infests shady plots of earth. Grows in odd reddish clumps. Smells bitter, but thankfully wilts quickly.',
 			},
 			
@@ -242,9 +242,9 @@ M.launch=function()
 				ageTickR:6,
 				mature:50,
 				contam:0.05,
-				detailsStr:'Grows in empty tiles, spreads easily',
+				detailsStr:EN?'Grows in empty tiles, spreads easily':(cap(loc("grows in empty tiles"))+' / '+cap(loc("spreads easily"))),
 				children:['meddleweed','brownMold','crumbspore'],
-				effsStr:'<div class="red">&bull; useless</div><div class="red">&bull; may overtake nearby plants</div><div class="gray">&bull; may sometimes drop spores when uprooted</div>',
+				effsStr:'<div class="red">&bull; '+loc("useless")+'</div><div class="red">&bull; '+loc("may overtake nearby plants")+'</div><div class="gray">&bull; '+loc("may sometimes drop spores when uprooted")+'</div>',
 				q:'The sign of a neglected farmland, this annoying weed spawns from unused dirt and may sometimes spread to other plants, killing them in the process.',
 				onKill:function(x,y,age)
 				{
@@ -261,7 +261,7 @@ M.launch=function()
 				ageTickR:2,
 				mature:60,
 				children:['chimerose','nursetulip'],
-				effsStr:'<div class="green">&bull; +0.2% effects from milk</div>',
+				effsStr:'<div class="green">&bull; '+loc("milk effects")+' +0.2%</div>',
 				q:'Squeezing the translucent pods makes them excrete a milky liquid, while producing a faint squeak akin to a cat\'s meow.',
 			},
 			'chimerose':{
@@ -273,7 +273,7 @@ M.launch=function()
 				ageTickR:1.5,
 				mature:30,
 				children:['chimerose'],
-				effsStr:'<div class="green">&bull; +1% reindeer gains</div><div class="green">&bull; +1% reindeer frequency</div>',
+				effsStr:'<div class="green">&bull; '+loc("reindeer gains")+' +1%</div><div class="green">&bull; '+loc("reindeer frequency")+' +1%</div>',
 				q:'Originating in the greener flanks of polar mountains, this beautiful flower with golden accents is fragrant enough to make any room feel a little bit more festive.',
 			},
 			'nursetulip':{
@@ -285,7 +285,7 @@ M.launch=function()
 				ageTickR:2,
 				mature:60,
 				children:[],
-				effsStr:'<div class="green">&bull; surrounding plants (3x3) are 20% more efficient</div><div class="red">&bull; -2% CpS</div>',
+				effsStr:'<div class="green">&bull; '+loc("surrounding plants (%1x%1) are %2% more efficient",[3,20])+'</div><div class="red">&bull; '+loc("CpS")+' -2%</div>',
 				q:'This flower grows an intricate root network that distributes nutrients throughout the surrounding soil. The reason for this seemingly altruistic behavior is still unknown.',
 			},
 			'drowsyfern':{
@@ -297,7 +297,7 @@ M.launch=function()
 				ageTickR:0.1,
 				mature:30,
 				children:[],
-				effsStr:'<div class="green">&bull; +3% CpS</div><div class="red">&bull; -5% cookies per click</div><div class="red">&bull; -10% golden cookie frequency</div>',
+				effsStr:'<div class="green">&bull; '+loc("CpS")+' +3%</div><div class="red">&bull; '+loc("cookies/click")+' -5%</div><div class="red">&bull; '+loc("golden cookie frequency")+' -10%</div>',
 				q:'Traditionally used to brew a tea that guarantees a good night of sleep.',
 				onHarvest:function(x,y,age)
 				{
@@ -313,7 +313,7 @@ M.launch=function()
 				ageTickR:4,
 				mature:65,
 				children:['wardlichen'],
-				effsStr:'<div class="gray">&bull; 2% less wrath cookies</div><div class="gray">&bull; wrinklers spawn 15% slower</div>',
+				effsStr:'<div class="gray">&bull; '+loc("wrath cookie frequency")+' -2%</div><div class="gray">&bull; '+loc("wrinkler spawn rate")+' -15%</div>',
 				q:'The metallic stench that emanates from this organism has been known to keep insects and slugs away.',
 			},
 			'keenmoss':{
@@ -325,7 +325,7 @@ M.launch=function()
 				ageTickR:5,
 				mature:65,
 				children:['drowsyfern','wardlichen','keenmoss'],
-				effsStr:'<div class="green">&bull; +3% random drops</div>',
+				effsStr:'<div class="green">&bull; '+loc("random drops")+' +3%</div>',
 				q:'Fuzzy to the touch and of a vibrant green. In plant symbolism, keenmoss is associated with good luck for finding lost objects.',
 			},
 			'queenbeet':{
@@ -338,7 +338,7 @@ M.launch=function()
 				mature:80,
 				noContam:true,
 				children:['duketater','queenbeetLump','shriekbulb'],
-				effsStr:'<div class="green">&bull; +0.3% golden cookie effect duration</div><div class="red">&bull; -2% CpS</div><div class="green">&bull; harvest when mature for +1 hour of CpS (max. 4% of bank)</div>',
+				effsStr:'<div class="green">&bull; '+loc("golden cookie effect duration")+' +0.3%</div><div class="red">&bull; '+loc("CpS")+' -2%</div><div class="green">&bull; '+loc("harvest when mature for +%1 of CpS (max. %2% of bank)",[Game.sayTime(60*60*Game.fps),4])+'</div>',
 				q:'A delicious taproot used to prepare high-grade white sugar. Entire countries once went to war over these.',
 				onHarvest:function(x,y,age)
 				{
@@ -364,14 +364,14 @@ M.launch=function()
 				mature:85,
 				noContam:true,
 				children:[],
-				effsStr:'<div class="red">&bull; -10% CpS</div><div class="red">&bull; surrounding plants (3x3) are 20% less efficient</div><div class="green">&bull; harvest when mature for a sugar lump</div>',
+				effsStr:'<div class="red">&bull; '+loc("CpS")+' -10%</div><div class="red">&bull; '+loc("surrounding plants (%1x%1) are %2% less efficient",[3,20])+'</div><div class="green">&bull; '+loc("harvest when mature for a sugar lump")+'</div>',
 				q:'A delicious taproot used to prepare high-grade white sugar. Entire countries once went to war over these.<br>It looks like this one has grown especially sweeter and juicier from growing in close proximity to other queenbeets.',
 				onHarvest:function(x,y,age)
 				{
 					if (age>=this.mature)
 					{
 						Game.gainLumps(1);
-						popup='(Juicy queenbeet)<br>Sweet!<div style="font-size:65%;">Found 1 sugar lump!</div>';
+						Game.Popup('(Juicy queenbeet)<br>Sweet!<div style="font-size:65%;">Found 1 sugar lump!</div>',Game.mouseX,Game.mouseY);
 					}
 				},
 			},
@@ -385,7 +385,7 @@ M.launch=function()
 				mature:95,
 				noContam:true,
 				children:['shriekbulb'],
-				effsStr:'<div class="green">&bull; harvest when mature for +2 hours of CpS (max. 8% of bank)</div>',
+				effsStr:'<div class="green">&bull; '+loc("harvest when mature for +%1 of CpS (max. %2% of bank)",[Game.sayTime(2*60*60*Game.fps),8])+'</div>',
 				q:'A rare, rich-tasting tuber fit for a whole meal, as long as its strict harvesting schedule is respected. Its starch has fascinating baking properties.',
 				onHarvest:function(x,y,age)
 				{
@@ -412,9 +412,9 @@ M.launch=function()
 				mature:65,
 				contam:0.03,
 				noContam:true,
-				detailsStr:'Spreads easily',
+				detailsStr:cap(loc("spreads easily")),
 				children:['crumbspore','glovemorel','cheapcap','doughshroom','wrinklegill','ichorpuff'],
-				effsStr:'<div class="green">&bull; explodes into up to 1 minute of CpS at the end of its lifecycle (max. 1% of bank)</div><div class="red">&bull; may overtake nearby plants</div>',
+				effsStr:'<div class="green">&bull; '+loc("explodes into up to %1 of CpS at the end of its lifecycle (max. %2% of bank)",[Game.sayTime(60*Game.fps),1])+'</div><div class="red">&bull; '+loc("may overtake nearby plants")+'</div>',
 				q:'An archaic mold that spreads its spores to the surrounding dirt through simple pod explosion.',
 				onDie:function(x,y)
 				{
@@ -437,9 +437,9 @@ M.launch=function()
 				mature:85,
 				contam:0.03,
 				noContam:true,
-				detailsStr:'Spreads easily',
+				detailsStr:cap(loc("spreads easily")),
 				children:['crumbspore','doughshroom','foolBolete','shriekbulb'],
-				effsStr:'<div class="green">&bull; explodes into up to 5 minutes of CpS at the end of its lifecycle (max. 3% of bank)</div><div class="red">&bull; may overtake nearby plants</div>',
+				effsStr:'<div class="green">&bull; '+loc("explodes into up to %1 of CpS at the end of its lifecycle (max. %2% of bank)",[Game.sayTime(5*60*Game.fps),3])+'</div><div class="red">&bull; '+loc("may overtake nearby plants")+'</div>',
 				q:'Jammed full of warm spores; some forest walkers often describe the smell as similar to passing by a bakery.',
 				onDie:function(x,y)
 				{
@@ -461,7 +461,7 @@ M.launch=function()
 				ageTickR:18,
 				mature:80,
 				children:[],
-				effsStr:'<div class="green">&bull; +4% cookies per click</div><div class="green">&bull; +1% cursor CpS</div><div class="red">&bull; -1% CpS</div>',
+				effsStr:'<div class="green">&bull; '+loc("cookies/click")+' +4%</div><div class="green">&bull; '+loc("%1 CpS",Game.Objects['Cursor'].single)+' +1%</div><div class="red">&bull; '+loc("CpS")+' -1%</div>',
 				q:'Touching its waxy skin reveals that the interior is hollow and uncomfortably squishy.',
 			},
 			'cheapcap':{
@@ -474,7 +474,7 @@ M.launch=function()
 				ageTickR:16,
 				mature:40,
 				children:[],
-				effsStr:'<div class="green">&bull; buildings and upgrades are 0.2% cheaper</div><div class="red">&bull; cannot handle cold climates; 15% chance to die when frozen</div>',
+				effsStr:'<div class="green">&bull; '+(EN?'buildings and upgrades are 0.2% cheaper':(loc("building costs")+' -0.2% / '+loc("upgrade costs")+' -0.2%'))+'</div><div class="red">&bull; '+loc("cannot handle cold climates; %1% chance to die when frozen",15)+'</div>',
 				q:'Small, tough, and good in omelettes. Some historians propose that the heads of dried cheapcaps were once used as currency in some bronze age societies.',
 			},
 			'foolBolete':{
@@ -487,7 +487,7 @@ M.launch=function()
 				ageTickR:25,
 				mature:50,
 				children:[],
-				effsStr:'<div class="green">&bull; +2% golden cookie frequency</div><div class="red">&bull; -5% golden cookie gains</div><div class="red">&bull; -2% golden cookie duration</div><div class="red">&bull; -2% golden cookie effect duration</div>',
+				effsStr:'<div class="green">&bull; '+loc("golden cookie frequency")+' +2%</div><div class="red">&bull; '+loc("golden cookie gains")+' -5%</div><div class="red">&bull; '+loc("golden cookie duration")+' -2%</div><div class="red">&bull; '+loc("golden cookie effect duration")+' -2%</div>',
 				q:'Named for its ability to fool mushroom pickers. The fool\'s bolete is not actually poisonous, it\'s just extremely bland.',
 			},
 			'wrinklegill':{
@@ -500,7 +500,7 @@ M.launch=function()
 				ageTickR:3,
 				mature:65,
 				children:['elderwort','shriekbulb'],
-				effsStr:'<div class="gray">&bull; wrinklers spawn 2% faster</div><div class="gray">&bull; wrinklers eat 1% more</div>',
+				effsStr:'<div class="gray">&bull; '+loc("wrinkler spawn rate")+' +2%</div><div class="gray">&bull; '+loc("wrinkler appetite")+' +1%</div>',
 				q:'This mushroom\'s odor resembles that of a well-done steak, and is said to whet the appetite - making one\'s stomach start gurgling within seconds.',
 			},
 			'greenRot':{
@@ -513,7 +513,7 @@ M.launch=function()
 				ageTickR:13,
 				mature:65,
 				children:['keenmoss','foolBolete'],
-				effsStr:'<div class="green">&bull; +0.5% golden cookie duration</div><div class="green">&bull; +1% golden cookie frequency</div><div class="green">&bull; +1% random drops</div>',
+				effsStr:'<div class="green">&bull; '+loc("golden cookie duration")+' +0.5%</div><div class="green">&bull; '+loc("golden cookie frequency")+' +1%</div><div class="green">&bull; '+loc("random drops")+' +1%</div>',
 				q:'This short-lived mold is also known as "emerald pebbles", and is considered by some as a pseudo-gem that symbolizes good fortune.',
 				onHarvest:function(x,y,age)
 				{
@@ -529,9 +529,9 @@ M.launch=function()
 				ageTickR:1,
 				mature:60,
 				noContam:true,
-				detailsStr:'The unfortunate result of some plant combinations',
+				detailsStr:cap(loc("the unfortunate result of some plant combinations")),
 				children:['shriekbulb'],
-				effsStr:'<div class="red">&bull; -2% CpS</div><div class="red">&bull; surrounding plants (3x3) are 5% less efficient</div>',
+				effsStr:'<div class="red">&bull; '+loc("CpS")+' -2%</div><div class="red">&bull; '+loc("surrounding plants (%1x%1) are %2% less efficient",[3,5])+'</div>',
 				q:'A nasty vegetable with a dreadful quirk : its flesh resonates with a high-pitched howl whenever it is hit at the right angle by sunlight, moonlight, or even a slight breeze.',
 			},
 			'tidygrass':{
@@ -543,7 +543,7 @@ M.launch=function()
 				ageTickR:0,
 				mature:40,
 				children:['everdaisy'],
-				effsStr:'<div class="green">&bull; surrounding tiles (5x5) develop no weeds or fungus</div>',
+				effsStr:'<div class="green">&bull; '+loc("surrounding tiles (%1x%1) develop no weeds or fungus",5)+'</div>',
 				q:'The molecules this grass emits are a natural weedkiller. Its stems grow following a predictable pattern, making it an interesting -if expensive- choice for a lawn grass.',
 			},
 			'everdaisy':{
@@ -556,9 +556,9 @@ M.launch=function()
 				mature:75,
 				noContam:true,
 				immortal:1,
-				detailsStr:'Immortal',
+				detailsStr:cap(loc("immortal")),
 				children:[],
-				effsStr:'<div class="green">&bull; surrounding tiles (3x3) develop no weeds or fungus</div><div class="green">&bull; immortal</div>',
+				effsStr:'<div class="green">&bull; '+loc("surrounding tiles (%1x%1) develop no weeds or fungus",3)+'</div><div class="green">&bull; '+loc("immortal")+'</div>',
 				q:'While promoted by some as a superfood owing to its association with longevity and intriguing geometry, this elusive flower is actually mildly toxic.',
 			},
 			'ichorpuff':{
@@ -571,7 +571,7 @@ M.launch=function()
 				ageTickR:1.5,
 				mature:35,
 				children:[],
-				effsStr:'<div class="green">&bull; surrounding plants (3x3) age half as fast</div><div class="red">&bull; surrounding plants (3x3) are half as efficient</div>',
+				effsStr:'<div class="green">&bull; '+loc("surrounding plants (%1x%1) age %2% slower",[3,50])+'</div><div class="red">&bull; '+loc("surrounding plants (%1x%1) are %2% less efficient",[3,50])+'</div>',
 				q:'This puffball mushroom contains sugary spores, but it never seems to mature to bursting on its own. Surrounding plants under its influence have a very slow metabolism, reducing their effects but lengthening their lifespan.',
 				onHarvest:function(x,y,age)
 				{
@@ -582,12 +582,15 @@ M.launch=function()
 		M.plantsById=[];var n=0;
 		for (var i in M.plants)
 		{
-			M.plants[i].unlocked=0;
-			M.plants[i].id=n;
-			M.plants[i].key=i;
-			M.plants[i].matureBase=M.plants[i].mature;
-			M.plantsById[n]=M.plants[i];
-			if (typeof M.plants[i].plantable==='undefined') {M.plants[i].plantable=true;}
+			var it=M.plants[i];
+			it.unlocked=0;
+			it.id=n;
+			it.key=i;
+			it.matureBase=it.mature;
+			M.plantsById[n]=it;
+			if (typeof it.plantable==='undefined') {it.plantable=true;}
+			it.q=loc(FindLocStringByPart(it.name+' quote'));
+			it.name=loc(it.name);
 			n++;
 		}
 		M.plantsN=M.plantsById.length;
@@ -633,7 +636,7 @@ M.launch=function()
 		M.getMuts=function(neighs,neighsM)
 		{
 			//get possible mutations given a list of neighbors
-			//note : neighs stands for neighbors, not horsey noises
+			//note: neighs stands for neighbors, not horsey noises
 			var muts=[];
 			
 			if (neighsM['bakerWheat']>=2) muts.push(['bakerWheat',0.2],['thumbcorn',0.05],['bakeberry',0.001]);
@@ -873,54 +876,54 @@ M.launch=function()
 		
 		M.soils={
 			'dirt':{
-				name:'Dirt',
+				name:loc("Dirt"),
 				icon:0,
 				tick:5,
 				effMult:1,
 				weedMult:1,
 				req:0,
-				effsStr:'<div class="gray">&bull; tick every <b>5 minutes</b></div>',
-				q:'Simple, regular old dirt that you\'d find in nature.',
+				effsStr:'<div class="gray">&bull; '+loc("tick every %1",'<b>'+Game.sayTime(5*60*Game.fps)+'</b>')+'</div>',
+				q:loc("Simple, regular old dirt that you'd find in nature."),
 			},
 			'fertilizer':{
-				name:'Fertilizer',
+				name:loc("Fertilizer"),
 				icon:1,
 				tick:3,
 				effMult:0.75,
 				weedMult:1.2,
 				req:50,
-				effsStr:'<div class="gray">&bull; tick every <b>3 minutes</b></div><div class="red">&bull; passive plant effects <b>-25%</b></div><div class="red">&bull; weeds appear <b>20%</b> more</div>',
-				q:'Soil with a healthy helping of fresh manure. Plants grow faster but are less efficient.',
+				effsStr:'<div class="gray">&bull; '+loc("tick every %1",'<b>'+Game.sayTime(3*60*Game.fps)+'</b>')+'</div><div class="red">&bull; '+loc("passive plant effects")+' <b>-25%</b></div><div class="red">&bull; '+loc("weed growth")+' <b>+20%</b></div>',
+				q:loc("Soil with a healthy helping of fresh manure. Plants grow faster but are less efficient."),
 			},
 			'clay':{
-				name:'Clay',
+				name:loc("Clay"),
 				icon:2,
 				tick:15,
 				effMult:1.25,
 				weedMult:1,
 				req:100,
-				effsStr:'<div class="gray">&bull; tick every <b>15 minutes</b></div><div class="green">&bull; passive plant effects <b>+25%</b></div>',
-				q:'Rich soil with very good water retention. Plants grow slower but are more efficient.',
+				effsStr:'<div class="gray">&bull; '+loc("tick every %1",'<b>'+Game.sayTime(15*60*Game.fps)+'</b>')+'</div><div class="green">&bull; '+loc("passive plant effects")+' <b>+25%</b></div>',
+				q:loc("Rich soil with very good water retention. Plants grow slower but are more efficient."),
 			},
 			'pebbles':{
-				name:'Pebbles',
+				name:loc("Pebbles"),
 				icon:3,
 				tick:5,
 				effMult:0.25,
 				weedMult:0.1,
 				req:200,
-				effsStr:'<div class="gray">&bull; tick every <b>5 minutes</b></div><div class="red">&bull; passive plant effects <b>-75%</b></div><div class="green">&bull; <b>35% chance</b> of collecting seeds automatically when plants expire</div><div class="green">&bull; weeds appear <b>10 times</b> less</div>',
-				q:'Dry soil made of small rocks tightly packed together. Not very conducive to plant health, but whatever falls off your crops will be easy to retrieve.<br>Useful if you\'re one of those farmers who just want to find new seeds without having to tend their garden too much.',
+				effsStr:'<div class="gray">&bull; '+loc("tick every %1",'<b>'+Game.sayTime(5*60*Game.fps)+'</b>')+'</div><div class="red">&bull; '+loc("passive plant effects")+' <b>-75%</b></div><div class="green">&bull; '+loc("<b>%1% chance</b> of collecting seeds automatically when plants expire",35)+'</div><div class="green">&bull; '+loc("weed growth")+' <b>-90%</b></div>',
+				q:loc("Dry soil made of small rocks tightly packed together. Not very conducive to plant health, but whatever falls off your crops will be easy to retrieve.<br>Useful if you're one of those farmers who just want to find new seeds without having to tend their garden too much."),
 			},
 			'woodchips':{
-				name:'Wood chips',
+				name:loc("Wood chips"),
 				icon:4,
 				tick:5,
 				effMult:0.25,
 				weedMult:0.1,
 				req:300,
-				effsStr:'<div class="gray">&bull; tick every <b>5 minutes</b></div><div class="red">&bull; passive plant effects <b>-75%</b></div><div class="green">&bull; plants spread and mutate <b>3 times more</b></div><div class="green">&bull; weeds appear <b>10 times</b> less</div>',
-				q:'Soil made of bits and pieces of bark and sawdust. Helpful for young sprouts to develop, not so much for mature plants.',
+				effsStr:'<div class="gray">&bull; '+loc("tick every %1",'<b>'+Game.sayTime(5*60*Game.fps)+'</b>')+'</div><div class="red">&bull; '+loc("passive plant effects")+' <b>-75%</b></div><div class="green">&bull; '+loc("plants spread and mutate <b>%1 times more</b>",3)+'</div><div class="green">&bull; '+loc("weed growth")+' <b>-90%</b></div>',
+				q:loc("Soil made of bits and pieces of bark and sawdust. Helpful for young sprouts to develop, not so much for mature plants."),
 			},
 		};
 		M.soilsById=[];var n=0;for (var i in M.soils){M.soils[i].id=n;M.soils[i].key=i;M.soilsById[n]=M.soils[i];n++;}
@@ -928,13 +931,13 @@ M.launch=function()
 		
 		M.tools={
 			'info':{
-				name:'Garden information',
+				name:loc("Garden information"),
 				icon:3,
 				desc:'-',
 				descFunc:function()
 				{
 					var str='';
-					if (M.freeze) str='Your garden is frozen, providing no effects.';
+					if (M.freeze) str=loc("Your garden is frozen, providing no effects.");
 					else
 					{
 						var effs={
@@ -951,8 +954,8 @@ M.launch=function()
 							wrathCookieDur:{n:'wrath cookie duration'},
 							wrathCookieEffDur:{n:'wrath cookie effect duration'},
 							reindeerGain:{n:'reindeer gains'},
-							reindeerFreq:{n:'reindeer cookie frequency'},
-							reindeerDur:{n:'reindeer cookie duration'},
+							reindeerFreq:{n:'reindeer frequency'},
+							reindeerDur:{n:'reindeer duration'},
 							itemDrops:{n:'random drops'},
 							milk:{n:'milk effects'},
 							wrinklerSpawn:{n:'wrinkler spawn rate'},
@@ -960,6 +963,7 @@ M.launch=function()
 							upgradeCost:{n:'upgrade costs',rev:true},
 							buildingCost:{n:'building costs',rev:true},
 						};
+						for (var i in effs){effs[i].n=loc(effs[i].n);}
 						
 						var effStr='';
 						for (var i in M.effs)
@@ -967,22 +971,22 @@ M.launch=function()
 							if (M.effs[i]!=1 && effs[i])
 							{
 								var amount=(M.effs[i]-1)*100;
-								effStr+='<div style="font-size:10px;margin-left:64px;"><b>&bull; '+effs[i].n+' :</b> <span class="'+((amount*(effs[i].rev?-1:1))>0?'green':'red')+'">'+(amount>0?'+':'-')+Beautify(Math.abs(M.effs[i]-1)*100,2)+'%</span></div>';
+								effStr+='<div style="font-size:10px;margin-left:64px;"><b>&bull; '+effs[i].n+'</b> <span class="'+((amount*(effs[i].rev?-1:1))>0?'green':'red')+'">'+(amount>0?'+':'-')+Beautify(Math.abs(M.effs[i]-1)*100,2)+'%</span></div>';
 							}
 						}
-						if (effStr=='') effStr='<div style="font-size:10px;margin-left:64px;"><b>None.</b></div>';
-						str+='<div>Combined effects of all your plants :</div>'+effStr;
+						if (effStr=='') effStr='<div style="font-size:10px;margin-left:64px;"><b>'+loc("None.")+'</b></div>';
+						str+='<div>'+loc("Combined effects of all your plants:")+'</div>'+effStr;
 					}
 					str+='<div class="line"></div>';
-					str+='<img src="img/gardenTip.png" style="float:right;margin:0px 0px 8px 8px;"/><small style="line-height:100%;">&bull; You can cross-breed plants by planting them close to each other; new plants will grow in the empty tiles next to them.<br>&bull; Unlock new seeds by harvesting mature plants.<br>&bull; When you ascend, your garden plants are reset, but you keep all the seeds you\'ve unlocked.<br>&bull; Your garden has no effect and does not grow while the game is closed.</small>';
+					str+='<img src="'+Game.resPath+'img/gardenTip.png" style="float:right;margin:0px 0px 8px 8px;"/><small style="line-height:100%;">'+(EN?"&bull; You can cross-breed plants by planting them close to each other; new plants will grow in the empty tiles next to them.<br>&bull; Unlock new seeds by harvesting mature plants.<br>&bull; When you ascend, your garden plants are reset, but you keep all the seeds you\'ve unlocked.<br>&bull; Your garden has no effect and does not grow while the game is closed.":loc("-You can cross-breed plants by planting them close to each other; new plants will grow in the empty tiles next to them.<br>-Unlock new seeds by harvesting mature plants.<br>-When you ascend, your garden plants are reset, but you keep all the seeds you've unlocked.<br>-Your garden has no effect and does not grow while the game is closed."))+'</small>';
 					return str;
 				},
 				func:function(){},
 			},
 			'harvestAll':{
-				name:'Harvest all',
+				name:loc("Harvest all"),
 				icon:0,
-				descFunc:function(){return 'Instantly harvest all plants in your garden.<div class="line"></div>'+((Game.keys[16] && Game.keys[17])?'<b>You are holding shift+ctrl.</b> Only mature, mortal plants will be harvested.':'Shift+ctrl+click to harvest only mature, mortal plants.');},
+				descFunc:function(){return loc("Instantly harvest all plants in your garden.")+'<div class="line"></div>'+((EN && Game.keys[16] && Game.keys[17])?'<b>You are holding shift+ctrl.</b> Only mature, mortal plants will be harvested.':loc("%1 to harvest only mature, mortal plants.",loc("Shift")+'+'+loc("Ctrl")+'+'+loc("Click")));},
 				func:function(){
 					PlaySound('snd/toneTick.mp3');
 					/*if (M.freeze){return false;}*/
@@ -991,11 +995,11 @@ M.launch=function()
 				},
 			},
 			'freeze':{
-				name:'Freeze',
+				name:loc("Freeze"),
 				icon:1,
 				descFunc:function()
 				{
-					return 'Cryogenically preserve your garden.<br>Plants no longer grow, spread or die; they provide no benefits.<br>Soil cannot be changed.<div class="line"></div>Using this will effectively pause your garden.<div class="line"></div>';//<span class="red">'+((M.nextFreeze>Date.now())?'You will be able to freeze your garden again in '+Game.sayTime((M.nextFreeze-Date.now())/1000*30+30,-1)+'.':'After unfreezing your garden, you must wait 10 minutes to freeze it again.')+'</span>
+					return loc("Cryogenically preserve your garden.<br>Plants no longer grow, spread or die; they provide no benefits.<br>Soil cannot be changed.<div class=\"line\"></div>Using this will effectively pause your garden.");//<div class="line"></div><span class="red">'+((M.nextFreeze>Date.now())?'You will be able to freeze your garden again in '+Game.sayTime((M.nextFreeze-Date.now())/1000*30+30,-1)+'.':'After unfreezing your garden, you must wait 10 minutes to freeze it again.')+'</span>
 				},
 				func:function(){
 					//if (!M.freeze && M.nextFreeze>Date.now()) return false;
@@ -1039,15 +1043,15 @@ M.launch=function()
 				isOn:function(){if (M.freeze){l('gardenContent').classList.add('gardenFrozen');}else{l('gardenContent').classList.remove('gardenFrozen');}return M.freeze;},
 			},
 			'convert':{
-				name:'Sacrifice garden',
+				name:loc("Sacrifice garden"),
 				icon:2,
-				desc:'A swarm of sugar hornets comes down on your garden, <span class="red">destroying every plant as well as every seed you\'ve unlocked</span> - leaving only a Baker\'s wheat seed.<br>In exchange, they will grant you <span class="green"><b>10</b> sugar lumps</span>.<br>This action is only available with a complete seed log.',
+				desc:loc("A swarm of sugar hornets comes down on your garden, <span class=\"red\">destroying every plant as well as every seed you've unlocked</span> - leaving only a %1 seed.<br>In exchange, they will grant you <span class=\"green\">%2</span>.<br>This action is only available with a complete seed log.",[loc("Baker's wheat"),loc("%1 sugar lump",LBeautify(10))]),
 				func:function(){PlaySound('snd/toneTick.mp3');M.askConvert();},
 				isDisplayed:function(){if (M.plantsUnlockedN>=M.plantsN) return true; else return false;},
 			},
 		};
 		M.toolsById=[];var n=0;for (var i in M.tools){M.tools[i].id=n;M.tools[i].key=i;M.toolsById[n]=M.tools[i];n++;}
-
+		
 		
 		M.plot=[];
 		for (var y=0;y<6;y++)
@@ -1109,21 +1113,21 @@ M.launch=function()
 					{
 						var it=M.plants[me.children[i]];
 						if (it.unlocked) children+='<div class="gardenSeedTiny" style="background-position:'+(-0*48)+'px '+(-it.icon*48)+'px;"></div>';
-						else children+='<div class="gardenSeedTiny" style="background-image:url(img/icons.png?v='+Game.version+');background-position:'+(-0*48)+'px '+(-7*48)+'px;opacity:0.35;"></div>';
+						else children+='<div class="gardenSeedTiny" style="background-image:url('+Game.resPath+'img/icons.png?v='+Game.version+');background-position:'+(-0*48)+'px '+(-7*48)+'px;opacity:0.35;"></div>';
 					}
 				}
 				children+='</div>';
 			}
-			
+			var dragonBoost=1/(1+0.05*Game.auraMult('Supreme Intellect'));
 			return '<div class="description">'+
-						(!me.immortal?('<div style="margin:6px 0px;font-size:11px;"><b>Average lifespan :</b> '+Game.sayTime(((100/(me.ageTick+me.ageTickR/2))*M.stepT)*30,-1)+' <small>('+Beautify(Math.ceil((100/((me.ageTick+me.ageTickR/2)))*(1)))+' ticks)</small></div>'):'')+
-						'<div style="margin:6px 0px;font-size:11px;"><b>Average maturation :</b> '+Game.sayTime(((100/((me.ageTick+me.ageTickR/2)))*(me.mature/100)*M.stepT)*30,-1)+' <small>('+Beautify(Math.ceil((100/((me.ageTick+me.ageTickR/2)))*(me.mature/100)))+' ticks)</small></div>'+
-						(me.weed?'<div style="margin:6px 0px;font-size:11px;"><b>Is a weed</b></div>':'')+
-						(me.fungus?'<div style="margin:6px 0px;font-size:11px;"><b>Is a fungus</b></div>':'')+
-						(me.detailsStr?('<div style="margin:6px 0px;font-size:11px;"><b>Details :</b> '+me.detailsStr+'</div>'):'')+
-						(children!=''?('<div style="margin:6px 0px;font-size:11px;"><b>Possible mutations :</b> '+children+'</div>'):'')+
+						(!me.immortal?('<div style="margin:6px 0px;font-size:11px;"><b>'+loc("Average lifespan:")+'</b> '+Game.sayTime(((100/(me.ageTick+me.ageTickR/2))*dragonBoost*M.stepT)*30,-1)+' <small>('+loc("%1 tick",LBeautify(Math.ceil((100/((me.ageTick+me.ageTickR/2)/dragonBoost))*(1))))+')</small></div>'):'')+
+						'<div style="margin:6px 0px;font-size:11px;"><b>'+loc("Average maturation:")+'</b> '+Game.sayTime(((100/((me.ageTick+me.ageTickR/2)))*(me.mature/100)*dragonBoost*M.stepT)*30,-1)+' <small>('+loc("%1 tick",LBeautify(Math.ceil((100/((me.ageTick+me.ageTickR/2)/dragonBoost))*(me.mature/100))))+')</small></div>'+
+						(me.weed?'<div style="margin:6px 0px;font-size:11px;"><b>'+(EN?"Is a weed":loc("Weed"))+'</b></div>':'')+
+						(me.fungus?'<div style="margin:6px 0px;font-size:11px;"><b>'+(EN?"Is a fungus":loc("Fungus"))+'</b></div>':'')+
+						(me.detailsStr?('<div style="margin:6px 0px;font-size:11px;"><b>'+loc("Details:")+'</b> '+me.detailsStr+'</div>'):'')+
+						(children!=''?('<div style="margin:6px 0px;font-size:11px;"><b>'+loc("Possible mutations:")+'</b> '+children+'</div>'):'')+
 						'<div class="line"></div>'+
-						'<div style="margin:6px 0px;"><b>Effects :</b></div>'+
+						'<div style="margin:6px 0px;"><b>'+loc("Effects:")+'</b> <span style="font-size:11px;">('+loc("while plant is alive; scales with plant growth")+')</span></div>'+
 						'<div style="font-size:11px;font-weight:bold;">'+me.effsStr+'</div>'+
 						(me.q?('<q>'+me.q+'</q>'):'')+
 					'</div>';
@@ -1147,14 +1151,14 @@ M.launch=function()
 		{
 			return function(){
 				var me=M.soilsById[id];
-				var str='<div style="padding:8px 4px;min-width:350px;">'+
+				var str='<div style="padding:8px 4px;min-width:350px;" id="tooltipGardenSoil">'+
 					(M.parent.amount<me.req?(
-						'<div style="text-align:center;">Soil unlocked at '+me.req+' farms.</div>'
-					):('<div class="icon" style="background:url(img/gardenPlants.png?v='+Game.version+');float:left;margin-left:-8px;margin-top:-8px;background-position:'+(-me.icon*48)+'px '+(-34*48)+'px;"></div>'+
-					'<div><div class="name">'+me.name+'</div><div><small>'+((M.soil==me.id)?'Your field is currently using this soil.':(M.nextSoil>Date.now())?'You will be able to change your soil again in '+Game.sayTime((M.nextSoil-Date.now())/1000*30+30,-1)+'.':'Click to use this type of soil for your whole field.')+'</small></div></div>'+
+						'<div style="text-align:center;">'+loc("Soil unlocked at %1 farms.",me.req)+'</div>'
+					):('<div class="icon" style="background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');float:left;margin-left:-8px;margin-top:-8px;background-position:'+(-me.icon*48)+'px '+(-34*48)+'px;"></div>'+
+					'<div><div class="name">'+me.name+'</div><div><small>'+((M.soil==me.id)?loc("Your field is currently using this soil."):(M.nextSoil>Date.now())?loc("You will be able to change your soil again in %1.",Game.sayTime((M.nextSoil-Date.now())/1000*30+30,-1)):loc("Click to use this type of soil for your whole field."))+'</small></div></div>'+
 					'<div class="line"></div>'+
 					'<div class="description">'+
-						'<div style="margin:6px 0px;"><b>Effects :</b></div>'+
+						'<div style="margin:6px 0px;"><b>'+loc("Effects:")+'</b></div>'+
 						'<div style="font-size:11px;font-weight:bold;">'+me.effsStr+'</div>'+
 						(me.q?('<q>'+me.q+'</q>'):'')+
 					'</div>'))+
@@ -1166,12 +1170,12 @@ M.launch=function()
 		{
 			return function(){
 				var me=M.plantsById[id];
-				var str='<div style="padding:8px 4px;min-width:400px;">'+
-					'<div class="icon" style="background:url(img/gardenPlants.png?v='+Game.version+');float:left;margin-left:-24px;margin-top:-4px;background-position:'+(-0*48)+'px '+(-me.icon*48)+'px;"></div>'+
-					'<div class="icon" style="background:url(img/gardenPlants.png?v='+Game.version+');float:left;margin-left:-24px;margin-top:-28px;background-position:'+(-4*48)+'px '+(-me.icon*48)+'px;"></div>'+
-					'<div style="background:url(img/turnInto.png);width:20px;height:22px;position:absolute;left:28px;top:24px;z-index:1000;"></div>'+
-					(me.plantable?('<div style="float:right;text-align:right;width:100px;"><small>Planting cost :</small><br><span class="price'+(M.canPlant(me)?'':' disabled')+'">'+Beautify(Math.round(shortenNumber(M.getCost(me))))+'</span><br><small>'+Game.sayTime(me.cost*60*30,-1)+' of CpS,<br>minimum '+Beautify(me.costM)+' cookies</small></div>'):'')+
-					'<div style="width:300px;"><div class="name">'+me.name+' seed</div><div><small>'+(me.plantable?'Click to select this seed for planting.':'<span class="red">This seed cannot be planted.</span>')+'<br>Shift+ctrl+click to harvest all mature plants of this type.</small></div></div>'+
+				var str='<div style="padding:8px 4px;min-width:400px;" id="tooltipGardenSeed">'+
+					'<div class="icon" style="background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');float:left;margin-left:-24px;margin-top:-4px;background-position:'+(-0*48)+'px '+(-me.icon*48)+'px;"></div>'+
+					'<div class="icon" style="background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');float:left;margin-left:-24px;margin-top:-28px;background-position:'+(-4*48)+'px '+(-me.icon*48)+'px;"></div>'+
+					'<div style="background:url('+Game.resPath+'img/turnInto.png);width:20px;height:22px;position:absolute;left:28px;top:24px;z-index:1000;"></div>'+
+					(me.plantable?('<div style="float:right;text-align:right;width:100px;"><small>'+loc("Planting cost:")+'</small><br><span class="price'+(M.canPlant(me)?'':' disabled')+'">'+Beautify(Math.round(shortenNumber(M.getCost(me))))+'</span><br><small>'+loc("%1 of CpS,<br>minimum %2",[Game.sayTime(me.cost*60*30,-1),loc("%1 cookie",LBeautify(me.costM))])+'</small></div>'):'')+
+					'<div style="width:300px;"><div class="name">'+cap(loc("%1 seed",me.name))+'</div><div><small>'+(me.plantable?loc("Click to select this seed for planting."):'<span class="red">'+loc("This seed cannot be planted.")+'</span>')+'<br>'+loc("%1 to harvest all mature plants of this type.",loc("Shift")+'+'+loc("Ctrl")+'+'+loc("Click"))+'</small></div></div>'+
 					'<div class="line"></div>'+
 					M.getPlantDesc(me)+
 				'</div>';
@@ -1183,8 +1187,8 @@ M.launch=function()
 			return function(){
 				var me=M.toolsById[id];
 				var icon=[me.icon,35];
-				var str='<div style="padding:8px 4px;min-width:350px;">'+
-					'<div class="icon" style="background:url(img/gardenPlants.png?v='+Game.version+');float:left;margin-left:-8px;margin-top:-8px;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div>'+
+				var str='<div style="padding:8px 4px;min-width:350px;" id="tooltipGardenTool">'+
+					'<div class="icon" style="background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');float:left;margin-left:-8px;margin-top:-8px;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div>'+
 					'<div><div class="name">'+me.name+'</div></div>'+
 					'<div class="line"></div>'+
 					'<div class="description">'+
@@ -1202,16 +1206,13 @@ M.launch=function()
 				if (tile[0]==0)
 				{
 					var me=(M.seedSelected>=0)?M.plantsById[M.seedSelected]:0;
-					var str='<div style="padding:8px 4px;min-width:350px;text-align:center;">'+
-						'<div class="name">Empty tile</div>'+'<div class="line"></div><div class="description">'+
-							'This tile of soil is empty.<br>Pick a seed and plant something!'+
-							(me?'<div class="line"></div>Click to plant <b>'+me.name+'</b> for <span class="price'+(M.canPlant(me)?'':' disabled')+'">'+Beautify(Math.round(M.getCost(me)))+'</span>.<br><small>(Shift-click to plant multiple.)</small><br><small>(Holding the shift key pressed will also hide tooltips.)</small>':'')+
-							(M.plotBoost[y][x]!=[1,1,1]?('<small>'+
-								(M.plotBoost[y][x][0]!=1?'<br>Aging multiplier : '+Beautify(M.plotBoost[y][x][0]*100)+'%':'')+
-								(M.plotBoost[y][x][1]!=1?'<br>Effect multiplier : '+Beautify(M.plotBoost[y][x][1]*100)+'%':'')+
-								(M.plotBoost[y][x][2]!=1?'<br>Weeds/fungus repellent : '+Beautify(100-M.plotBoost[y][x][2]*100)+'%':'')+
-								'</small>'
-							):'')+
+					var str='<div style="padding:8px 4px;min-width:350px;text-align:center;" id="tooltipGardenTile">'+
+						'<div class="name">'+loc("Empty tile")+'</div>'+'<div class="line"></div><div class="description">'+
+							loc("This tile of soil is empty.<br>Pick a seed and plant something!")+
+							(me?'<div class="line"></div>'+loc("Click to plant %1 for %2.",['<b>'+me.name+'</b>','<span class="price'+(M.canPlant(me)?'':' disabled')+'">'+Beautify(Math.round(M.getCost(me)))+'</span>'])+'<br><small>('+loc("%1 to plant multiple.",loc("Shift-click"))+')</small>'+(EN?'<br><small>(Holding the shift key pressed will also hide tooltips.)</small>':''):'')+
+								(M.plotBoost[y][x][0]!=1?'<br><small>'+loc("Aging multiplier:")+' '+Beautify(M.plotBoost[y][x][0]*100)+'%</small>':'')+
+								(M.plotBoost[y][x][1]!=1?'<br><small>'+loc("Effect multiplier:")+' '+Beautify(M.plotBoost[y][x][1]*100)+'%</small>':'')+
+								(M.plotBoost[y][x][2]!=1?'<br><small>'+loc("Weeds/fungus repellent:")+' '+Beautify(100-M.plotBoost[y][x][2]*100)+'%</small>':'')+
 						'</div>'+
 					'</div>';
 					return str;
@@ -1224,42 +1225,39 @@ M.launch=function()
 					else if (tile[1]>=me.mature*0.666) stage=3;
 					else if (tile[1]>=me.mature*0.333) stage=2;
 					else stage=1;
+					var dragonBoost=1/(1+0.05*Game.auraMult('Supreme Intellect'));
 					var icon=[stage,me.icon];
 					var str='<div style="padding:8px 4px;min-width:350px;">'+
-						'<div class="icon" style="background:url(img/gardenPlants.png?v='+Game.version+');float:left;margin-left:-8px;margin-top:-8px;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div>'+
-						'<div class="name">'+me.name+'</div><div><small>This plant is growing here.</small></div>'+
+						'<div class="icon" style="background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');float:left;margin-left:-8px;margin-top:-8px;background-position:'+(-icon[0]*48)+'px '+(-icon[1]*48)+'px;"></div>'+
+						'<div class="name">'+me.name+'</div><div><small>'+loc("This plant is growing here.")+'</small></div>'+
 						'<div class="line"></div>'+
 						'<div style="text-align:center;">'+
 							'<div style="display:inline-block;position:relative;box-shadow:0px 0px 0px 1px #000,0px 0px 0px 1px rgba(255,255,255,0.5) inset,0px -2px 2px 0px rgba(255,255,255,0.5) inset;width:256px;height:6px;background:linear-gradient(to right,#fff 0%,#0f9 '+me.mature+'%,#3c0 '+(me.mature+0.1)+'%,#960 100%)">'+
 								'<div class="gardenGrowthIndicator" style="left:'+Math.floor((tile[1]/100)*256)+'px;"></div>'+
-								'<div style="background:url(img/gardenPlants.png?v='+Game.version+');background-position:'+(-1*48)+'px '+(-icon[1]*48)+'px;position:absolute;left:'+(0-24)+'px;top:-32px;transform:scale(0.5,0.5);width:48px;height:48px;"></div>'+
-								'<div style="background:url(img/gardenPlants.png?v='+Game.version+');background-position:'+(-2*48)+'px '+(-icon[1]*48)+'px;position:absolute;left:'+((((me.mature*0.333)/100)*256)-24)+'px;top:-32px;transform:scale(0.5,0.5);width:48px;height:48px;"></div>'+
-								'<div style="background:url(img/gardenPlants.png?v='+Game.version+');background-position:'+(-3*48)+'px '+(-icon[1]*48)+'px;position:absolute;left:'+((((me.mature*0.666)/100)*256)-24)+'px;top:-32px;transform:scale(0.5,0.5);width:48px;height:48px;"></div>'+
-								'<div style="background:url(img/gardenPlants.png?v='+Game.version+');background-position:'+(-4*48)+'px '+(-icon[1]*48)+'px;position:absolute;left:'+((((me.mature)/100)*256)-24)+'px;top:-32px;transform:scale(0.5,0.5);width:48px;height:48px;"></div>'+
+								'<div style="background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');background-position:'+(-1*48)+'px '+(-icon[1]*48)+'px;position:absolute;left:'+(0-24)+'px;top:-32px;transform:scale(0.5,0.5);width:48px;height:48px;"></div>'+
+								'<div style="background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');background-position:'+(-2*48)+'px '+(-icon[1]*48)+'px;position:absolute;left:'+((((me.mature*0.333)/100)*256)-24)+'px;top:-32px;transform:scale(0.5,0.5);width:48px;height:48px;"></div>'+
+								'<div style="background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');background-position:'+(-3*48)+'px '+(-icon[1]*48)+'px;position:absolute;left:'+((((me.mature*0.666)/100)*256)-24)+'px;top:-32px;transform:scale(0.5,0.5);width:48px;height:48px;"></div>'+
+								'<div style="background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');background-position:'+(-4*48)+'px '+(-icon[1]*48)+'px;position:absolute;left:'+((((me.mature)/100)*256)-24)+'px;top:-32px;transform:scale(0.5,0.5);width:48px;height:48px;"></div>'+
 							'</div><br>'+
-							'<b>Stage :</b> '+['bud','sprout','bloom','mature'][stage-1]+'<br>'+
-							'<small>'+(stage==1?'Plant effects : 10%':stage==2?'Plant effects : 25%':stage==3?'Plant effects : 50%':'Plant effects : 100%; may reproduce, will drop seed when harvested')+'</small>'+
+							'<b>'+loc("Stage:")+'</b> '+loc(["bud","sprout","bloom","mature"][stage-1])+'<br>'+
+							'<small>'+(stage==1?loc("Plant effects:")+' 10%':stage==2?loc("Plant effects:")+' 25%':stage==3?loc("Plant effects:")+' 50%':loc("Plant effects:")+' 100%; '+loc("may reproduce, will drop seed when harvested"))+'</small>'+
 							'<br><small>'+(
 								stage<4?(
-									'Mature in about '+Game.sayTime(((100/(M.plotBoost[y][x][0]*(me.ageTick+me.ageTickR/2)))*((me.mature-tile[1])/100)*M.stepT)*30,-1)+' ('+Beautify(Math.ceil((100/(M.plotBoost[y][x][0]*(me.ageTick+me.ageTickR/2)))*((me.mature-tile[1])/100)))+' tick'+(Math.ceil((100/(M.plotBoost[y][x][0]*(me.ageTick+me.ageTickR/2)))*((me.mature-tile[1])/100))==1?'':'s')+')'
+									loc("Mature in about %1",Game.sayTime(((100/(M.plotBoost[y][x][0]*(me.ageTick+me.ageTickR/2)))*((me.mature-tile[1])/100)*dragonBoost*M.stepT)*30,-1))+' ('+loc("%1 tick",LBeautify(Math.ceil((100/(M.plotBoost[y][x][0]*(me.ageTick+me.ageTickR/2)/dragonBoost))*((me.mature-tile[1])/100))))+')'
 								):(
 									!me.immortal?(
-										'Decays in about '+Game.sayTime(((100/(M.plotBoost[y][x][0]*(me.ageTick+me.ageTickR/2)))*((100-tile[1])/100)*M.stepT)*30,-1)+' ('+Beautify(Math.ceil((100/(M.plotBoost[y][x][0]*(me.ageTick+me.ageTickR/2)))*((100-tile[1])/100)))+' tick'+(Math.ceil((100/(M.plotBoost[y][x][0]*(me.ageTick+me.ageTickR/2)))*((100-tile[1])/100))==1?'':'s')+')'
+										loc("Decays in about %1",Game.sayTime(((100/(M.plotBoost[y][x][0]*(me.ageTick+me.ageTickR/2)))*((100-tile[1])/100)*dragonBoost*M.stepT)*30,-1))+' ('+loc("%1 tick",LBeautify(Math.ceil((100/(M.plotBoost[y][x][0]*(me.ageTick+me.ageTickR/2)/dragonBoost))*((100-tile[1])/100))))+')'
 									):
-										'Does not decay'
+										loc("Does not decay")
 								)
 							)+'</small>'+
-							//'<small><br>'+M.plotBoost[y][x]+'</small>'+
-							(M.plotBoost[y][x]!=[1,1,1]?('<small>'+
-								(M.plotBoost[y][x][0]!=1?'<br>Aging multiplier : '+Beautify(M.plotBoost[y][x][0]*100)+'%':'')+
-								(M.plotBoost[y][x][1]!=1?'<br>Effect multiplier : '+Beautify(M.plotBoost[y][x][1]*100)+'%':'')+
-								(M.plotBoost[y][x][2]!=1?'<br>Weeds/fungus repellent : '+Beautify(100-M.plotBoost[y][x][2]*100)+'%':'')+
-								'</small>'
-							):'')+
+								(M.plotBoost[y][x][0]!=1?'<br><small>'+loc("Aging multiplier:")+' '+Beautify(M.plotBoost[y][x][0]*100)+'%</small>':'')+
+								(M.plotBoost[y][x][1]!=1?'<br><small>'+loc("Effect multiplier:")+' '+Beautify(M.plotBoost[y][x][1]*100)+'%</small>':'')+
+								(M.plotBoost[y][x][2]!=1?'<br><small>'+loc("Weeds/fungus repellent:")+' '+Beautify(100-M.plotBoost[y][x][2]*100)+'%</small>':'')+
 						'</div>'+
 						'<div class="line"></div>'+
 						//'<div style="text-align:center;">Click to harvest'+(M.seedSelected>=0?', planting <b>'+M.plantsById[M.seedSelected].name+'</b><br>for <span class="price'+(M.canPlant(me)?'':' disabled')+'">'+Beautify(Math.round(M.getCost(M.plantsById[M.seedSelected])))+'</span> in its place':'')+'.</div>'+
-						'<div style="text-align:center;">Click to '+(stage==4?'harvest':'unearth')+'.</div>'+
+						'<div style="text-align:center;">'+(stage==4?loc("Click to harvest."):loc("Click to unearth."))+'</div>'+
 						'<div class="line"></div>'+
 						M.getPlantDesc(me)+
 					'</div>';
@@ -1269,8 +1267,8 @@ M.launch=function()
 		}
 		
 		M.refillTooltip=function(){
-			return '<div style="padding:8px;width:300px;font-size:11px;text-align:center;">Click to refill your soil timer and trigger <b>1</b> plant growth tick with <b>x3</b> spread and mutation rate for <span class="price lump">1 sugar lump</span>.'+
-				(Game.canRefillLump()?'<br><small>(can be done once every '+Game.sayTime(Game.getLumpRefillMax(),-1)+')</small>':('<br><small class="red">(usable again in '+Game.sayTime(Game.getLumpRefillRemaining()+Game.fps,-1)+')</small>'))+
+			return '<div style="padding:8px;width:300px;font-size:11px;text-align:center;" id="tooltipRefill">'+loc("Click to refill your soil timer and trigger <b>1</b> plant growth tick with <b>x%1</b> spread and mutation rate for %2.",[3,'<span class="price lump">'+loc("%1 sugar lump",LBeautify(1))+'</span>'])+
+				(Game.canRefillLump()?'<br><small>('+loc("can be done once every %1",Game.sayTime(Game.getLumpRefillMax(),-1))+')</small>':('<br><small class="red">('+loc("usable again in %1",Game.sayTime(Game.getLumpRefillRemaining()+Game.fps,-1))+')</small>'))+
 			'</div>';
 		};
 		
@@ -1499,7 +1497,7 @@ M.launch=function()
 		M.askConvert=function()
 		{
 			if (M.plantsUnlockedN<M.plantsN) return false;
-			Game.Prompt('<h3>Sacrifice garden</h3><div class="block">Do you REALLY want to sacrifice your garden to the sugar hornets?<br><small>You will be left with an empty plot and only the Baker\'s wheat seed unlocked.<br>In return, you will gain <b>10 sugar lumps</b>.</small></div>',[['Yes!','Game.ClosePrompt();Game.ObjectsById['+M.parent.id+'].minigame.convert();'],'No']);
+			Game.Prompt('<h3>'+loc("Sacrifice garden")+'</h3><div class="block">'+loc("Do you REALLY want to sacrifice your garden to the sugar hornets?<br><small>You will be left with an empty plot and only the %1 seed unlocked.<br>In return, you will gain <b>%2 sugar lumps</b>.</small>",[loc("Baker's wheat"),10])+'</div>',[[loc("Yes"),'Game.ClosePrompt();Game.ObjectsById['+M.parent.id+'].minigame.convert();'],loc("No")]);
 		}
 		M.convert=function()
 		{
@@ -1509,7 +1507,7 @@ M.launch=function()
 			M.unlockSeed(M.plants['bakerWheat']);
 			
 			Game.gainLumps(10);
-			Game.Notify('Sacrifice!','You\'ve sacrificed your garden to the sugar hornets, destroying your crops and your knowledge of seeds.<br>In the remains, you find <b>10 sugar lumps</b>.',[29,14],12);
+			Game.Notify(loc("Sacrifice!"),loc("You've sacrificed your garden to the sugar hornets, destroying your crops and your knowledge of seeds.<br>In the remains, you find <b>%1 sugar lumps</b>.",10),[29,14],12);
 			
 			M.seedSelected=-1;
 			Game.Win('Seedless to nay');
@@ -1556,7 +1554,7 @@ M.launch=function()
 				if (me.onHarvest) me.onHarvest(x,y,age);
 				if (tile[1]>=me.mature)
 				{
-					if (M.unlockSeed(me)) Game.Popup('('+me.name+')<br>Unlocked '+me.name+' seed.',Game.mouseX,Game.mouseY);
+					if (M.unlockSeed(me)) Game.Popup('('+me.name+')<br>'+loc("Unlocked %1 seed.",me.name),Game.mouseX,Game.mouseY);
 					M.harvests++;
 					M.harvestsTotal++;
 					if (M.harvestsTotal>=100) Game.Win('Botany enthusiast');
@@ -1588,9 +1586,14 @@ M.launch=function()
 			return true;
 		}
 		
+		M.dragonBoostTooltip=function()
+		{
+			return '<div style="width:280px;padding:8px;text-align:center;" id="tooltipDragonBoost"><b>'+loc("Supreme Intellect")+'</b><div class="line"></div>'+loc("Garden plants age and mutate %1% faster.",5*Game.auraMult('Supreme Intellect'))+'</div>';
+		}
+		
 		var str='';
 		str+='<style>'+
-		'#gardenBG{background:url(img/shadedBorders.png),url(img/BGgarden.jpg);background-size:100% 100%,auto;position:absolute;left:0px;right:0px;top:0px;bottom:16px;}'+
+		'#gardenBG{background:url('+Game.resPath+'img/shadedBorders.png),url('+Game.resPath+'img/BGgarden.jpg);background-size:100% 100%,auto;position:absolute;left:0px;right:0px;top:0px;bottom:16px;}'+
 		'#gardenContent{position:relative;box-sizing:border-box;padding:4px 24px;height:'+(6*M.tileSize+16+48+48)+'px;}'+
 		'.gardenFrozen{box-shadow:0px 0px 16px rgba(255,255,255,1) inset,0px 0px 48px 24px rgba(200,255,225,0.5) inset;}'+
 		'#gardenPanel{text-align:center;margin:0px;padding:0px;position:absolute;left:4px;top:4px;bottom:4px;right:65%;overflow-y:auto;overflow-x:hidden;box-shadow:8px 0px 8px rgba(0,0,0,0.5);}'+
@@ -1600,25 +1603,25 @@ M.launch=function()
 		'.gardenTile{cursor:pointer;width:'+M.tileSize+'px;height:'+M.tileSize+'px;position:absolute;}'+
 		//'.gardenTile:before{transform:translate(0,0);pointer-events:none;content:\'\';display:block;position:absolute;left:0px;top:0px;right:0px;bottom:0px;margin:6px;border-radius:12px;background:rgba(0,0,0,0.1);box-shadow:0px 0px 4px rgba(255,255,255,0.2),-4px 4px 4px 2px rgba(0,0,0,0.2) inset;}'+
 		//'.gardenTile:hover:before{margin:2px;animation:wobble 0.5s;}'+
-		'.gardenTile:before{transform:translate(0,0);opacity:0.65;transition:opacity 0.2s;pointer-events:none;content:\'\';display:block;position:absolute;left:0px;top:0px;right:0px;bottom:0px;margin:0px;background:url(img/gardenPlots.png);}'+
+		'.gardenTile:before{transform:translate(0,0);opacity:0.65;transition:opacity 0.2s;pointer-events:none;content:\'\';display:block;position:absolute;left:0px;top:0px;right:0px;bottom:0px;margin:0px;background:url('+Game.resPath+'img/gardenPlots.png);}'+
 			'.gardenTile:nth-child(4n+1):before{background-position:40px 0px;}'+
 			'.gardenTile:nth-child(4n+2):before{background-position:80px 0px;}'+
 			'.gardenTile:nth-child(4n+3):before{background-position:120px 0px;}'+
 			'.gardenTile:hover:before{opacity:1;animation:wobble 0.5s;}'+
 			'.noFancy .gardenTile:hover:before{opacity:1;animation:none;}'+
-		'.gardenTileIcon{transform:translate(0,0);pointer-events:none;transform-origin:50% 40px;width:48px;height:48px;position:absolute;left:-'+((48-M.tileSize)/2)+'px;top:-'+((48-M.tileSize)/2+8)+'px;background:url(img/gardenPlants.png?v='+Game.version+');}'+
+		'.gardenTileIcon{transform:translate(0,0);pointer-events:none;transform-origin:50% 40px;width:48px;height:48px;position:absolute;left:-'+((48-M.tileSize)/2)+'px;top:-'+((48-M.tileSize)/2+8)+'px;background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');}'+
 			'.gardenTile:hover .gardenTileIcon{animation:pucker 0.3s;}'+
 			'.noFancy .gardenTile:hover .gardenTileIcon{animation:none;}'+
 		'#gardenDrag{pointer-events:none;position:absolute;left:0px;top:0px;right:0px;bottom:0px;overflow:hidden;z-index:1000000001;}'+
-		'#gardenCursor{transition:transform 0.1s;display:none;pointer-events:none;width:48px;height:48px;position:absolute;background:url(img/gardenPlants.png?v='+Game.version+');}'+
+		'#gardenCursor{transition:transform 0.1s;display:none;pointer-events:none;width:48px;height:48px;position:absolute;background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');}'+
 		'.gardenSeed{cursor:pointer;display:inline-block;width:40px;height:40px;position:relative;}'+
 		'.gardenSeed.locked{display:none;}'+
-		'.gardenSeedIcon{pointer-events:none;transform:translate(0,0);display:inline-block;position:absolute;left:-4px;top:-4px;width:48px;height:48px;background:url(img/gardenPlants.png?v='+Game.version+');}'+
+		'.gardenSeedIcon{pointer-events:none;transform:translate(0,0);display:inline-block;position:absolute;left:-4px;top:-4px;width:48px;height:48px;background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');}'+
 			'.gardenSeed:hover .gardenSeedIcon{animation:bounce 0.8s;z-index:1000000001;}'+
 			'.gardenSeed:active .gardenSeedIcon{animation:pucker 0.2s;}'+
 			'.noFancy .gardenSeed:hover .gardenSeedIcon,.noFancy .gardenSeed:active .gardenSeedIcon{animation:none;}'+
-		'.gardenPanelLabel{font-size:12px;width:100%;padding:2px;margin-top:4px;margin-bottom:-4px;}'+'.gardenSeedTiny{transform:scale(0.5,0.5);margin:-20px -16px;display:inline-block;width:48px;height:48px;background:url(img/gardenPlants.png?v='+Game.version+');}'+
-		'.gardenSeed.on:before{pointer-events:none;content:\'\';display:block;position:absolute;left:0px;top:0px;right:0px;bottom:0px;margin:-2px;border-radius:12px;transform:rotate(45deg);background:rgba(0,0,0,0.2);box-shadow:0px 0px 8px rgba(255,255,255,0.75);}'+
+		'.gardenPanelLabel{font-size:12px;width:100%;padding:2px;margin-top:4px;margin-bottom:-4px;}'+'.gardenSeedTiny{transform:scale(0.5,0.5);margin:-20px -16px;display:inline-block;width:48px;height:48px;background:url('+Game.resPath+'img/gardenPlants.png?v='+Game.version+');}'+
+		'.gardenSeed.on:before{pointer-events:none;content:\'\';display:block;position:absolute;left:-10px;top:-10px;width:60px;height:60px;background:url('+Game.resPath+'img/selectTarget.png);animation:wobble 0.2s ease-out;z-index:10;}'+
 		
 		'.gardenGrowthIndicator{background:#000;box-shadow:0px 0px 0px 1px #fff,0px 0px 0px 2px #000,2px 2px 2px 2px rgba(0,0,0,0.5);position:absolute;top:0px;width:1px;height:6px;z-index:100;}'+
 		'.noFancy .gardenGrowthIndicator{background:#fff;border:1px solid #000;margin-top:-1px;margin-left:-1px;}'+
@@ -1635,9 +1638,9 @@ M.launch=function()
 		str+='<div id="gardenDrag"><div id="gardenCursor" class="shadowFilter"></div></div>';
 			
 			str+='<div id="gardenPanel" class="framed">';
-				str+='<div class="title gardenPanelLabel">Tools</div><div class="line"></div>';
+				str+='<div class="title gardenPanelLabel">'+loc("Tools")+'</div><div class="line"></div>';
 				str+='<div id="gardenTools"></div>';
-				str+='<div id="gardenSeedsUnlocked" class="title gardenPanelLabel">Seeds</div><div class="line"></div>';
+				str+='<div id="gardenSeedsUnlocked" class="title gardenPanelLabel">'+loc("Seeds")+'</div><div class="line"></div>';
 				str+='<div id="gardenSeeds"></div>';
 			str+='</div>';
 			str+='<div id="gardenField">';
@@ -1646,7 +1649,7 @@ M.launch=function()
 				str+='<div style="margin-top:0px;" id="gardenSoils"></div>';
 				str+='<div id="gardenInfo">';
 					str+='<div '+Game.getDynamicTooltip('Game.ObjectsById['+M.parent.id+'].minigame.refillTooltip','this')+' id="gardenLumpRefill" class="usesIcon shadowFilter lumpRefill" style="display:none;left:-8px;top:-6px;background-position:'+(-29*48)+'px '+(-14*48)+'px;"></div>';
-					str+='<div id="gardenNextTick">Initializing...</div>';
+					str+='<div id="gardenNextTick">'+loc("Initializing...")+'</div>';
 					str+='<div id="gardenStats"></div>';
 				str+='</div>';
 			str+='</div>';
@@ -1747,7 +1750,7 @@ M.launch=function()
 	M.load=function(str)
 	{
 		//interpret str; called after .init
-		//note : not actually called in the Game's load; see "minigameSave" in main.js
+		//note: not actually called in the Game's load; see "minigameSave" in main.js
 		if (!str) return false;
 		var i=0;
 		var spl=str.split(' ');
@@ -1860,8 +1863,11 @@ M.launch=function()
 				
 				var weedMult=M.soilsById[M.soil].weedMult;
 				
+				var dragonBoost=1+0.05*Game.auraMult('Supreme Intellect');
+				
 				var loops=1;
 				if (M.soilsById[M.soil].key=='woodchips') loops=3;
+				loops=randomFloor(loops*dragonBoost);
 				loops*=M.loopsMult;
 				M.loopsMult=1;
 			
@@ -1876,7 +1882,7 @@ M.launch=function()
 							if (tile[0]>0)
 							{
 								//age
-								tile[1]+=randomFloor((me.ageTick+me.ageTickR*Math.random())*M.plotBoost[y][x][0]);
+								tile[1]+=randomFloor((me.ageTick+me.ageTickR*Math.random())*M.plotBoost[y][x][0]*dragonBoost);
 								tile[1]=Math.max(tile[1],0);
 								if (me.immortal) tile[1]=Math.min(me.mature+1,tile[1]);
 								else if (tile[1]>=100)
@@ -1886,7 +1892,7 @@ M.launch=function()
 									if (me.onDie) me.onDie(x,y);
 									if (M.soilsById[M.soil].key=='pebbles' && Math.random()<0.35)
 									{
-										if (M.unlockSeed(me)) Game.Popup('Unlocked '+me.name+' seed.',Game.mouseX,Game.mouseY);
+										if (M.unlockSeed(me)) Game.Popup(loc("Unlocked %1 seed.",me.name),Game.mouseX,Game.mouseY);
 									}
 								}
 								else if (!me.noContam)
@@ -1987,9 +1993,9 @@ M.launch=function()
 			}
 			else
 			{
-				var box=l('gardenDrag').getBoundingClientRect();
+				var box=l('gardenDrag').getBounds();
 				var x=Game.mouseX-box.left-24;
-				var y=Game.mouseY-box.top;
+				var y=Game.mouseY-box.top-32+TopBarOffset;
 				var seed=M.plantsById[M.seedSelected];
 				var icon=[0,seed.icon];
 				M.cursorL.style.transform='translate('+(x)+'px,'+(y)+'px)';
@@ -2000,12 +2006,12 @@ M.launch=function()
 		if (Game.drawT%10==0)
 		{
 			M.lumpRefill.style.display='block';
-			if (M.freeze) l('gardenNextTick').innerHTML='Garden is frozen. Unfreeze to resume.';
-			else l('gardenNextTick').innerHTML='Next tick in '+Game.sayTime((M.nextStep-Date.now())/1000*30+30,-1)+'';
-			l('gardenStats').innerHTML='Mature plants harvested : '+Beautify(M.harvests)+' (total : '+Beautify(M.harvestsTotal)+')';
-			if (M.parent.level<M.plotLimits.length) l('gardenPlotSize').innerHTML='<small>Plot size : '+Math.max(1,Math.min(M.plotLimits.length,M.parent.level))+'/'+M.plotLimits.length+'<br>(Upgrades with farm level)</small>';
+			if (M.freeze) l('gardenNextTick').innerHTML=loc("Garden is frozen. Unfreeze to resume.");
+			else l('gardenNextTick').innerHTML=loc("Next tick in %1.",Game.sayTime((M.nextStep-Date.now())/1000*30+30,-1));
+			l('gardenStats').innerHTML=loc("Mature plants harvested: %1 (total: %2)",[Beautify(M.harvests),Beautify(M.harvestsTotal)]);
+			if (M.parent.level<M.plotLimits.length) l('gardenPlotSize').innerHTML='<small>'+loc("Plot size: %1<br>(Upgrades with farm level)",Math.max(1,Math.min(M.plotLimits.length,M.parent.level))+'/'+M.plotLimits.length)+'</small>';
 			else l('gardenPlotSize').innerHTML='';
-			l('gardenSeedsUnlocked').innerHTML='Seeds<small> ('+M.plantsUnlockedN+'/'+M.plantsN+')</small>';
+			l('gardenSeedsUnlocked').innerHTML=loc("Seeds")+'<small> ('+M.plantsUnlockedN+'/'+M.plantsN+')</small>';
 			for (var i in M.soils)
 			{
 				var me=M.soils[i];
