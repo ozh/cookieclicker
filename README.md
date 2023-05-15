@@ -8,8 +8,8 @@ This mirror for, errrr, like, educational purpose, either to download for your o
 
 ### How to update
 
-If the original game updates, run update.sh.
+If the original game updates, run update.sh and...
 
-#### 5. Report update here :)
+### Report update here :)
 
 If you happen to update, please make a pull request for others to benefit, thanks!
