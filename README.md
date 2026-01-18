@@ -4,7 +4,18 @@
 
 The original game can be found at http://orteil.dashnet.org/cookieclicker/
 
-This mirror for, errrr, like, educational purpose, either to download for your own offline education or to be played online from http://ozh.github.io/cookieclicker/ if you cannot "educate" yourself on the original URL
+This mirror for, errrr, like, educational purpose, either to download for your own offline education or to be played online from http://plasma4.github.io/cookieclicker/ if you cannot "educate" yourself on the original URL. The file to open is `index.html`, and the file to enable modding is `enable.html`. It should also fully work when opened as a `file://`.
+
+This fork uses Cloudflare's API as a gateway to certain dynamic JSON files used in Cookie Clicker; see `getJson` in `main.js` for more details.
+
+By default, **mods are not enabled**. Mod options and functionality will only be enabled if you click on the button in `enable.html` (to make the game more leaderboard-friendly).
+
+## Changes compared to base Cookie Clicker
+- Removed ads and tracking (ads wouldn't work anyway)
+- Hardcoded `<style>` into HTML, so some mods work properly
+- Replaced Cloudflare/Google fonts with local versions
+- Changed `getJson` to work (and minimize requests necessary), and selectively
+- You customizer uses data URIs
 
 ### How to update
 

@@ -143,7 +143,7 @@ localStorageSet=function(key,str)
 	try {local=window.localStorage.setItem(key,str);} catch (exception) {}
 	return local;
 }
-
+var modsEnabled=localStorageGet('enableCCModFunctionality')!=null;
 
 var ajax=function(url,callback)
 {
@@ -174,7 +174,18 @@ DataDir='https://orteil.dashnet.org/data/';
 
 var getJson=function(url,callback,error)
 {
-	if (Game.local) return false;
+	url=url.replace(DataDir, 'https://api.plasma4.org/');
+	if(url === 'https://api.plasma4.org/version.json') {return { "Cookie Clicker": { "v":2.052, "updateNotes":"new building!" }, "Cookie Clicker beta": { "v":2.052, "updateNotes":"new building!" }, }}
+	else if (url === 'https://api.plasma4.org/cookieclickerinfo.json') {return { "versions":[ {"text":"Latest","v":"LIVE","url":"$DIR/cookieclicker"}, {"text":"Try the beta!","v":"BETA","url":"$DIR/cookieclicker/beta"}, {"text":"v.2.052 <small>(2023)</small>","v":2.052,"url":"$DIR/cookieclicker/v2052"}, {"text":"v.1.0466 <small>(2014)</small>","v":1.0466,"url":"$DIR/cookieclicker/v10466"}, {"text":"Classic <small>(2013)</small>","v":"CLASSIC","url":"$DIR/experiments/cookie"} ], "links":[ {"text":"<img src=\"img/topbarSteam.png\" style=\"margin-left:0px;\"> Steam","tooltip":"Play Cookie Clicker on Steam!<br>Featuring music by C418.","style":"padding-left:26px;","class":"promoLink","url":"https://store.steampowered.com/app/1454400/Cookie_Clicker/","remove":"topbarSteamCC+"}, {"text":"<img src=\"img/topbarMobile.png\" style=\"margin-left:2px;\"> Android","tooltip":"Play Cookie Clicker on your phone!","style":"padding-left:20px;","class":"promoLink","url":"https://play.google.com/store/apps/details?id=org.dashnet.cookieclicker","remove":"topbarMobileCC+"}, {"off":1,"text":"<img src=\"img/topbarXbox.png\" style=\"margin-left:0px;\"><img src=\"img/topbarPS.png\" style=\"margin-left:22px;\"><img src=\"img/topbarSwitch.png\" style=\"margin-left:44px;\"><span class=\"hideCompressed\" style=\"padding-left:8px;\">Consoles</span>","tooltip":"Play Cookie Clicker on Xbox, PlayStation and Nintendo Switch!","style":"padding-left:60px;","class":"promoLink","url":"https://cookieclicker.com/"}, {"text":"Consoles","tooltip":"Play Cookie Clicker on Xbox, PlayStation and Nintendo Switch!","class":"promoLink","url":"https://cookieclicker.com/"}, {"text":"<img src=\"img/fangamerClickerPic.png\" style=\"margin-left:2px;margin-top:2px;\"> Cookie Clicker clicker<div style=\"position:absolute;right:8px;bottom:3px;font-size:10px;\">by Fangamer</div>","style":"padding-left:40px;","tooltip":"Clicky merch by Fangamer!<br>There's shirts too!","class":"promoLink","url":"https://fanga.me/r/cookie-clicker-collection"} ], "extraCss":["#topBar .promoLink a{color:#06c;}"] }}
+	else if (url === 'https://api.plasma4.org/cookieclickersteam.json') {
+		url = 'https://api.plasma4.org/latest.json';
+	}
+	else if (url === 'https://api.plasma4.org/grandmas.json') {
+		url = 'https://api.plasma4.org/users.json';
+	} else {
+		return false;
+	}
+	// if (window.Game&&Game.local) return false;
 	var xhr=new XMLHttpRequest();
 	if (!xhr){return false;}
 	xhr.onreadystatechange=function()
@@ -1278,7 +1289,11 @@ var Game={};
 		}
 		if (modsN==0) str+=loc("No mod data present.");
 		else str+='<div><a class="option warning" style="font-size:11px;margin-top:4px;" '+Game.clickStr+'="Game.deleteAllModData();PlaySound(\'snd/tick.mp3\');Game.ClosePrompt();Game.CheckModData();">'+loc("Delete all")+'</a></div>';
-		Game.Prompt('<id ModData><h3>'+loc("Mod data")+'</h3><div class="block">'+tinyIcon([16,5])+'<div></div>'+loc("These are the mods present in your save data. You may delete some of this data to make your save file smaller.")+'</div><div class="block" style="font-size:11px;">'+str+'</div>',[loc("Back")]);
+		if (localStorage.getItem("CookieClickerScript")) {
+			Game.Prompt('<id ModData><h3>'+loc("Mod data")+'</h3><div class="block">'+tinyIcon([16,5])+'<div></div>'+loc("These are the mods present in your save data. You may delete some of this data to make your save file smaller.")+'</div><div class="block" style="font-size:11px;">'+str+'</div>',[[loc("Clear auto-loaded mods and reload"),'localStorage.removeItem("CookieClickerScript");location.reload()'],loc("Back")]);
+		} else {
+			Game.Prompt('<id ModData><h3>'+loc("Mod data")+'</h3><div class="block">'+tinyIcon([16,5])+'<div></div>'+loc("These are the mods present in your save data. You may delete some of this data to make your save file smaller.")+'</div><div class="block" style="font-size:11px;">'+str+'</div>',[loc("Back")]);
+		}
 	}
 	
 	Game.LoadMod=LoadScript;//loads the mod at the given URL
@@ -2818,6 +2833,11 @@ Game.Launch=function()
 		/*=====================================================================================
 		SAVE
 		=======================================================================================*/
+		Game.permaLoad=function(t)
+		{
+			Function(t)();
+			localStorage.setItem("CookieClickerScript",t);
+		}
 		Game.ExportSave=function()
 		{
 			//if (App) return false;
@@ -2829,6 +2849,16 @@ Game.Launch=function()
 		{
 			//if (App) return false;
 		Game.Prompt('<id ImportSave><h3>'+loc("Import save")+'</h3><div class="block">'+loc("Please paste in the code that was given to you on save export.")+'<div id="importError" class="warning" style="font-weight:bold;font-size:11px;"></div></div><div class="block"><textarea id="textareaPrompt" style="width:100%;height:128px;">'+(def||'')+'</textarea></div>',[[loc("Load"),'if (l(\'textareaPrompt\').value.length==0){return false;}if (Game.ImportSaveCode(l(\'textareaPrompt\').value)){Game.ClosePrompt();}else{l(\'importError\').innerHTML=\'(\'+loc("Error importing save")+\')\';}'],loc("Nevermind")]);//prompt('Please paste in the text that was given to you on save export.','');
+			l('textareaPrompt').focus();
+		}
+		Game.InjectMod=function(def)
+		{
+			//if (App) return false;
+			if (localStorage.getItem("CookieClickerScript")) {
+				Game.Prompt('<id InjectMod><h3>'+loc("Inject script")+'</h3><div class="block">'+loc("Please paste in the script to use to load the mod. This mod will be unloaded upon reloading! (Go to the Check Mod Data option to disable permanent mod loading. Because you have already imported a script, it will be overridden if you chose to load the mod every time; you may need to reload.)")+'<div id="importError" class="warning" style="font-weight:bold;font-size:11px;"></div></div><div class="block"><textarea id="textareaPrompt" style="width:100%;height:128px;">'+(def||'')+'</textarea></div>',[[loc("Load"),'if (l(\'textareaPrompt\').value.trim().length==0){return false;}try{Function(l(\'textareaPrompt\').value)();Game.ClosePrompt()}catch(e){l(\'importError\').innerHTML=\'(\'+loc("Error importing script")+\')\';}'],[loc("Load every time"),'if (l(\'textareaPrompt\').value.trim().length==0){return false;}try{Game.permaLoad(l(\'textareaPrompt\').value);Game.ClosePrompt()}catch(e){l(\'importError\').innerHTML=\'(\'+loc("Error importing script")+\')\';}'],[loc("Load autoclicker"),'Game.LoadMod("autoclicker.js");Game.ClosePrompt()'],loc("Nevermind")]);
+			} else {
+				Game.Prompt('<id InjectMod><h3>'+loc("Inject script")+'</h3><div class="block">'+loc("Please paste in the script to use to load the mod. This mod will be unloaded upon reloading! (Go to the Check Mod Data option to disable permanent mod loading if you choose to load the mod every time.)")+'<div id="importError" class="warning" style="font-weight:bold;font-size:11px;"></div></div><div class="block"><textarea id="textareaPrompt" style="width:100%;height:128px;">'+(def||'')+'</textarea></div>',[[loc("Load"),'if (l(\'textareaPrompt\').value.trim().length==0){return false;}try{Function(l(\'textareaPrompt\').value)();Game.ClosePrompt()}catch(e){l(\'importError\').innerHTML=\'(\'+loc("Error importing script")+\')\';}'],[loc("Load every time"),'if (l(\'textareaPrompt\').value.trim().length==0){return false;}try{Game.permaLoad(l(\'textareaPrompt\').value);Game.ClosePrompt()}catch(e){l(\'importError\').innerHTML=\'(\'+loc("Error importing script")+\')\';}'],[loc("Load autoclicker"),'Game.LoadMod("autoclicker.js");Game.ClosePrompt()'],loc("Nevermind")]);
+			}
 			l('textareaPrompt').focus();
 		}
 		Game.ImportSaveCode=function(save)
@@ -3892,7 +3922,11 @@ Game.Launch=function()
 			}
 			else if (bypass==1)
 			{
-				Game.Prompt('<id ReallyWipeSave><h3>'+loc("Wipe save")+'</h3><div class="block">'+tinyIcon([15,5])+'<div class="line"></div>'+loc("Whoah now, are you really, <b><i>REALLY</i></b> sure you want to go through with this?<br><small>Don't say we didn't warn you!</small>")+'</div>',[[EN?'Do it!':loc("Yes"),'Game.ClosePrompt();Game.HardReset(2);','float:left'],[loc("No"),0,'float:right']]);
+				if (localStorage.getItem("CookieClickerScript")) {
+					Game.Prompt('<id ReallyWipeSave><h3>'+loc("Wipe save")+'</h3><div class="block">'+tinyIcon([15,5])+'<div class="line"></div>'+loc("Whoah now, are you really, <b><i>REALLY</i></b> sure you want to go through with this?<br><small>Don't say we didn't warn you!</small>")+'</div>',[[EN?'Do it!':loc("Yes"),'Game.ClosePrompt();Game.HardReset(2);','float:left'],[EN?'Do it, and clear mods!':loc("Yes, and clear mods"),'localStorage.removeItem(Game.SaveTo);localStorage.removeItem("CookieClickerScript");window.onbeforeunload=null;location.reload()','float:left'],[loc("No"),0,'float:right']]);
+				} else {
+					Game.Prompt('<id ReallyWipeSave><h3>'+loc("Wipe save")+'</h3><div class="block">'+tinyIcon([15,5])+'<div class="line"></div>'+loc("Whoah now, are you really, <b><i>REALLY</i></b> sure you want to go through with this?<br><small>Don't say we didn't warn you!</small>")+'</div>',[[EN?'Do it!':loc("Yes"),'Game.ClosePrompt();Game.HardReset(2);','float:left'],[loc("No"),0,'float:right']]);
+				}
 			}
 			else
 			{
@@ -6893,6 +6927,7 @@ Game.Launch=function()
 							'<div class="listing"><a class="option smallFancyButton" '+Game.clickStr+'="Game.toSave=true;PlaySound(\'snd/tick.mp3\');">'+loc("Save")+'</a><label>'+loc("Save manually (the game autosaves every 60 seconds; shortcut: ctrl+S)")+'</label></div>'+
 							'<div class="listing"><a class="option smallFancyButton" '+Game.clickStr+'="Game.ExportSave();PlaySound(\'snd/tick.mp3\');">'+loc("Export save")+'</a><a class="option smallFancyButton" '+Game.clickStr+'="Game.ImportSave();PlaySound(\'snd/tick.mp3\');">'+loc("Import save")+'</a><label>'+loc("You can use this to backup your save or to transfer it to another computer (shortcut for import: ctrl+O)")+'</label></div>'+
 							(!App?('<div class="listing"><a class="option smallFancyButton" '+Game.clickStr+'="Game.FileSave();PlaySound(\'snd/tick.mp3\');">'+loc("Save to file")+'</a><a class="option smallFancyButton" style="position:relative;"><input id="FileLoadInput" type="file" style="cursor:pointer;opacity:0;position:absolute;left:0px;top:0px;width:100%;height:100%;" onchange="Game.FileLoad(event);" '+Game.clickStr+'="PlaySound(\'snd/tick.mp3\');"/>'+loc("Load from file")+'</a><label>'+loc("Use this to keep backups on your computer")+'</label></div>'):'')+
+							(modsEnabled?'<div class="listing"><a class="option smallFancyButton" '+Game.clickStr+'="Game.InjectMod();PlaySound(\'snd/tick.mp3\');">'+loc("Inject script")+'</a><label>'+loc("Inject a script; can be set to load a mod automatically")+'</label></div>':'')+
 							'<div class="listing" style="text-align:right;"><label>'+loc("Delete all your progress, including your achievements")+'</label><a class="option smallFancyButton warning" '+Game.clickStr+'="Game.HardReset();PlaySound(\'snd/tick.mp3\');">'+loc("Wipe save")+'</a></div>'+
 							
 						'</div>'+
@@ -9302,8 +9337,9 @@ Game.Launch=function()
 		{
 			var me=Game.Objects['You'];
 			var ctx=me.ctxAdd;
-			var img='you.png';
-			var imgAddons='youAddons.png?v='+Game.version;
+			// completely hard-code the image in base64 data uri format to make the you customizer actually render
+			var img="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUFBNzRGOTlCMzBCMTFFRDlCRDhBODUwNkE2NjQ1REEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUFBNzRGOThCMzBCMTFFRDlCRDhBODUwNkE2NjQ1REEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NzY1MkZCMzk4OTNFMTFFREIxMDdEMDA4QjBENzgwREIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NzY1MkZCM0E4OTNFMTFFREIxMDdEMDA4QjBENzgwREIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7OdJY/AAAAIVBMVEWJqKDQkGW0UDbhwJZAUFFuZltyfopcW2UgDgpHLjz////A4gNnAAAAC3RSTlP/////////////AEpPAfIAAAPRSURBVHjalJfbkus6CERlB3GZ///g0wtl5ykpc1Q1YycVWtBAI62/r8uiyneYa0WYxd72/Zfruzmm/O2QKa98VVOAiDJMcUFrHwhcGgJUbRmEzMPXcgfD9dxDAJl6VDgRbDmijyZIfYgaAei31fZ7V2XqXc4UWGUjgJKJfPANjELop4ytbE8AOmfsLzPZQ8J+I4mVAYB2d+yTLMibMpzpb79lcn2JwDBJAs9esiYMKmHkgRz30v5i8L5er+tOONiQEPEMAFdGzBZ5v3qB0AxQmY8AioCykX3ldQCuNBACNvwRoK1hrf45gAtWsvetBD2HgK/Nvhy44ECPrNxee4nLR4CTuS2P8/VZonSJVWr6mYMOQSKQ+dLer/5HQSsA/h4BVjdxeV637G4IyNd95a5FQT4DwLT8rezgOwm8pXjVtwMAWrngPC/SeN+kUQ7sZXJhUgddutIUvdy9uUox6S5aYgBA3Wp/sqZSvLRubW/LlRkhDzwIWkE7CsLkhLYvOW/eEQw4oInDEBRBvdsxjM2deh6QSMkfB/YKzOVEdFAtDINKpOnE2ZIMro39RSlnIwwqESmXeVELDIRsJsUjCErOhIONHhQudGMSQz9b2x8B6FlGU6BJawXqmN5zqaVtwkHITuWQIQDl0JUFyDREYgDQJEAatsvJwJFWNfmkG89gaxN5DxZEwgPlXZNK7IlGBcoBpoE6Sx9B8EkI2sSwP2q+9qIISaWEUXDrGUCEW+e+EQRAQKenlg08SIoeAKRUAoJCZ4uCLctBISWTraWgB4rS7z0gFIFOGj4RFEomsbmy3+04wAePAYnWmhZnV6eEiEcMCHrSTORKw424IS5R55bmFqpJHchnp/7bcY2UnpDoEggWg/Fe3cTZg0kDQVNBo+lorcfkgMHphtOVzF+tSBoR2eomhAkARxMaSObMtIAGHkqHTQDs2PdY0KY6KdBXuCCEEYA0pBgl3Y+OJEiikhaN3COAYy8j7FFYj9ZlKcwYoKgg62ZWOwmgq3PXJAsiAYB6H+8Q1p3Nau3ZUVeadBDIJfrmfbKgkGcAyCqmSGH0lQUKjyoOPTiqVNaTAI0XfZSyzY77yQRrHebYrdEc1IE6zL4cVL/eWN6HY912et84zqhAY3jlkWHXc3UlkT8hcQOqIcAnhg4hjwPFzWl6a8vPWb86/Og7zDyEP6qYGd1E9pmLa2SO741/ZPE9oSjo3efUr1euHwDK/xuC1alA7GMMAIIgGBF1rjyhIrD53ZlEct3+XJmiHfofAGdCdkscZ+oHAz8BTjUZd/emw+zX7/4TYACSB4Jd7i4N3gAAAABJRU5ErkJggg==";
+			var imgAddons="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAADACAMAAAAeAwnQAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyOEI4OTVBQjg3MTMxMUVEODJFNEI1MzBERUVFODE3QyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5RDBDNEI4OUM4RjkxMUVEODg2Mzg3RTQ0QzFENUU1NyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5RDBDNEI4OEM4RjkxMUVEODg2Mzg3RTQ0QzFENUU1NyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDphOWRlMWMxZS1kOWQwLTA3NDgtYTBiYS04ZjZjZmY0MTdjZWMiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo0ZmVjYjJhYi05ZmZmLThjNGUtYWEyZC1lNWU5NDVmODVmYmUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7F8c6GAAABj1BMVEUgDgpSNzVkU1DhwJZ0YVkAds7QkGW0UDbI49Lx8uA7Oi+oxs0AR30oJiawHhOTh2z/rEA+eauobFWWUz5mZ17SRhWLiJt4p0AiUYfDvadlcxnrcbZFNHq2NktHEQVXXGfEqZ+GCCD/dTHVaot/HwqrjlArLky63KKhQ09vGyvhxXtHKWzoR6GRcmGkIxU9MnFPJx/QOyZfLSb/oa8+QKgyJCA3oYBPQ06TkqvEVhStoHN6JJl8uctXgLg4k8j7b/PMuJaNkXeUWzBCZ7IhOZUxJy3iYyPTyshYXVyPSCW0PywblGa9vkV1z+ZBI1sXsZDG1NvjsaBqY3YfgIS7mdb3oyygMCoyZ56BrRa+bW08MzKBfa3wXov1+PhMPTRvOByqp4qBRCyjWzduMx8u0Jfy3M5EUVp0YFfRPxinML5DtUMIUVp0fGv0yUUIjDOqrrfv587Pl35hOC7fjiZ/e4ZDMCnXvZEwX7JnZmKroqEMa1O86+meXjDPb2HEJkWnekctO0jHm00+RKDNKmz///+wO5kdAAAAhXRSTlP///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AbWheQgAADw5JREFUeNrsnQWDszoWhk9SArRUpjLTTu9n9367d93d3d3d3d19lx++OUkplgQIpdCZZDoUSinhyeEkhDcHiL/6pg/HLnWeIA78kcNwDtCv/t5HHIZzgP75W//oMJwD9Lfe+697d9A84eS8oN/wh2/eN87b7X4H+90Wzgr6H5/5QVd205u1KuazX9lx0lv+f17QP3rPr+wOByq+QUjVN6Dhilo5m00mcnuAyWQG6h3suEmf23W86vXva46ZYAITQ0IpQIWXpOovACXVBan95cl6jagRM5/TleUOWp8vpnOGH1zhjIb4S+/8RNO9EULFH2i/QCk1lgPB9USTSXEy4M+DHejVils1t+bV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";
 			
 			Game.Loader.waitForLoad([img,imgAddons],function(){
 				//accessing pixel data not allowed locally; set img and imgAddons to base64-encoded image strings for testing
@@ -17305,6 +17341,10 @@ window.onload=function()
 				},
 				function(){
 					Game.Launch();
+					var inject=localStorage.getItem("CookieClickerScript");
+					if (modsEnabled&&inject) {
+						setTimeout(Function(inject),250);
+					}
 					if (top!=self && !Game.local) Game.ErrorFrame();
 					else
 					{

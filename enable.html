@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <title>Enable mods?</title>
+</head>
+
+<body>
+    <h1>Enable mods for CC? Close this tab to not enable them.</h1>
+    <button id="a">Enable mods</button>
+    <button id="b" style="display: none">Disable mods</button>
+    <script>
+        a.onclick = function () {
+            localStorage.setItem('enableCCModFunctionality', 1);
+            this.textContent = 'Mods should be enabled now. Reload/reopen to disable again.';
+        }
+        if (localStorage.getItem('enableCCModFunctionality')) {
+            b.removeAttribute('style');
+            a.style.display = 'none';
+            b.onclick = function () {
+                localStorage.removeItem('enableCCModFunctionality');
+                this.textContent = 'Mods should be disabled now. Reload/reopen to enable again.';
+            }
+        }
+    </script>
+</body>
+
+</html>
